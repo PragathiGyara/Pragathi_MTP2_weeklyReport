@@ -1,0 +1,582 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{comment}
+\usepackage{hyperref}
+\usepackage[a4paper, margin=1in]{geometry} % Sets 1-inch margin on all sides
+\usepackage{biblatex}
+\addbibresource{references.bib}
+\usepackage{multicol}
+\usepackage{subcaption}
+\usepackage{caption}
+\usepackage{adjustbox}
+\usepackage{tabularx}
+\usepackage{makecell}
+\usepackage{multirow}
+\usepackage{listings}
+\usepackage{minted}
+
+\usepackage[backend=biber]{biblatex}
+\addbibresource{references.bib}
+
+\lstset{
+    basicstyle=\ttfamily\small,
+    numbers=left,
+    numberstyle=\tiny\color{gray},
+    stepnumber=1,
+    numbersep=6pt,
+    tabsize=2,
+    showspaces=false,
+    showstringspaces=false,
+    breaklines=true,
+    keywordstyle=\color{blue},
+    commentstyle=\color{gray!90},
+    stringstyle=\color{orange!90!black},
+    captionpos=b,
+    frame=single,
+    rulecolor=\color{gray!50},
+    backgroundcolor=\color{gray!5}
+}
+
+
+\title{MTP 2 Weekly Report}
+\author{Gyara Pragathi}
+\date{December 2025}
+\begin{document}
+
+\renewcommand{\arraystretch}{1.3}
+\setlength{\tabcolsep}{6pt}
+
+\maketitle
+
+\tableofcontents
+
+\newpage
+\listoffigures
+
+\newpage
+\listoftables
+
+\newpage
+\lstlistoflistings
+
+\newpage
+\section{WEEK 0 : 16th December 2025 - 19th December 2025} 
+
+Time Spent : 9 - 10 hours
+
+\subsection{Objectives}
+\begin{enumerate}
+    \item Verify all implemented features
+    \item Complete reading Digital Minimalism book
+    \item Survey
+\end{enumerate}
+\subsection{Objective 1 : Testing}
+\subsubsection{Frontend}
+\begin{enumerate}
+    \item Verify all usage metrics are measured accurately
+    \begin{itemize}
+        \item Screen time
+        \item Unlock Count
+        \item App launch count
+    \end{itemize}
+    \item Ensure that usage metrics are consistently represented across the application.
+    Currently the usage data is displayed on: 
+    \begin{itemize}
+        \item Lock Screen
+        \item Home Screen
+        \item Notification bar
+        \item App Drawer
+        \item Dashboard
+    \end{itemize}
+    Test whether: 
+    \begin{enumerate}
+        \item all components are showing identical values 
+        \item are there any inconsistencies due to using shared preferences for storing the usage metrics. 
+
+        Instead, database can be used.
+    \end{enumerate}
+
+    \item Test if alarm is triggering on time. Some of the conditions to test under: 
+    \begin{itemize}
+        \item Low battery
+        \item Battery saver mode
+        \item Idle state mode
+    \end{itemize}
+
+    \item Verify if the alarmManager behaviour works same for all devices. 
+
+    \item How does the alarm behave when phone was switched off during the triggering time.
+
+    \item Check if API calls are efficient.
+\end{enumerate}
+
+
+
+\subsubsection{Server side}
+\begin{enumerate}
+    \item Check if celery worker to update points boundary is triggering on time
+    \item Check if leaderboard is calculated right?
+    \item Backend frontend consistencys
+\end{enumerate}
+
+
+\subsection{Objective 3 : Survey}
+
+\begin{enumerate}
+    \item Google Form link: \href{https://docs.google.com/forms/d/1p_3wBV6kxQMTjSB3DH2tA4sDBrUBfmnHJPrCuGDaASA/edit}{Link}
+    \item QR Code
+\end{enumerate}
+
+\subsection{Observations}
+\begin{enumerate}
+    \item Created a new account. The baseline data of last 7 days didn't upload (it was uploaded only for previous day). Refer Fig. \ref{fig:Baseline data not uploaded correctly}
+
+    \item The next day usage session data is also considered as baseline. Refer Fig. \ref{fig:Baseline data not uploaded correctly}
+\end{enumerate}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=1\linewidth]{Images/BaselineDataIssue.png}
+    \caption{Baseline data not uploaded correctly}
+    \label{fig:Baseline data not uploaded correctly}
+\end{figure}
+
+\newpage
+\section{WEEK 1 : 22nd December 2025 - 26th December 2025 }
+
+Time Spent : 22-23h
+\subsection{Objectives}
+\begin{enumerate}
+    \item Verification of implemented features.
+    \item Bug resolution in code to upload last 7 days usage data (baseline data) into the server. \hfill \textbf{[DONE]}
+    \item Survey \hfill \textbf{[DONE]}
+    \item Analysis of responses from survey 
+\end{enumerate}
+
+\begin{comment}
+\subsection{New Feature Ideas from the Digital Minimalism book}
+\end{comment}
+
+\subsection{Survey}
+\begin{enumerate}
+    \item Conducted on 24th Dec 2025.
+    \item Received 47 responses via google forms.
+    \item Observations: 
+    \begin{itemize}
+        \item Many people were already familiar with digital wellbeing app on android.
+    \end{itemize}
+\end{enumerate}
+
+\subsection{Uploading Baseline Data}
+
+\begin{enumerate}
+    \item The baseline worker is called when the user logins for the first time. The status of baseline data uploaded or not in stored in login pref. If the value is 'false', the baseline data is uploaded, if its 'true' the baseline worker is called.
+    
+    \item Right now, the baseline worker is not uploading all the 7 days data as intented.
+    
+    \item Bugs found in the baseline worker:
+    \begin{itemize}
+        \item Mismatch in session timings. \hfill \textbf{[RESOLVED]}
+        
+            \textit{Issue:} The day, evening, and night sessions were calculated using the wrong day reference, so some sessions were outside the intended 5 pm–5 pm window. 
+            
+            \textit{Fix:} The session timings were corrected so that all sessions fall properly within the 5 pm–5 pm day.
+        
+        \item Anomaly if the baseline worker is called before 5 pm. \hfill \textbf{[RESOLVED]}
+        
+            \textit{Issue:} When the baseline worker ran before 5 pm, it tried to upload data for a day that was still in progress.
+            
+            \textit{Fix:} The worker was updated to always upload the last fully completed day by shifting the baseline window when needed.
+            
+        \item 7 days data not uploaded. Ref \ref{fig:Incomplete Baseline Upload} \hfill \textbf{[RESOLVED]}
+\begin{figure} 
+            \centering
+            \includegraphics[width=1\linewidth]{Images/IncorrectBaselineUpload.png}
+            \caption{Incomplete Baseline Upload}
+            \label{fig:Incomplete Baseline Upload}
+        \end{figure}
+                
+        \item Error when total session is trying to be uploaded. Ref \ref{fig:Error While Uploading Baseline} \hfill \textbf{[RESOLVED]}
+
+        \textit{Fix:} Temporarily commented out the 
+        \texttt{HealthConnectUtils.readStepsBetweenBlocking} since there was no usage.
+\begin{figure}
+            \centering
+            \includegraphics[width=1\linewidth]{Images/ErrorUploadingBaseline.png}
+            \caption{Error While Uploading Baseline}
+            \label{fig:Error While Uploading Baseline}
+        \end{figure}         
+    \end{itemize}
+
+    \item Figure \ref{fig:Corrected Baseline Upload} shows the final baseline upload after fixing the above issues. 
+\begin{figure}
+    \centering
+    \includegraphics[width=1\linewidth]{Images/CorrectedBaselineUpload.png}
+    \caption{Corrected Baseline Upload}
+    \label{fig:Corrected Baseline Upload}
+\end{figure}
+\end{enumerate}
+
+\subsection{Verification of screen time}
+\begin{enumerate}
+    \item Different screen time interpretations:
+    \begin{itemize}
+        \item time screen in ON
+        \item time any app is in foreground \textbf{(currently used)}
+        \item time user is actively interacting
+    \end{itemize}
+    \item Methods for verification: 
+    \begin{itemize}
+        \item Compare with baseline
+        \item Controlled experiments
+        \item Maintaining correctness
+    \end{itemize}
+    \item Approach : 
+\end{enumerate}
+
+\subsubsection{Compare with baseline}
+\begin{enumerate}
+    \item Choice of baseline: 
+    \begin{itemize}
+        \item Primary : Digital Wellbeing
+        \item Secondary : popular apps from play store (with high number of downloads)
+    \end{itemize}
+    \item Why Digital Wellbeing : 
+    \begin{itemize}
+        \item 
+    \end{itemize}
+    \item JODO vs Digital Wellbeing. Ref table \ref{tab:Interpretation of screen time - JODO vs Digital Wellbeing}
+
+    \begin{table}
+        \centering
+        \begin{tabularx}{\textwidth}{l X X}\hline
+             &  JODO & Digital Wellbeing\\\hline
+             Interpretation of screen time&  Time spent by any app on the foreground expect JODO & Either,
+Time spent by any app on the foreground 
+(OR)
+Time screen is ON\\\hline
+             Duration of day&  5 pm to 5 pm & 12 am to 12 am\\ \hline
+        \end{tabularx}
+        \caption{Interpretation of screen time - JODO vs Digital Wellbeing}
+        \label{tab:Interpretation of screen time - JODO vs Digital Wellbeing}
+    \end{table}
+
+    \item Approach : 
+    \begin{enumerate}
+        \item Collect data from digital wellbeing
+        \begin{itemize}
+            \item Approximate the data to 5 pm to 5 pm. How to approximate : 
+            \item Check if the digital wellbeing screen time interpretation matches with JODO, even when JODO is installed in the phone.
+        \end{itemize}
+        \item Collect data from JODO.
+        \item Plot the graph.
+        \item Analyze if there any anomalies.
+    \end{enumerate}
+
+    \item Difficulties:
+    \begin{itemize}
+        \item No API to access Digital Wellbeing data.
+    \end{itemize}
+    
+\end{enumerate}
+
+\subsection{Observations}
+\begin{enumerate}
+    \item Digital Wellbeing app not shown in the app launcher of JODO.
+\end{enumerate}
+
+\newpage
+\section{WEEK 2: 29th December 2025 - 2nd January 2026}
+Time Spent = 6 h + 7 h + 8 h + 2 h + 7 h = 30 h  
+\subsection{Verification of Measurement of Usage Metrics}
+\begin{enumerate}
+    \item Approach : 
+    \begin{itemize}
+        \item Via our app, allow to note the start and end time of the experiment.
+        \item Android exposes 3 ways to note the usage.
+        \begin{enumerate}
+            \item UsageEvents : logs of events. 
+            \item EventStats : aggregate of event types
+            \item UsageStats : aggregate of app usage
+        \end{enumerate}
+        \item So at the end of the experiment - all these methods are accessed and their values are stored in app logs and maybe presented on the app UI.
+        \item It is expected to manually note the usage pattern to cross verify if usage metrics are measured correctly.
+    \end{itemize}
+
+    \item Implementation : 
+    \begin{itemize}
+        \item Implemented 3 methods to find the screen time : 
+        \begin{enumerate}
+            \item Using \texttt{ACTIVITY\_RESUMED} and \texttt{ACTIVITY\_PAUSED} events from \texttt{UsageEvents}. This shall give us the time spent by app in the foreground \cite{Android_UsageEvents}. But summing all sessions - that is, time spent by each app on the foreground, we would get the screen time.
+
+            Also, computing both including and excluding the launcher package from the screen time.
+
+            \begin{lstlisting}[caption={Calculating screen time using activity resumed and paused flags}]
+    long sessionDuration = event.getTimeStamp() - lastTimestamp;
+    
+    if(sessionDuration > 0){
+        result.appScreenTimeIncludingLauncherMs += sessionDuration;
+    }
+    if(!pkg.equals(launcherPackage) && !pkg.equals(getPackageName())) {
+        result.appScreenTimeExcludingLauncherMs +=sessionDuration;      
+    } 
+            \end{lstlisting}
+
+            \item Using \texttt{SCREEN\_INTERACTIVE} and \texttt{SCREEN\_NON\_INTERACTIVE} events from \texttt{UsageEvents}. This shall give us the time when the display is on and user input is enabled. \cite{Android_UsageEvents}
+            \item Aggregating the time spent on foreground using \texttt{UsageStats} - \texttt{getTotalTimeVisible()} and \texttt{getTotalTimeInForeground()} methods. \cite{Android_UsageStats}
+
+            Difference between Visible and Foreground is that, visible is when the screen is on display. Foreground is when user input is enabled for that app.
+
+            So, when we use foreground, split screen case can be handled. That is, when we run on split screen, if visible is used, since screen time is sum of time spent on each app - there is a change that, the screen time exceeds the actual screen on time. But since foreground accounts only for the time when the app has active user interaction, it might be more accurate. 
+            \cite{MicrosoftLearn_UsageStats_TimeForeground}
+            \cite{MicrosoftLearn_UsageStats_TimeVisible} 
+
+            \textbf{\texttt{getTotalTimeVisible()} is used as fallback if \texttt{getTotalTimeInForeground()} is not available in the android version on the user's phone.}
+            
+            \begin{lstlisting}[caption={Calculating screen time using UsageStats},label={Calculating screen time using UsageStats}]
+    if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.Q) {
+        foregroundTimeMs = stats.getTotalTimeVisible();
+    } else {
+        foregroundTimeMs = stats.getTotalTimeInForeground();
+    }
+            \end{lstlisting}
+
+        \end{enumerate}
+
+        \item Implemented 1 method to find unlock count based on the \texttt{KEYGUARD\_SHOWN} flag.
+
+        \item Implemented an interface which allows us to start and end experiment. And then show the results of current experiment results on the interface at the end.
+
+        \item Writing on the measured usage metrics onto the log file. Sample result of the entries made into the log file can be in seen in the figure \ref{fig:Usage Metrics Accuracy Testing Logs}
+
+        \begin{figure}
+            \centering
+            \includegraphics[width=1\linewidth]{Images/AccuracyTestingLogs.png}
+            \caption{Usage Metrics Accuracy Testing Logs}
+            \label{fig:Usage Metrics Accuracy Testing Logs}
+        \end{figure}
+    \end{itemize}
+
+    \item Testing Objectives:
+    \begin{enumerate}
+        \item Is UsageEvents and UsageStats giving the same data?
+        \begin{itemize}
+            \item For small continuous usage intervals (5 min - 3 hours)
+            \item For large continuous usage intervals (10 hours - 3 days)
+            \item For small non-continuous usage intervals
+            \item For large non-continuous usage intervals
+        \end{itemize}
+        \item Which of the 3 methods of screen time is closer to the actual measured screen time?
+        \begin{itemize}
+            \item For small usage intervals
+            \item For large usage intervals
+        \end{itemize}
+        \item How close is the unlok count measured using UsageEvents is to the actual unlock count.
+    \end{enumerate}
+
+    \item Observations:
+    \begin{enumerate}
+        \item Unlock count measured using UsageEvents also included the cases where the keygurd shown but the phone is not actually unlocked - which matches which the definition of this flag as per the documentation \cite{Android_UsageEvents}. But it doesn't account for the actual unlock count.
+    \end{enumerate}
+\end{enumerate}
+
+
+\subsection{Survey Results}
+\subsubsection{Participants}
+\begin{enumerate}
+    \item Number of participants = 47
+    \item Age of 78.7\% (i.e.,37) of the participants was under 21. Refer tab.\ref{tab:Survey - Participants Age Distribution}
+    
+    \begin{table}
+        \centering
+        \begin{tabular}{|c|c|c|}\hline
+             Age Group&  Number of Participants& Percentage\\\hline
+             Under 18&  13& 27.7\%\\\hline
+             18 - 21&  24& 51.1\%\\\hline
+             21 - 24&  9& 19.1\%\\\hline
+             24 - 27&  0& 0\\\hline
+             27 and above&  1& 2.1\%\\ \hline
+ Total& 47&100\%\\\hline
+        \end{tabular}
+        \caption{Survey - Participants Age Distribution}
+\label{tab:Survey - Participants Age Distribution}
+    \end{table}
+
+    \item 18 female (38.3\%) and 29 male (61.7\%).
+    
+\end{enumerate}
+
+\subsubsection{Usage Statistics}
+\begin{enumerate}
+    \item Based on ranges (that is, when asked to chose their average daily usage in ranges).
+    \begin{itemize}
+        \item     65.9\% of the participants reported their usage to be between 2-6 hours - with 34\% to be between 2-4 hours and 31.9\% to be between 4-6 hours. Refer fig. \ref{fig:Survey - Smartphone Usage Distribution}
+        \item The average usage was 254.7 min/day, i.e., 4.24 hours/day. And the median usage was 5 hours/day. Refer fig. \ref{fig:Survey - Smartphone Usage Summary}
+    \end{itemize}
+    \item Based on exact figures as entered by the participants (40/47 valid answers)
+    \begin{itemize}
+        \item Average usage = 261.5 min/day, i.e., 4.358 hours/day.
+    \end{itemize}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=1\linewidth]{Images/SmartphoneUsageDistributio.png}
+    \caption{Survey - Smartphone Usage Distribution}
+    \label{fig:Survey - Smartphone Usage Distribution}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=1\linewidth]{Images/SmartphoneUsageSummary.png}
+    \caption{Survey - Smartphone Usage Summary}
+    \label{fig:Survey - Smartphone Usage Summary}
+\end{figure}
+\end{enumerate}
+
+\subsubsection{Participants' Opinions on their Smartphone Usage}
+\begin{enumerate}
+    \item 53.19\% of the participants either agreed or strongly agreed that they spent more than intended time on their phones. 27.7\% of the participants were neutral about it, while only 19.1\% of the users were satisfied by the time they spend on smartphones. Refer fig. \ref{fig:Spend more time than intended}
+
+    \item 44.6\% reported to be comfortable not doing anything for a while (refer fig. \ref{fig:Comfortable doing nothing}) while only 12.7\% didn't agree, while the others reported neutral.
+
+    \item 57.44\% reported that their smartphones can be distracting at times. Refer fig. \ref{fig:Find phone distracting}
+
+\end{enumerate}
+
+
+\begin{figure}[htbp]
+  \centering
+
+  \begin{subfigure}{0.75\textwidth}
+    \centering
+    \includegraphics[width=\linewidth]{Images/SurveyUserOpinionGraph1.png}
+    \caption{Find phone distracting}
+    \label{fig:Find phone distracting}
+  \end{subfigure}
+
+  \vspace{0.6cm}
+
+  \begin{subfigure}{0.75\textwidth}
+    \centering
+    \includegraphics[width=\linewidth]{Images/SurveyUserOpinionGraph2.png}
+    \caption{Spend more time than intended}
+    \label{fig:Spend more time than intended}
+  \end{subfigure}
+
+  \vspace{0.6cm}
+
+  \begin{subfigure}{0.75\textwidth}
+    \centering
+    \includegraphics[width=\linewidth]{Images/SurveyUserOpinionGraph4.png}
+    \caption{Asked if comfortable doing nothing}
+    \label{fig:Comfortable doing nothing}
+  \end{subfigure}
+
+  \caption{Survey - User Opinions}
+  \label{fig:Survey - User Opinions}
+\end{figure}
+
+\newpage
+\section{WEEK 3: 5th January 2026 - }
+Time Spent : 25 hrs
+\subsection{Objectives}
+\begin{enumerate}
+    \item User Study Report
+\end{enumerate}
+
+\subsection{Summary of The influence of different intervention measures on improving mobile phone addiction among teenagers or young adults : a systematic review and network meta-analysis}
+
+\subsubsection{Key Terms}
+\begin{enumerate}
+    \item Traditional meta analysis : Comparing two different studies that is intervention A vs intervention B (or) intervention A vs control group.
+    \item Network meta-analysis : 
+    \item Cochrane Randomized Trial Risk Tool
+    \item Randomized Controlled trails
+\end{enumerate}
+\subsubsection{Key Points}
+\begin{enumerate}
+    \item This study performs both a systematic review and network meta analysis of various interventions.
+    \item The purpose of the systematic review/ traditional meta analysis was to see if these interventions can do any better than control group.
+    \item The purpose of the network meta analysis is to provide a ranking of those interventions based on their effectiveness to reduce (improve) smartphone addiction.
+    \item The various interventions considered are : 
+    \begin{enumerate}
+        \item Aerobic Aerobics
+        \item Badminton
+        \item Baduanjin
+        \item Basketball
+        \item Biofeedback
+        \item Tai Chi
+        \item Table Tennis
+        \item Jump rope
+        \item Combined Intervention
+        \item Mindfulness-Based Theory
+        \item Cognitive Therapy
+        \item Sanda
+        \item Volleyball
+        \item Yoga
+    \end{enumerate}
+    \item Metrics used Smartphone Addiction Scale Shortend Version (SAS-SV) and Mobile Phone Addiction Index (MPAI).
+    
+\end{enumerate}
+
+\subsection{Summary of Psychosocial interventions for technological addictions}
+Reference : \cite{sharma2018psychosocial}
+
+This is a review article published in 2018, discussing theories behind technology addictions and various interventions which are tested so far.
+\subsubsection{Key Terms}
+\begin{enumerate}
+    \item Psychosocial interventions : using psychological or social actions to produce changes in
+    \begin{enumerate}
+        \item \textbf{Symptoms}, that is, improve physical and mental health
+        \item \textbf{Functioning}, that is, performance
+        \item \textbf{Well-being}, that is, quality of life and life satisfaction.
+    \end{enumerate}
+    \item Clinical Trials : \cite{ClinicalTrails_WHO}
+    \item Psychotherapy : treatment via communication and interaction. Also called as talk therapy \cite{Psychotheraphy_NIH}.
+    \item Maladaptive Cognition : 
+\end{enumerate}
+\subsubsection{Key Points}
+\begin{enumerate}
+    \item Psychological and behavioral theories behind technology addictions: 
+    \begin{enumerate}
+        \item \textbf{Learning Theories :} That is, since technology use gives some kind of positive reinforcement, users are motivated to use more. This is also called as \textbf{operant conditioning}.
+        \item \textbf{Reward-deficiency hypothesis :} seeking higher rewards than that from everyday activities.
+        \item Impulsivity
+        \item \textbf{Cognitive-behavioral models :} Using technology as an escape mechanism from real world problems.
+        \item \textbf{Social skills deficiency theories :} drawn towards virtual world because of anxiousness in real world.
+    \end{enumerate}
+    \item Psychosocial interventions mentioned : 
+    \begin{enumerate}
+        \item Psychotherapies
+        \begin{itemize}
+            \item Psychodynamic Therapy
+            \item Cognitive-behavioural therapy
+            \item Interpersonal psychotherapy
+            \item Problem solving therapy
+        \end{itemize}
+        \item Community-based treatment
+        \begin{enumerate}
+            \item Assertive community treatment
+            \item First episode psychosis interventions
+        \end{enumerate}
+        \item Vocational Rehabilitation
+        \item Peer support services
+        \item Integrated care interventions
+    \end{enumerate}
+    \item The interventions are said to be tested using randomized controlled clinical trials and meta analysis.
+    \item Psychotherapy 
+    \begin{itemize}
+        \item Commonly tested approaches : Cognitive behavioral therapy and Motivational enhancement therapy.
+        \item Two methods of testing : Total abstinence and Controlled Use. Controlled Use was prefered.
+        \item Cognitive Behavioral Therapy : 
+        \item Motivational Enhancement Therapy  
+    \end{itemize}
+
+\end{enumerate}
+
+\newpage
+\section{WEEK 4 : 12th January 2026 - 16th January 2026}
+
+\newpage
+\printbibliography
+\end{document}
