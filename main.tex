@@ -3,8 +3,6 @@
 \usepackage{comment}
 \usepackage{hyperref}
 \usepackage[a4paper, margin=1in]{geometry} % Sets 1-inch margin on all sides
-\usepackage{biblatex}
-\addbibresource{references.bib}
 \usepackage{multicol}
 \usepackage{subcaption}
 \usepackage{caption}
@@ -14,8 +12,10 @@
 \usepackage{multirow}
 \usepackage{listings}
 \usepackage{minted}
+\usepackage[
+  backend=biber
+]{biblatex}
 
-\usepackage[backend=biber]{biblatex}
 \addbibresource{references.bib}
 
 \lstset{
@@ -576,6 +576,249 @@ This is a review article published in 2018, discussing theories behind technolog
 
 \newpage
 \section{WEEK 4 : 12th January 2026 - 16th January 2026}
+
+Time spent = 5 h + 7 h + 
+
+\subsection{The influence of different intervention measures on improving mobile phone addiction among teenagers or young adults: a systematic review and network meta-analysis}
+Paper Link: \cite{frontiers2025technological} (2025)
+\subsubsection{Summary}
+This paper conducts a systematic review (traditional meta analysis) and network meta-analysis of various intervention measures to reduce (or improve) mobile phone addiction among teenagers and young adults.
+This paper considers 32 studies based on PICOS (Participants,interventions, comparators, outcomes, and study design) methodology (The inclusion criteria is discussed in detailed notes.).
+Meta-analysis is done using Rev Man 5.3 software. Network meta-analysis is done using Stata 16.0 software. 
+The outcome of the meta-analysis is that all interventions considered perform better than control group (that is, no intervention). 
+\textbf{The outcome of the network meta-analysis is that Badminton and Mindfulness-Based Therapy are the best interventions are highest ranked interventions among others.}
+\subsubsection{Detailed Notes}
+\begin{enumerate}
+    \item \textbf{Meta analysis}: Provides aggregate result of various interventions. 
+    That is, when there are individual studies on a particular intervention, the studies can be combined statistically to get wider set of participants.
+    And hence be more precise.
+
+    This is limited to a single intervention. That is, it tells if one intervention is better than control group or not. Or sometimes offers pretest and posttest analysis - where there is no control group but the observations is made on the same group of people before and after intervention.
+    \cite{Meta_Analysis1} \cite{Meta_Analysis2}
+
+    \item \textbf{Network meta-analysis}: In this multiple interventions can be compared at once. It uses transitivity to determine relative ranking between the interventions. 
+    That is, according to one intervention A is better than intervention B and according to another study if intervention B is better than intervention C, then network meta analysis says that intervention A is better than intervention C.
+    \cite{pmc2017networkmeta} \cite{sciencedirect2024nma} \cite{cochrane2023nma}
+    \item Study : 
+    \begin{itemize}
+        \item Out of 2348 studies from various databases, 32 studies were selected based on the inclusion criteria.
+        \item The inclusion criteria (PICOS methodology):
+        \begin{enumerate}
+            \item Participants : Teenagers or young adults who have mobile phone addiction (based on assessment performed before the start of the individual stuides.)
+            \item Interventions : exercise interventions
+            \item Comparisons : intervention vs control group.
+            \item Outcomes : The addiction levels are measured in scales : SAS-SV (Smartphone Addiction Scale - Shortened Version) and MPAI (Mobile Phone Addiction Index).
+            \item Study design : Randomized controlled trials.
+        \end{enumerate}
+        \item The various interventions (14) considered in the 32 studies are (their description not given in the paper): 
+        \begin{enumerate}
+            \item Aerobic Aerobics : Refered in the title \href{https://doi.org/10.27441/d.cnki.gyzdu.2022.000378}{Chao Y. Experimental study on the effects of aerobic aerobicsand badminton on
+                moderate mobile phone addictionamong secondary vocational school students thesis
+                (2022). Yangzhou University.} Unable to access the article. Assuming its aerobics.
+            \item Badminton
+            \item Baduanjin : form of physical exercise, common in China
+            \item Basketball
+            \item Biofeedback : monitoring body's involuntary functions like heart rate using monitoring systems. Providing feedback/therapy based on that. \cite{biofeedback}
+            \item Tai Chi : form of physical exercise, common in China
+            \item Table Tennis
+            \item Jump rope
+            \item Combined Intervention
+            \item Mindfulness-Based Therapy : form of talk therapy
+            \item Cognitive Therapy : form of talk therapy
+            \item Sanda : form of kickboxing, common in China
+            \item Volleyball
+            \item Yoga
+        \end{enumerate}
+        \item Risk of bias assessment was performed using Cochrane Randomized Trial Risk Tool.
+        \begin{enumerate}
+            \item Selection bias (that is, how the control group and intervention group is choosen)- low risk or unclear risk. 
+            \item Performance bias (that is, prior intimidation to the participants about the study can affect the performance during the study) - high risk.
+            \item Detection bias (that is, how the outcome is measured. There both SAS-SV and MPAI scales are considered) - high risk.
+            \item Incomplete outcome data
+            \item Selective reporting
+            \item Other sources of bias
+        \end{enumerate}
+        \item Meta Analysis : meta analysis was performed using a software Rev Man 5.3.
+        This software gives SMD for each individual study and also pools SMD across studies.
+
+        \begin{itemize}
+            \item Each study has its control group and intervention group. 
+            \item The mean is the average of addiction scores (measures via SAS-SV or MPAI - detection bias) for each group.
+            \item The pooled standard deviation is calculated using the standard deviations of both groups.
+            \item The Standard Mean Difference (SMD) is calculated using: SMD = (Mean of intervention A - Mean of intervention B) / Pooled standard deviation. \cite{standardMeanDifference}
+            \item If SMD \(> 0\), then intervention A is better than intervention B.
+        \end{itemize}
+
+
+        Outcome : Pooled SMD (that is, for all studies) = -1.38, 95\% CI (-1.75, -1.01). \textbf{That means, the interventions show a better scores than that of control group.}
+        But the heterogeneity is said to be high - that is, around 94\%.
+
+        \item Network meta-analysis : network meta-analysis was performed using the software Stata 16.0.
+        The software generates a cummulative ranking probability curve.
+        From these curves, the Surface Under the Cumulative Ranking Curve (SUCRA) values were calculated.
+        It ranges from 0 to 100, 100 being the best. A SUCRA value is assoicated to each intervention. \cite{sucra_probability}
+
+        Outcome : Badminton had the highest value (93.8) \(> 0\) MBT (77.3) \(> 0\) Badunajin (74.3)..
+        \item Limitations as reported:
+        \begin{enumerate}
+            \item There were relatively few randomized controlled trails involving badminton and MBT considered in this study.
+            \item High heterogeneity between the studies. So there is possibility that is can affect the results of the study.
+        \end{enumerate}
+    \end{itemize}
+
+
+\end{enumerate}
+\subsubsection{Observations}
+Positives:
+\begin{enumerate}
+    \item Attempts to provide ranking of intervention based on various studies - which increases the sample size.
+    \item Badminton and Mindfulness-Based Therapy is reported to have a good effect on improving (that is, reducing) mobile phone addiction.
+\end{enumerate}
+Negatives:
+\begin{enumerate}
+    \item Out of 32 studies, 31 studies are based in China.
+    \item The result of badminton reducing addiction can be biased since "badminton is one of the most participated sports among Chinese
+mass sports enthusiasts, with a participation rate as high as 42.6\%."
+    \item High risk of performance bias and detection bias.
+\end{enumerate}
+
+
+\subsection{A meta analysis of psychological interventions for Internet/smartphone addiction among adolescents}
+Paper Link : \cite{metaanalysis2019internetaddiction} (2019)
+\subsubsection{Summary}
+This paper does a meta analysis of 6 papers containing psychological interventions such as Cognitive Behavioral Therapy (CBT), sandplay therapy and behaviour based educational programming. 
+It explains the reasons for focusing on adolescents and also gives the theories behind compulsive internet usage.
+The outcome of the meta analysis is that, these interventions show positive effect in reducing internet addictions. SMD of CBT based studies is -0.60 and SMD of educational programming is -0.76. Though there is no inference made to decide which is better - that is, no comparision is done to say which is better.
+
+\subsubsection{Detailed Notes}
+\begin{enumerate}
+    \item 'Internet Gaming Disorder' added as a diagnosis in the DSM-5 (Diagnostic and Statistical Manual of Mental Disorders, Fifth Edition).
+    \item Reason for focusing on adolescents (10 to 24 year olds) : 
+    \begin{enumerate}
+        \item Higher risk of psychological disorders like depression, loneliness, social problems and academic issues.
+        \item Higher risk of suicidal tendencies
+    \end{enumerate}
+    \item Reasons for compulsive internet usage:
+    \begin{enumerate}
+        \item \textbf{Cognitive Behavioral Model} : An individual's thoughts coupled with behaviour leads to abnormal behaviour.
+        \item \textbf{Social skills deficit theory} : individual's preference of online over face-to-face social interactions also contributed to additive use of internet. 
+        Feeling overwhelmed, personal problems or traumatic events in life can make individuals chose online over face-to-face interactions.
+    \end{enumerate}
+    \item \textbf{Psychological Intervention} : The purpose of a psychological intervention is to improve:
+    \begin{enumerate}
+        \item Symptoms : physical and mental health symptoms
+        \item Functioning : performance in everyday activities
+        \item Well-being : overall quality of life and life satisfaction
+    \end{enumerate}
+    \item The psychological interventions reviewed in this paper: cognitive based therapy, sandplay therapy, behaviour based educational programming.
+    \item \textbf{Cognitive Behavioral Therapy (CBT)} : Based on the cognitive behavioral model. Helps identify the negative or problematic cognition/thought patterns via talk therapy. \cite{}
+    \item \textbf{Sandplay Therapy} : Where individuals are asked to draw on sand to express their emotions.
+    \item \textbf{Behaviour Based Educational Programming} : 
+    \item Study:
+    \begin{enumerate}
+        \item 6 papers (2000 to 2019) were chosen based on the below criteria:
+        
+        Inclusion criteria:
+        \begin{itemize}
+            \item Randomized Controlled Trials (RCT) study design. 
+            That is, there has to be a control group and intervention group randomly chosen.
+            \item Participants are diagnoised for internet addiction.
+            \item The purpoe of the study was to find the effects of the intervention.
+        \end{itemize}
+        Exclusion criteria:
+        \begin{itemize}
+            \item Single group pre-post comparison study. That is, there was no control group.
+            \item Study didn't report mean and standard deviations of the addiction levels/scores.
+        \end{itemize}
+        \item The interventions include CBT (3 studies), sandplay therapy(1 study) and behaviour based educational programming (2 studies).
+        \item Out of 6 studies, 5 were conducted at Asian University and 1 at European University.
+        \item A total of 305 adolescents aged 12 to 21 participated in the studies.            \item CBT study :
+        \begin{enumerate}
+            \item Study 1 (eight session CBT): Initially there was no difference between active and control group at baseline. 
+            But after 6 months, both groups showed decrease in scores but only CBT group showed improved time management skills and better emotional, cognitive and behavioral symptoms (stands with the purpose of a psychological intervention).
+            \item Study 2 (eight session CBT + medication): Compared to non-CBT (only medication) group, CBT showed no significant decrease in depression symptoms but it showed decrease in time spent on internet gaming.
+            \item Study 3 (two-stage intervention CBT - that is, cognitive reconstruction talks + daily logs): Improvement seen in reduced social media addiction and improved mental health and learning performance.
+        \end{enumerate}
+        \item Sandplay Therapy:
+        \begin{enumerate}
+            \item Study 1: Showed reduction in time spent on internet.
+        \end{enumerate}
+        \item Educational programming:
+        \begin{enumerate}
+            \item The aims of both studies were to improve academic performance, time management skills and reduce internet addiction.
+            \item Both studies showed decrease in internet addiction.
+        \end{enumerate}
+        \item Results : 
+        \begin{itemize}
+            \item For all studies : SMD = -0.67, 95\% CI = -1.07 to -0.27. 
+            \item For CBT : SMD = -0.60, 95\% CI = -1.38 to 0.19.
+            \item For educational programming : SMD = -0.76, 95\% CI = -1.38 to -0.13.
+            \item It shows that the interventions work better than no intervention at all (than control group).
+        \end{itemize}
+    \end{enumerate}
+\end{enumerate}
+\subsubsection{Observations}
+Positives
+\begin{enumerate}
+    \item heterogeneity is less compared to previous paper (current - 64\%, previous -94\%).
+\end{enumerate}
+Negatives
+\begin{enumerate}
+    \item Self-reported addiction scores were used.
+    \item Only meta analysis performed. That is, based on SMD (since negative), we can say that the interventions in general have positive effect in reducing the internet addiction, but doesn't say which intervention exactly works better. 
+\end{enumerate}
+
+\subsection{Psychosocial interventions for technological addictions}
+Paper Link : \cite{sharma2018psychosocial} (2018)
+\subsubsection{Summary}
+This is a review article which talks about the psychosocial interventions, the theories behind technological addictions, and also discusses the interventions Cognitive based therapy and Motivational enhancement therapy in detail.
+
+\subsubsection{Detailed Notes}
+\begin{enumerate}
+    \item \textbf{Psychosocial interventions} : using both psychological (thoughts, emotions, behaviour) and social factors (people, environment) to produce changes in symptoms, functioning and well-being.
+    \item Theories which explain technological addictions: 
+    \begin{enumerate}
+        \item \textbf{Learning Theories :} That is, since technology use gives some kind of positive reinforcement, users are motivated to use more. This is also called as \textbf{operant conditioning}.
+        \item \textbf{Reward-deficiency hypothesis :} seeking higher rewards than that from everyday activities.
+        \item \textbf{Impulsivity :} tendency to action without much forethought.
+        \item \textbf{Cognitive-behavioral models :} Using technology as an escape mechanism from real world problems.
+        \item \textbf{Social skills deficiency theories :} drawn towards virtual world because of anxiousness in real world.
+    \end{enumerate}
+    \item Broad range of interventions :
+    \begin{enumerate}
+        \item Psychotherapies
+        \begin{itemize}
+            \item Psychodynamic Therapy
+            \item Cognitive-behavioural therapy
+            \item Interpersonal psychotherapy
+            \item Problem-solving therapy
+        \end{itemize}
+        \item Community based treatment
+        \begin{itemize}
+            \item assertive community treatment
+            \item first episode psychosis intervention
+        \end{itemize}
+        \item Vocational Rehabilitation
+        \item Peer support services
+        \item Integrated care intervention
+    \end{enumerate}
+    \item Cognitive behavioural therapy (CBT) and Motivational enhancement therapy (MET) are reported to be most frequently tested.
+    \item Psychotherapeutic interventions can be done in two modes : Total abstinence and controlled use of technology. Given present need of smartphones, the model of abstience is recommeded only for the indiduals how failed to do controlled use. 
+    \item Cognitive Behavioural Therapy: Based on the cognitive behavioral model. Helps identify the negative or problematic cognition/thought patterns via talk therapy.
+    \item 8 techniques suggested for CBT. That is, the therapist should helps the users figure out the following (?) : 
+    \begin{enumerate}
+        \item Practice the Opposite : disrupt the pattern of usage with a new schedule
+        \item External stoppers : have prompts to take break or log off.
+        \item Setting goals : set up achievable goals of usage time.
+        \item abstinence from certain applications  : Totally not using the apps on which they don't have control.
+        \item reminder cards : cards which remind users the cost of internet addiction.
+        \item personal inventory : figuring out what activities they are missing out.
+        \item support groups 
+        \item family therapy
+    \end{enumerate}
+    \item Motivational Enhancement Therapy : This is also a kind of talk therapy where the therapist does non-confrontational, motivational conversation to figure out a personalized treatment plan and attainable goals. 
+    Though this, the goal is also to make users realize their excessive or compulsive use.
+\end{enumerate}
 
 \newpage
 \printbibliography
