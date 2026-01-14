@@ -820,6 +820,60 @@ This is a review article which talks about the psychosocial interventions, the t
     Though this, the goal is also to make users realize their excessive or compulsive use.
 \end{enumerate}
 
+\subsection{Usage Metrics Accuracy Testing}
+\subsubsection{Case 1}
+\begin{enumerate}
+    \item Duration : 5 minutes
+    \item Details about phone model : Samsung Galaxy M32
+    \item Phone Configurations : Screen timeout set to 5 min.
+    \item Controlled events : 1 unlock + screen set on launcher after unlock.
+    \item Results : 
+    
+    Refer image \ref{fig:Usage Metrics Accuracy Testing Results - Case 1}
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.25\linewidth]{Images/AccuracyTesting_Experiment14.jpeg}
+        \caption{Usage Metrics Accuracy Testing Results - Case 1}
+        \label{fig:Usage Metrics Accuracy Testing Results - Case 1}
+    \end{figure}
+
+    \begin{enumerate}
+        \item Screen Time Method 1
+        \begin{itemize}
+            \item Including launcher time : 4 min 50 seconds.
+            \item Excluding launcher time : 0 seconds.
+        \end{itemize}
+        \item Screen Time Method 2 : 4 min 56 seconds.
+        \item Screen Time Method 3
+        \begin{enumerate}
+            \item Including launcher time : 2 h 39 min 45 seconds.
+            \item Excluding launcher time : 1 h 56 min 57 seconds.
+        \end{enumerate}
+        \item Unlock Count : 1
+    \end{enumerate}
+        
+    \item Observations : 
+    \begin{enumerate}
+        \item Method 1 and Method 2 are close to actual screen time. The actual screen time is 5 min 1 sec minus the time taken to lock and unlock the phone.
+        \item Method 3 is way off the actual screen time.
+        \item Unlock count is correct.
+    \end{enumerate}
+\end{enumerate}
+
+\subsubsection{Case 2}
+\begin{enumerate}
+    \item Duration : 10 minutes
+    \item Details about phone model : Samsung Galaxy M32
+    \item Phone Configurations : Screen timeout set to 5 min
+    \item Controlled events list:
+    \begin{enumerate}
+        \item Event 1 : Move from experiment page (inside app) to launcher screen.
+        \item Event 2 : Lock the phone
+        \item Event 3 : 
+    \end{enumerate}
+    \item Results : 
+
+\end{enumerate}
 \newpage
 \printbibliography
 \end{document}
