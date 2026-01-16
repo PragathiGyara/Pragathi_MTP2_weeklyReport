@@ -12,6 +12,7 @@
 *.lot
 *.fls
 *.fdb_latexmk
+*-SAVE-ERROR
 
 # Minted
 _minted-*/
@@ -20,4 +21,4 @@ _minted-*/
 *.pdf
 
 # VS Code local cache
-.vscode/*.log
+.vscode/
