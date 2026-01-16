@@ -1,0 +1,23 @@
+# LaTeX build artifacts
+*.aux
+*.log
+*.out
+*.toc
+*.bbl
+*.bcf
+*.blg
+*.synctex.gz
+*.run.xml
+*.lof
+*.lot
+*.fls
+*.fdb_latexmk
+
+# Minted
+_minted-*/
+
+# PDFs (optional, but recommended)
+*.pdf
+
+# VS Code local cache
+.vscode/*.log

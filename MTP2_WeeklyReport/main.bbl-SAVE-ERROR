@@ -1,0 +1,382 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.2 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{nty/global//global/global}
+    \entry{metaanalysis2019internetaddiction}{article}{}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Behavioral Addictions}
+      \field{number}{4}
+      \field{title}{A meta-analysis of psychological interventions for Internet/smartphone addiction among adolescents}
+      \field{volume}{8}
+      \field{year}{2019}
+      \field{pages}{573\bibrangedash 584}
+      \range{pages}{12}
+      \verb{doi}
+      \verb 10.1556/2006.8.2019.72
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1556/2006.8.2019.72
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1556/2006.8.2019.72
+      \endverb
+    \endentry
+    \entry{Android_UsageEvents}{online}{}
+      \name{author}{1}{}{%
+        {{hash=7ace771b22ac28958ff5694e260839cc}{%
+           family={{Android Developers}},
+           familyi={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{7ace771b22ac28958ff5694e260839cc}
+      \strng{fullhash}{7ace771b22ac28958ff5694e260839cc}
+      \strng{bibnamehash}{7ace771b22ac28958ff5694e260839cc}
+      \strng{authorbibnamehash}{7ace771b22ac28958ff5694e260839cc}
+      \strng{authornamehash}{7ace771b22ac28958ff5694e260839cc}
+      \strng{authorfullhash}{7ace771b22ac28958ff5694e260839cc}
+      \field{extraname}{1}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{UsageEvents.Event}
+      \verb{urlraw}
+      \verb https://developer.android.com/reference/android/app/usage/UsageEvents.Event
+      \endverb
+      \verb{url}
+      \verb https://developer.android.com/reference/android/app/usage/UsageEvents.Event
+      \endverb
+    \endentry
+    \entry{Android_UsageStats}{online}{}
+      \name{author}{1}{}{%
+        {{hash=7ace771b22ac28958ff5694e260839cc}{%
+           family={{Android Developers}},
+           familyi={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{7ace771b22ac28958ff5694e260839cc}
+      \strng{fullhash}{7ace771b22ac28958ff5694e260839cc}
+      \strng{bibnamehash}{7ace771b22ac28958ff5694e260839cc}
+      \strng{authorbibnamehash}{7ace771b22ac28958ff5694e260839cc}
+      \strng{authornamehash}{7ace771b22ac28958ff5694e260839cc}
+      \strng{authorfullhash}{7ace771b22ac28958ff5694e260839cc}
+      \field{extraname}{2}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{UsageStats}
+      \verb{urlraw}
+      \verb https://developer.android.com/reference/android/app/usage/UsageStats
+      \endverb
+      \verb{url}
+      \verb https://developer.android.com/reference/android/app/usage/UsageStats
+      \endverb
+    \endentry
+    \entry{biofeedback}{online}{}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{labeltitlesource}{title}
+      \field{title}{Biofeedback}
+      \verb{urlraw}
+      \verb https://my.clevelandclinic.org/health/treatments/13354-biofeedback
+      \endverb
+      \verb{url}
+      \verb https://my.clevelandclinic.org/health/treatments/13354-biofeedback
+      \endverb
+    \endentry
+    \entry{cochrane2023nma}{online}{}
+      \name{author}{1}{}{%
+        {{hash=21198494e58f83c2673d201f9fb05d68}{%
+           family={{Cochrane}},
+           familyi={C\bibinitperiod}}}%
+      }
+      \strng{namehash}{21198494e58f83c2673d201f9fb05d68}
+      \strng{fullhash}{21198494e58f83c2673d201f9fb05d68}
+      \strng{bibnamehash}{21198494e58f83c2673d201f9fb05d68}
+      \strng{authorbibnamehash}{21198494e58f83c2673d201f9fb05d68}
+      \strng{authornamehash}{21198494e58f83c2673d201f9fb05d68}
+      \strng{authorfullhash}{21198494e58f83c2673d201f9fb05d68}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Chapter 11: Undertaking network meta-analyses}
+      \verb{urlraw}
+      \verb https://www.cochrane.org/authors/handbooks-and-manuals/handbook/current/chapter-11
+      \endverb
+      \verb{url}
+      \verb https://www.cochrane.org/authors/handbooks-and-manuals/handbook/current/chapter-11
+      \endverb
+    \endentry
+    \entry{sucra_probability}{online}{}
+      \name{author}{1}{}{%
+        {{hash=9f19907573550d9e39cfb7cb84c62fbd}{%
+           family={{Examine.com}},
+           familyi={E\bibinitperiod}}}%
+      }
+      \strng{namehash}{9f19907573550d9e39cfb7cb84c62fbd}
+      \strng{fullhash}{9f19907573550d9e39cfb7cb84c62fbd}
+      \strng{bibnamehash}{9f19907573550d9e39cfb7cb84c62fbd}
+      \strng{authorbibnamehash}{9f19907573550d9e39cfb7cb84c62fbd}
+      \strng{authornamehash}{9f19907573550d9e39cfb7cb84c62fbd}
+      \strng{authorfullhash}{9f19907573550d9e39cfb7cb84c62fbd}
+      \field{sortinit}{E}
+      \field{sortinithash}{8da8a182d344d5b9047633dfc0cc9131}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Accessed: 2026-01-13}
+      \field{title}{SUCRA (Surface Under the Cumulative Ranking Curve)}
+      \verb{urlraw}
+      \verb https://examine.com/glossary/sucra/
+      \endverb
+      \verb{url}
+      \verb https://examine.com/glossary/sucra/
+      \endverb
+    \endentry
+    \entry{Meta_Analysis1}{online}{}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{labeltitlesource}{title}
+      \field{title}{Meta Analysis}
+      \verb{urlraw}
+      \verb https://guides.himmelfarb.gwu.edu/studydesign101/metaanalysis
+      \endverb
+      \verb{url}
+      \verb https://guides.himmelfarb.gwu.edu/studydesign101/metaanalysis
+      \endverb
+    \endentry
+    \entry{Meta_Analysis2}{online}{}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{labeltitlesource}{title}
+      \field{title}{Meta Analysis}
+      \verb{urlraw}
+      \verb https://www.sciencedirect.com/topics/medicine-and-dentistry/meta-analysis
+      \endverb
+      \verb{url}
+      \verb https://www.sciencedirect.com/topics/medicine-and-dentistry/meta-analysis
+      \endverb
+    \endentry
+    \entry{MicrosoftLearn_UsageStats_TimeForeground}{online}{}
+      \name{author}{1}{}{%
+        {{hash=614e7789840996b5d882c0cad1ad0971}{%
+           family={{Microsoft Learn}},
+           familyi={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{614e7789840996b5d882c0cad1ad0971}
+      \strng{fullhash}{614e7789840996b5d882c0cad1ad0971}
+      \strng{bibnamehash}{614e7789840996b5d882c0cad1ad0971}
+      \strng{authorbibnamehash}{614e7789840996b5d882c0cad1ad0971}
+      \strng{authornamehash}{614e7789840996b5d882c0cad1ad0971}
+      \strng{authorfullhash}{614e7789840996b5d882c0cad1ad0971}
+      \field{extraname}{1}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{UsageStats getTotalTimeInForeground() method}
+      \verb{urlraw}
+      \verb https://learn.microsoft.com/en-us/dotnet/api/android.app.usage.usagestats.totaltimeinforeground?view=net-android-34.0
+      \endverb
+      \verb{url}
+      \verb https://learn.microsoft.com/en-us/dotnet/api/android.app.usage.usagestats.totaltimeinforeground?view=net-android-34.0
+      \endverb
+    \endentry
+    \entry{MicrosoftLearn_UsageStats_TimeVisible}{online}{}
+      \name{author}{1}{}{%
+        {{hash=614e7789840996b5d882c0cad1ad0971}{%
+           family={{Microsoft Learn}},
+           familyi={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{614e7789840996b5d882c0cad1ad0971}
+      \strng{fullhash}{614e7789840996b5d882c0cad1ad0971}
+      \strng{bibnamehash}{614e7789840996b5d882c0cad1ad0971}
+      \strng{authorbibnamehash}{614e7789840996b5d882c0cad1ad0971}
+      \strng{authornamehash}{614e7789840996b5d882c0cad1ad0971}
+      \strng{authorfullhash}{614e7789840996b5d882c0cad1ad0971}
+      \field{extraname}{2}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{UsageStats getTotalTimeVisible() method}
+      \verb{urlraw}
+      \verb https://learn.microsoft.com/en-us/dotnet/api/android.app.usage.usagestats.totaltimevisible?view=net-android-34.0
+      \endverb
+      \verb{url}
+      \verb https://learn.microsoft.com/en-us/dotnet/api/android.app.usage.usagestats.totaltimevisible?view=net-android-34.0
+      \endverb
+    \endentry
+    \entry{sciencedirect2024nma}{article}{}
+      \field{sortinit}{N}
+      \field{sortinithash}{22369a73d5f88983a108b63f07f37084}
+      \field{labeltitlesource}{title}
+      \field{title}{Network meta-analysis: a powerful tool for clinicians, decision-makers, and methodologists}
+      \field{year}{2024}
+      \verb{doi}
+      \verb 10.1016/j.sapharm.2024.04.015
+      \endverb
+      \verb{urlraw}
+      \verb https://www.sciencedirect.com/science/article/pii/S0895435624002932
+      \endverb
+      \verb{url}
+      \verb https://www.sciencedirect.com/science/article/pii/S0895435624002932
+      \endverb
+    \endentry
+    \entry{pmc2017networkmeta}{article}{}
+      \field{sortinit}{N}
+      \field{sortinithash}{22369a73d5f88983a108b63f07f37084}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{PubMed Central}
+      \field{title}{Network meta-analysis: An introduction for Clinicians}
+      \field{year}{2018}
+      \verb{urlraw}
+      \verb https://pmc.ncbi.nlm.nih.gov/articles/PMC5247317/
+      \endverb
+      \verb{url}
+      \verb https://pmc.ncbi.nlm.nih.gov/articles/PMC5247317/
+      \endverb
+    \endentry
+    \entry{Psychotheraphy_NIH}{online}{}
+      \name{author}{1}{}{%
+        {{hash=0352fa9dbf5677f98c9a97bb83d9d515}{%
+           family={{NIH}},
+           familyi={N\bibinitperiod}}}%
+      }
+      \strng{namehash}{0352fa9dbf5677f98c9a97bb83d9d515}
+      \strng{fullhash}{0352fa9dbf5677f98c9a97bb83d9d515}
+      \strng{bibnamehash}{0352fa9dbf5677f98c9a97bb83d9d515}
+      \strng{authorbibnamehash}{0352fa9dbf5677f98c9a97bb83d9d515}
+      \strng{authornamehash}{0352fa9dbf5677f98c9a97bb83d9d515}
+      \strng{authorfullhash}{0352fa9dbf5677f98c9a97bb83d9d515}
+      \field{sortinit}{N}
+      \field{sortinithash}{22369a73d5f88983a108b63f07f37084}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Psychotherapies NIH}
+      \verb{urlraw}
+      \verb https://www.nimh.nih.gov/health/topics/psychotherapies
+      \endverb
+      \verb{url}
+      \verb https://www.nimh.nih.gov/health/topics/psychotherapies
+      \endverb
+    \endentry
+    \entry{frontiers2025technological}{article}{}
+      \field{sortinit}{P}
+      \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Frontiers in Psychiatry}
+      \field{title}{Psychosocial and behavioral interventions for problematic technology use}
+      \field{year}{2025}
+      \verb{doi}
+      \verb 10.3389/fpsyt.2025.1629251
+      \endverb
+      \verb{urlraw}
+      \verb https://www.frontiersin.org/journals/psychiatry/articles/10.3389/fpsyt.2025.1629251/full
+      \endverb
+      \verb{url}
+      \verb https://www.frontiersin.org/journals/psychiatry/articles/10.3389/fpsyt.2025.1629251/full
+      \endverb
+    \endentry
+    \entry{sharma2018psychosocial}{article}{}
+      \name{author}{2}{}{%
+        {{hash=217b878eba1c8af321a6ad75f872ccbb}{%
+           family={Sharma},
+           familyi={S\bibinitperiod},
+           given={Manoj\bibnamedelima Kumar},
+           giveni={M\bibinitperiod\bibinitdelim K\bibinitperiod}}}%
+        {{hash=d9efacd4c522427acb2392d4b099c0ff}{%
+           family={Palanichamy},
+           familyi={P\bibinitperiod},
+           given={Thirunavukkarasu\bibnamedelima S.},
+           giveni={T\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+      }
+      \strng{namehash}{eef3cf440c5400ff6fc19c701a2a3ba9}
+      \strng{fullhash}{eef3cf440c5400ff6fc19c701a2a3ba9}
+      \strng{bibnamehash}{eef3cf440c5400ff6fc19c701a2a3ba9}
+      \strng{authorbibnamehash}{eef3cf440c5400ff6fc19c701a2a3ba9}
+      \strng{authornamehash}{eef3cf440c5400ff6fc19c701a2a3ba9}
+      \strng{authorfullhash}{eef3cf440c5400ff6fc19c701a2a3ba9}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Indian Journal of Psychiatry}
+      \field{number}{Suppl 4}
+      \field{title}{Psychosocial interventions for technological addictions}
+      \field{volume}{60}
+      \field{year}{2018}
+      \field{pages}{S541\bibrangedash S545}
+      \range{pages}{-1}
+      \verb{doi}
+      \verb 10.4103/psychiatry.IndianJPsychiatry_40_18
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.4103/psychiatry.IndianJPsychiatry_40_18
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.4103/psychiatry.IndianJPsychiatry_40_18
+      \endverb
+    \endentry
+    \entry{standardMeanDifference}{article}{}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{labeltitlesource}{title}
+      \field{title}{Standardized mean differences in meta-analysis : A tutorial}
+      \field{year}{2024}
+      \verb{doi}
+      \verb https://doi.org/10.1002/cesm.12047
+      \endverb
+      \verb{urlraw}
+      \verb https://onlinelibrary.wiley.com/doi/10.1002/cesm.12047
+      \endverb
+      \verb{url}
+      \verb https://onlinelibrary.wiley.com/doi/10.1002/cesm.12047
+      \endverb
+    \endentry
+    \entry{ClinicalTrails_WHO}{online}{}
+      \name{author}{1}{}{%
+        {{hash=9ed1e9f759b27c20c0ee8a56113c84e3}{%
+           family={{WHO}},
+           familyi={W\bibinitperiod}}}%
+      }
+      \strng{namehash}{9ed1e9f759b27c20c0ee8a56113c84e3}
+      \strng{fullhash}{9ed1e9f759b27c20c0ee8a56113c84e3}
+      \strng{bibnamehash}{9ed1e9f759b27c20c0ee8a56113c84e3}
+      \strng{authorbibnamehash}{9ed1e9f759b27c20c0ee8a56113c84e3}
+      \strng{authornamehash}{9ed1e9f759b27c20c0ee8a56113c84e3}
+      \strng{authorfullhash}{9ed1e9f759b27c20c0ee8a56113c84e3}
+      \field{sortinit}{W}
+      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{ClinicalTrails WHO}
+      \verb{urlraw}
+      \verb https://www.who.int/health-topics/clinical-trials#tab=tab_1
+      \endverb
+      \verb{url}
+      \verb https://www.who.int/health-topics/clinical-trials#tab=tab_1
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

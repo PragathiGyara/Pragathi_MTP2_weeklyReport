@@ -12,6 +12,7 @@
 \usepackage{multirow}
 \usepackage{listings}
 \usepackage{minted}
+\usepackage{booktabs}
 \usepackage[
   backend=biber
 ]{biblatex}
@@ -577,7 +578,7 @@ This is a review article published in 2018, discussing theories behind technolog
 \newpage
 \section{WEEK 4 : 12th January 2026 - 16th January 2026}
 
-Time spent = 5 h + 7 h + 
+Time spent = 5 h + 7 h + 7 h (Meeting 1) + 
 
 \subsection{The influence of different intervention measures on improving mobile phone addiction among teenagers or young adults: a systematic review and network meta-analysis}
 Paper Link: \cite{frontiers2025technological} (2025)
@@ -711,7 +712,7 @@ The outcome of the meta analysis is that, these interventions show positive effe
         \item Well-being : overall quality of life and life satisfaction
     \end{enumerate}
     \item The psychological interventions reviewed in this paper: cognitive based therapy, sandplay therapy, behaviour based educational programming.
-    \item \textbf{Cognitive Behavioral Therapy (CBT)} : Based on the cognitive behavioral model. Helps identify the negative or problematic cognition/thought patterns via talk therapy. \cite{}
+    \item \textbf{Cognitive Behavioral Therapy (CBT)} : Based on the cognitive behavioral model. Helps identify the negative or problematic cognition/thought patterns via talk therapy. 
     \item \textbf{Sandplay Therapy} : Where individuals are asked to draw on sand to express their emotions.
     \item \textbf{Behaviour Based Educational Programming} : 
     \item Study:
@@ -866,14 +867,157 @@ This is a review article which talks about the psychosocial interventions, the t
     \item Details about phone model : Samsung Galaxy M32
     \item Phone Configurations : Screen timeout set to 5 min
     \item Controlled events list:
-    \begin{enumerate}
-        \item Event 1 : Move from experiment page (inside app) to launcher screen.
-        \item Event 2 : Lock the phone
-        \item Event 3 : 
-    \end{enumerate}
-    \item Results : 
 
+    \begin{table}[htbp]
+        \centering
+        \begin{tabular}{c p{8cm} p{3cm}}
+        \toprule
+        \textbf{Event No.} & \textbf{Event Description} & \textbf{Time elapsed (hh:mm:ss:ms)} \\
+        \midrule
+        Event 1 & Move from experiment page (inside app) to launcher screen & 00:00:02.2\\
+        Event 2 & Lock the phone & 00:00:04.5 \\
+        Event 3 & Phone unlocked and the screen is set to launcher & 00:00:20.1 \\
+        Event 4 & App drawer opened & 00:01:44.5 \\
+        Event 5 & Other app opened & 00:02:02.5 \\
+        Event 6 & The other app closed and screen back to launcher & 00:03:05.0 \\
+        Event 7 & App Drawer opened again navigated to another app & 00:03:24.7 \\
+        Event 8 & The other app closed and back to launcher & 00:04:54.0 \\
+        Event 9 & Opened competition page of Intentor & 00:05:51.9 \\
+        Event 10 & Closed intentor and back to launcher & 00:06:50.6 \\
+        Event 11 & Lock the phone & 00:07:25.9 \\
+        Event 12 & Phone unlocked and the screen is set to launcher & 00:08:10.8 \\
+        Event 13 & Opened intentor & 00:09:40.7 \\
+        Event 14 & Stopped experiment & 00:09:59.4 \\
+        \bottomrule
+        \end{tabular}
+        \caption{User interaction events captured during experiment}
+        \label{tab:events}
+    \end{table}
+
+    \item Controlled events summary :
+    \begin{enumerate}
+        \item Time inside intentor application : 58.7 + 18.7 = 77.4 s (01 min 17.4 s)
+        \item Time on the launcher : 2.3 + 84.4 + 19.7 + 57.9 + 35.3 + 89.9 = 289.5 s (04 min 49.5 s)
+        \item Time on app drawer : 18.0 + 5.0 = 23.0 s (00 min 23.0 s)
+        \item Time on other applications : 62.5 + 84.3 = 146.8 s (02 min 26.8 s)
+        \item Time when locked : 15.6 + 44.9 = 60.5 s (01 min 00.5 s)
+        \item Total unlocks : 2
+        \item Total experiment time = 09 min 59.4 s
+        \item \item Time when phone was unlocked = Total experiment time - Time when locked = 08 min 58.9 s
+    \end{enumerate}
+
+    \item Results :     
+    
+    Refer image \ref{fig:Usage Metrics Accuracy Testing Results - Case 2}
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.25\linewidth]{Images/AccuracyTesting_Experiment19.png}
+        \caption{Usage Metrics Accuracy Testing Results - Case 2}
+        \label{fig:Usage Metrics Accuracy Testing Results - Case 2}
+    \end{figure}
+
+    \begin{enumerate}
+        \item Screen Time Method 1
+        \begin{itemize}
+            \item Including launcher time (that is, including time spent on intentor/JODO app) : 8 m 49 s
+            \item Excluding launcher time : 2 m 9 s
+        \end{itemize}
+        \item Screen Time Method 2 : 9 m 23 s
+        \item Screen Time Method 3
+        \begin{enumerate}
+            \item Including launcher time : 3 h 12 m 19 s
+            \item Excluding launcher time : 1 h 59 m 44 s
+        \end{enumerate}
+        \item Unlock Count : 2
+    \end{enumerate}
+
+    \item Observations
+    \begin{enumerate}
+        \item 
+    \end{enumerate}
 \end{enumerate}
+
+
+\subsubsection{Case 2}
+\begin{enumerate}
+    \item Duration : 10 minutes
+    \item Details about phone model : Samsung Galaxy M32
+    \item Phone Configurations : Screen timeout set to 5 min
+    \item Controlled events list:
+
+    \begin{table}[htbp]
+        \centering
+        \begin{tabular}{c p{8cm} p{3cm}}
+        \toprule
+        \textbf{Event No.} & \textbf{Event Description} & \textbf{Time elapsed (hh:mm:ss:ms)} \\
+        \midrule
+        Event 1 & Move from experiment page (inside app) to launcher screen & 00:00:02.2\\
+        Event 2 & Lock the phone & 00:00:04.5 \\
+        Event 3 & Phone unlocked and the screen is set to launcher & 00:00:20.1 \\
+        Event 4 & App drawer opened & 00:01:44.5 \\
+        Event 5 & Other app opened & 00:02:02.5 \\
+        Event 6 & The other app closed and screen back to launcher & 00:03:05.0 \\
+        Event 7 & App Drawer opened again navigated to another app & 00:03:24.7 \\
+        Event 8 & The other app closed and back to launcher & 00:04:54.0 \\
+        Event 9 & Opened competition page of Intentor & 00:05:51.9 \\
+        Event 10 & Closed intentor and back to launcher & 00:06:50.6 \\
+        Event 11 & Lock the phone & 00:07:25.9 \\
+        Event 12 & Phone unlocked and the screen is set to launcher & 00:08:10.8 \\
+        Event 13 & Opened intentor & 00:09:40.7 \\
+        Event 14 & Stopped experiment & 00:09:59.4 \\
+        \bottomrule
+        \end{tabular}
+        \caption{User interaction events captured during experiment}
+        \label{tab:events}
+    \end{table}
+
+    \item Controlled events summary :
+    \begin{enumerate}
+        \item Time inside intentor application : 58.7 + 18.7 = 77.4 s (01 min 17.4 s)
+        \item Time on the launcher : 2.3 + 84.4 + 19.7 + 57.9 + 35.3 + 89.9 = 289.5 s (04 min 49.5 s)
+        \item Time on app drawer : 18.0 + 5.0 = 23.0 s (00 min 23.0 s)
+        \item Time on other applications : 62.5 + 84.3 = 146.8 s (02 min 26.8 s)
+        \item Time when locked : 15.6 + 44.9 = 60.5 s (01 min 00.5 s)
+        \item Total unlocks : 2
+        \item Total experiment time = 09 min 59.4 s
+        \item \item Time when phone was unlocked = Total experiment time - Time when locked = 08 min 58.9 s
+    \end{enumerate}
+
+    \item Results :     
+    
+    Refer image \ref{fig:Usage Metrics Accuracy Testing Results - Case 2}
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.25\linewidth]{Images/AccuracyTesting_Experiment19.png}
+        \caption{Usage Metrics Accuracy Testing Results - Case 2}
+        \label{fig:Usage Metrics Accuracy Testing Results - Case 2}
+    \end{figure}
+
+    \begin{enumerate}
+        \item Screen Time Method 1
+        \begin{itemize}
+            \item Including launcher time (that is, including time spent on intentor/JODO app) : 8 m 49 s
+            \item Excluding launcher time : 2 m 9 s
+        \end{itemize}
+        \item Screen Time Method 2 : 9 m 23 s
+        \item Screen Time Method 3
+        \begin{enumerate}
+            \item Including launcher time : 3 h 12 m 19 s
+            \item Excluding launcher time : 1 h 59 m 44 s
+        \end{enumerate}
+        \item Unlock Count : 2
+    \end{enumerate}
+
+    \item Observations
+    \begin{enumerate}
+        \item 
+    \end{enumerate}
+\end{enumerate}
+
+\subsubsection{SAS-SV and MPAI}
+
+\subsubsection{Mindfulness Based Therapy}
+
 \newpage
 \printbibliography
 \end{document}
