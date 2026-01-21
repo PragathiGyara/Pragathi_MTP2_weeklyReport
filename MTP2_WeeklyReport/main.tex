@@ -10,9 +10,11 @@
 \usepackage{tabularx}
 \usepackage{makecell}
 \usepackage{multirow}
+\usepackage{xcolor}
 \usepackage{listings}
-\usepackage{minted}
+\usepackage{longtable}
 \usepackage{booktabs}
+\usepackage{makecell}
 \usepackage[
   backend=biber
 ]{biblatex}
@@ -312,16 +314,18 @@ Time Spent = 6 h + 7 h + 8 h + 2 h + 7 h = 30 h
 
             Also, computing both including and excluding the launcher package from the screen time.
 
-            \begin{lstlisting}[caption={Calculating screen time using activity resumed and paused flags}]
-    long sessionDuration = event.getTimeStamp() - lastTimestamp;
-    
-    if(sessionDuration > 0){
-        result.appScreenTimeIncludingLauncherMs += sessionDuration;
-    }
-    if(!pkg.equals(launcherPackage) && !pkg.equals(getPackageName())) {
-        result.appScreenTimeExcludingLauncherMs +=sessionDuration;      
-    } 
+            \begin{lstlisting}[language=Java,
+            caption={Calculating screen time using activity resumed and paused flags}]
+            long sessionDuration = event.getTimeStamp() - lastTimestamp;
+
+            if(sessionDuration > 0){
+                result.appScreenTimeIncludingLauncherMs += sessionDuration;
+            }
+            if(!pkg.equals(launcherPackage) && !pkg.equals(getPackageName())) {
+                result.appScreenTimeExcludingLauncherMs += sessionDuration;      
+            } 
             \end{lstlisting}
+
 
             \item Using \texttt{SCREEN\_INTERACTIVE} and \texttt{SCREEN\_NON\_INTERACTIVE} events from \texttt{UsageEvents}. This shall give us the time when the display is on and user input is enabled. \cite{Android_UsageEvents}
             \item Aggregating the time spent on foreground using \texttt{UsageStats} - \texttt{getTotalTimeVisible()} and \texttt{getTotalTimeInForeground()} methods. \cite{Android_UsageStats}
@@ -335,11 +339,11 @@ Time Spent = 6 h + 7 h + 8 h + 2 h + 7 h = 30 h
             \textbf{\texttt{getTotalTimeVisible()} is used as fallback if \texttt{getTotalTimeInForeground()} is not available in the android version on the user's phone.}
             
             \begin{lstlisting}[caption={Calculating screen time using UsageStats},label={Calculating screen time using UsageStats}]
-    if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.Q) {
-        foregroundTimeMs = stats.getTotalTimeVisible();
-    } else {
-        foregroundTimeMs = stats.getTotalTimeInForeground();
-    }
+                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.Q) {
+                    foregroundTimeMs = stats.getTotalTimeVisible();
+                } else {
+                    foregroundTimeMs = stats.getTotalTimeInForeground();
+                }
             \end{lstlisting}
 
         \end{enumerate}
@@ -578,7 +582,7 @@ This is a review article published in 2018, discussing theories behind technolog
 \newpage
 \section{WEEK 4 : 12th January 2026 - 16th January 2026}
 
-Time spent = 5 h + 7 h + 7 h (Meeting 1) + 
+Time spent = 5 h + 7 h + 7 h (Meeting 1) + 7 h + 7 h = 33 h
 
 \subsection{The influence of different intervention measures on improving mobile phone addiction among teenagers or young adults: a systematic review and network meta-analysis}
 Paper Link: \cite{frontiers2025technological} (2025)
@@ -890,24 +894,34 @@ This is a review article which talks about the psychosocial interventions, the t
         Event 14 & Stopped experiment & 00:09:59.4 \\
         \bottomrule
         \end{tabular}
-        \caption{User interaction events captured during experiment}
-        \label{tab:events}
+        \caption{Interaction events captured during experiment - Case 2}
+        \label{tab:Interaction events captured during experiment - Case 2}
     \end{table}
 
     \item Controlled events summary :
     \begin{enumerate}
-        \item Time inside intentor application : 58.7 + 18.7 = 77.4 s (01 min 17.4 s)
+        \item Time inside JODO application : 58.7 + 18.7 = 77.4 s (01 min 17.4 s)
+        
+        (Event 9 to Event 10, Event 13 to Event 14)
         \item Time on the launcher : 2.3 + 84.4 + 19.7 + 57.9 + 35.3 + 89.9 = 289.5 s (04 min 49.5 s)
+        
+        (Event 1 to Event 2, Event 3 to Event 4, Event 6 to Event 7, Event 8 to Event 9, Event 10 to Event 11, Event 12 to Event 13)
         \item Time on app drawer : 18.0 + 5.0 = 23.0 s (00 min 23.0 s)
-        \item Time on other applications : 62.5 + 84.3 = 146.8 s (02 min 26.8 s)
+        
+        (Event 4 to Event 5, Event 7)
+        \item \label{pt:ActualJODOapp} \textbf{Time spent on JODO application = 77.4 s + 289.5 s + 23.0 s = 389.9 s (06 min 29.9 s)}
+        \item \label{pt:ActualOtherApps} \textbf{Time on other applications : 62.5 + 84.3 = 146.8 s (02 min 26.8 s)}
+        
+        (Event 5 to Event 6, Event 7 to Event 8)
+        \item \label{pt:ActualScreenTimeMeasure1} Aggregating time spent on all screens \textbf{(Total screen time)= 77.4 + 289.5 + 23.0 + 146.8 = 536.7 s (08 min 56.7 s)}
         \item Time when locked : 15.6 + 44.9 = 60.5 s (01 min 00.5 s)
         \item Total unlocks : 2
-        \item Total experiment time = 09 min 59.4 s
-        \item \item Time when phone was unlocked = Total experiment time - Time when locked = 08 min 58.9 s
+        \item \textbf{Total experiment time = 09 min 59.4 s}
+        \item \label{pt:ActualScreenTimeMeasure2} Time when phone was unlocked = Total experiment time - Time when locked = 08 min 58.9 s
     \end{enumerate}
 
-    \item Results :     
-    
+    \item Results :
+
     Refer image \ref{fig:Usage Metrics Accuracy Testing Results - Case 2}
     \begin{figure}
         \centering
@@ -919,8 +933,8 @@ This is a review article which talks about the psychosocial interventions, the t
     \begin{enumerate}
         \item Screen Time Method 1
         \begin{itemize}
-            \item Including launcher time (that is, including time spent on intentor/JODO app) : 8 m 49 s
-            \item Excluding launcher time : 2 m 9 s
+            \item \label{pt:ScreenTimeMethod1} Including launcher time (that is, including time spent on intentor/JODO app) : 8 m 49 s
+            \item \label{pt:MeasuredOtherApps} Excluding launcher time : 2 m 9 s
         \end{itemize}
         \item Screen Time Method 2 : 9 m 23 s
         \item Screen Time Method 3
@@ -933,90 +947,528 @@ This is a review article which talks about the psychosocial interventions, the t
 
     \item Observations
     \begin{enumerate}
-        \item 
+        % \item There is an approx 2 sec difference in the actual screen time computed as aggregate of time spent on all screens \ref{pt:ActualScreenTimeMeasure1} and computed as time when phone is locked \ref{pt:ActualScreenTimeMeasure2}, that is possibly because of the human error.
+        % \item The total screen time (that is, including the launcher time) in method 1 is 8 m 49 s \ref{pt:ScreenTimeMethod1}.
+        
+        % In this method since time elapsed is calculated as time between \texttt{ACTIVITY\_RESUMED} and \texttt{ACTIVITY\_PAUSED} events, 
+        % Event 1 time is not included since \texttt{ACTIVITY\_RESUMED} event has already occurred and the measurement starts from the next \texttt{ACTIVITY\_RESUMED} event which should be Event 3.
+
+        \item Comparison of actual and measured values
+
+\begin{table}[h]
+            \centering
+            \small
+            \begin{tabular}{|p{4cm}|cc|p{2cm}|cc|}
+            \hline
+            \multirow{2}{*}{\textbf{Metric (Actual)}} 
+            & \multicolumn{2}{c|}{\textbf{Method 1}} 
+            & \multirow{2}{*}{\makecell{\textbf{Method 2} \\ (9 m 23 s)}} 
+            & \multicolumn{2}{c|}{\textbf{Method 3}} \\
+
+            \cline{2-3} \cline{5-6}
+
+            & \makecell{Incl. launcher \\ (08 min 49 s)}
+            & \makecell{Excl. launcher \\ (2 m 9 s)}
+            & 
+            & \makecell{Incl. launcher \\ (3 h 12 m 19 s)}
+            & \makecell{Excl. launcher \\ (1 h 59 m 44 s)} \\
+            \hline
+
+
+            Total screen time
+            
+            (08 min 56.7 s)
+            & $-7.7$ s
+            & --
+            & $+26.3$ s
+            & $+3$ h $3$ min $22.3$ s
+            & $+39$ min $04.9$ s \\
+            \hline
+
+            Time spent on other applications (02 min 26.8 s)
+            & --
+            & $-17.8$ s
+            & --
+            & --
+            & -- \\
+            \hline
+
+            \end{tabular}
+            \caption{Difference between measured and actual usage metrics (Case 2)}
+            \label{tab:actual-measured-case2}
+        \end{table}
+
+        
+        \item Method 1 has the least difference of 7.7 s (underestimate) compared to the actual screen time.
+        \item Unlock matches
     \end{enumerate}
 \end{enumerate}
 
 
-\subsubsection{Case 2}
+\subsubsection{Case 3}
 \begin{enumerate}
-    \item Duration : 10 minutes
+    \item Duration : 2 hours
     \item Details about phone model : Samsung Galaxy M32
-    \item Phone Configurations : Screen timeout set to 5 min
+    \item Phone Configurations : Screen timeout set to 1 min
     \item Controlled events list:
+    
+    \begin{longtable}{c p{8cm} p{3cm}}
+        \caption{Interaction events captured during experiment - Case 3}
+        \label{tab:Interaction events captured during experiment - Case 3} \\
 
-    \begin{table}[htbp]
-        \centering
-        \begin{tabular}{c p{8cm} p{3cm}}
         \toprule
-        \textbf{Event No.} & \textbf{Event Description} & \textbf{Time elapsed (hh:mm:ss:ms)} \\
+        \textbf{Event No.} & \textbf{Event Description} & \textbf{Time elapsed (hh:mm:ss.ms)} \\
         \midrule
-        Event 1 & Move from experiment page (inside app) to launcher screen & 00:00:02.2\\
-        Event 2 & Lock the phone & 00:00:04.5 \\
-        Event 3 & Phone unlocked and the screen is set to launcher & 00:00:20.1 \\
-        Event 4 & App drawer opened & 00:01:44.5 \\
-        Event 5 & Other app opened & 00:02:02.5 \\
-        Event 6 & The other app closed and screen back to launcher & 00:03:05.0 \\
-        Event 7 & App Drawer opened again navigated to another app & 00:03:24.7 \\
-        Event 8 & The other app closed and back to launcher & 00:04:54.0 \\
-        Event 9 & Opened competition page of Intentor & 00:05:51.9 \\
-        Event 10 & Closed intentor and back to launcher & 00:06:50.6 \\
-        Event 11 & Lock the phone & 00:07:25.9 \\
-        Event 12 & Phone unlocked and the screen is set to launcher & 00:08:10.8 \\
-        Event 13 & Opened intentor & 00:09:40.7 \\
-        Event 14 & Stopped experiment & 00:09:59.4 \\
+        \endfirsthead
+
+        \toprule
+        \textbf{Event No.} & \textbf{Event Description} & \textbf{Time elapsed (hh:mm:ss.ms)} \\
+        \midrule
+        \endhead
+
+        \midrule
+        \multicolumn{3}{r}{\textit{Continued on next page}}
+        \\
+        \endfoot
+
         \bottomrule
-        \end{tabular}
-        \caption{User interaction events captured during experiment}
-        \label{tab:events}
-    \end{table}
+        \endlastfoot
+
+            Event 1  & Move from experiment page (inside jodo) to launcher & 00:00:10.8 \\
+            Event 2  & Phone locked using lock button & 00:00:36.1 \\
+            Event 3  & Lock screen (of jodo) shown on double tap & 00:05:10.9 \\
+            Event 4  & Lock screen still shown & 00:05:11.0 \\
+            Event 5  & Lock screen (of jodo) naturally timed out & 00:06:12.9 \\
+            Event 6  & Lock screen (of jodo) shown on double tap & 00:08:36.1 \\
+            Event 7  & Lock screen (of phone) shown when swiped & 00:08:54.9 \\
+            Event 8  & Lock screen (of phone) naturally timed out & 00:09:55.2 \\
+            Event 9  & Lock screen (of jodo) shown on double tap & 00:12:32.0 \\
+            Event 10 & Lock screen (of phone) shown when swiped & 00:12:39.9 \\
+            Event 11 & Keyguard shown & 00:12:53.0 \\
+            Event 12 & Phone unlocked using password, screen set to jodo launcher & 00:13:24.9 \\
+            Event 13 & Screen set to app drawer & 00:13:49.3 \\
+            Event 14 & App1 opened from app drawer & 00:14:08.0 \\
+            Event 15 & App1 closed, screen set to jodo launcher & 00:14:47.9 \\
+            Event 16 & Inside jodo app & 00:15:11.1 \\
+            Event 17 & Exited jodo app, screen set to jodo launcher & 00:15:48.2 \\
+            Event 18 & Screen set to app drawer & 00:15:58.3 \\
+            Event 19 & App2 opened from app drawer & 00:16:12.4 \\
+            Event 20 & Switch from App 2 to App 1 & 00:18:04.4 \\
+            Event 21 & Switch back from App 1 to App 2 & 00:18:12.8 \\
+            Event 22 & App 2 closed, screen set to jodo launcher & 00:22:37.0 \\
+            Event 23 & Phone locked due to timeout & 00:24:40.1 \\
+            Event 24 & Lock screen (of jodo) displayed because of notification & 00:25:10.4 \\
+            Event 25 & Lock screen (of phone) shown when swiped & 00:25:35.2 \\
+            Event 26 & Keyguard shown & 00:25:45.7 \\
+            Event 27 & Phone unlocked using password, screen set to jodo launcher + notification check & 00:26:00.3 \\
+            Event 28 & Phone locked due to timeout & 00:27:20.5 \\
+            Event 29 & Lock screen (phone) appeared & 00:34:20.3 \\
+            Event 30 & Lock screen (phone) disappeared & 00:34:20.4 \\
+            Event 31 & Lock screen (of jodo) shown & 00:34:40.8 \\
+            Event 32 & Lock screen (of phone) shown when swiped & 00:35:26.6 \\
+            Event 33 & Keyguard shown & 00:35:38.6 \\
+            Event 34 & Phone unlocked using password, screen set to jodo launcher & 00:36:00.3 \\
+            Event 35 & Screen set to app drawer & 00:36:21.1 \\
+            Event 36 & App 3 opened from app drawer& 00:36:40.3 \\
+            Event 37 & App 3 closed, screen set to jodo launcher & 00:58:00.5 \\
+            Event 38 & Phone locked using lock button & 00:58:05.4 \\
+            Event 39 & Lock screen (of phone) shown & 01:17:57.1 \\
+            Event 40 & Lock screen (of jodo) shown & 01:18:04.5 \\
+            Event 41 & Phone unlocked, screen set to jodo launcher & 01:18:11.0 \\
+            Event 42 & Phone locked due to timeout & 01:19:12.8 \\
+            Event 43 & Phone unlocked using fingerprint, screen set to jodo launcher & 01:21:09.0 \\
+            Event 44 & Screen set to app drawer & 01:21:43.4 \\
+            Event 45 & App 1 opened from app drawer & 01:22:22.0 \\
+            Event 46 & App 1 closed, screen set to jodo launcher & 01:23:42.9 \\
+            Event 47 & Phone locked due to timeout & 01:24:42.8 \\
+            Event 48 & Phone unlocked using fingerprint, screen set to jodo launcher & 01:39:34.1 \\
+            Event 49 & Screen set to app drawer & 01:39:55.0 \\
+            Event 50 & App 2 opened from app drawer & 01:40:05.5 \\
+            Event 51 & App 2 closed, screen set to jodo launcher & 01:46:04.6 \\
+            Event 52 & Phone locked due to timeout & 01:47:08.9 \\
+            Event 53 & Receiving call display & 01:51:10.8 \\
+            Event 54 & Call display on & 01:51:27.7 \\
+            Event 55 & End phone call, lock screen (of phone) shown & 01:52:24.0 \\
+            Event 56 & Lock screen (of phone) naturally timed out & 01:53:21.0 \\
+            Event 57 & Phone unlocked using fingerprint, screen set to lock screen (of jodo) & 01:56:57.7 \\
+            Event 58 & Screen set to jodo launcher when swiped & 01:57:20.6 \\
+            Event 59 & Opened competition page and navigated to experiment page & 01:57:52.4 \\
+            Event 60 & End experiment & 02:00:00.4 \\
+
+    \end{longtable}
 
     \item Controlled events summary :
     \begin{enumerate}
-        \item Time inside intentor application : 58.7 + 18.7 = 77.4 s (01 min 17.4 s)
-        \item Time on the launcher : 2.3 + 84.4 + 19.7 + 57.9 + 35.3 + 89.9 = 289.5 s (04 min 49.5 s)
-        \item Time on app drawer : 18.0 + 5.0 = 23.0 s (00 min 23.0 s)
-        \item Time on other applications : 62.5 + 84.3 = 146.8 s (02 min 26.8 s)
-        \item Time when locked : 15.6 + 44.9 = 60.5 s (01 min 00.5 s)
-        \item Total unlocks : 2
-        \item Total experiment time = 09 min 59.4 s
-        \item \item Time when phone was unlocked = Total experiment time - Time when locked = 08 min 58.9 s
+        \item Time inside JODO application : 10.8 + 37.1 + 128.0 = 175.9 s (2 min 55.9 s)
+
+        (Event 0 to Event 1, Event 16 to Event 17, Event 59 to Event 60)
+
+        \item Time on the launcher : 25.3 + 24.4 + 23.2 + 10.1 + 123.1 + 80.2 + 20.8 + 4.9 + 34.3 + 59.9 + 64.3 + 31.8 = 502.4 s (8 min 22.4 s)
+
+        (Event 1 to Event 2, Event 12 to Event 13, Event 15 to Event 16, Event 17 to Event 18 and so on..)
+
+        \item Time on app drawer : 18.7 + 14.1 + 19.2 + 38.6 + 10.5 = 101.1 s (1 min 41.1 s)
+
+        \item \textbf{Total time spent on JODO application} : 175.9 + 502.4 + 101.1 = 779.4 s (12 min 59.4 s)
+
+        \item Time spent on other applications : 39.9 + 384.6 + 1280.2 + 80.9 + 359.1 = 2144.7 s (35 min 44.7 s)
+
+        (Event 14 to Event 15, Event 19 to Event 22, Event 36 to Event 37, Event 45 to Event 46, Event 50 to Event 51)
+
+        \item \textbf{Aggregating time spent on all screens (total screen time)} : 502.4 + 101.1 + 2144.7 + 367.9 = 3116.1 s (51 min 56.1 s)
+
+        \item Time on JODO lock screen : 122.0 + 18.8 + 7.9 + 24.8 + 45.8 + 7.4 = 226.7 s (3 min 46.7 s)
+        \item Time on phone lock screen : 60.3 + 13.1 + 10.5 + 0.1 + 12.0 + 7.4 + 57.0  = 160.4 s (2 min 40.4 s)
+        \item Time on keyguard : 31.9 + 14.6 + 21.7 = 68.2 s (1 min 08.2 s)
+        \item Time when locked : 768.8 + 80.2 + 519.8 + 1215.6 + 116.2 + 891.3 + 611.7 = 4203.6 s (70 min 03.6 s)
+        \item Total experiment time : 7200.4 s = 2 h 00 min 00.4 s
+        \item Time when phone was unlocked : Total experiment time - time when locked = 7200.4 - 4203.6 = 2996.8 s (49 min 56.8 s)
+        \item Total unlocks : 7
+        
+        (Event 12, Event 27, Event 34, Event 41, Event 43, Event 48, Event 57) = 7
     \end{enumerate}
+
 
     \item Results :     
     
-    Refer image \ref{fig:Usage Metrics Accuracy Testing Results - Case 2}
+    Refer image \ref{fig:Usage Metrics Accuracy Testing Results - Case 3}
     \begin{figure}
         \centering
-        \includegraphics[width=0.25\linewidth]{Images/AccuracyTesting_Experiment19.png}
-        \caption{Usage Metrics Accuracy Testing Results - Case 2}
-        \label{fig:Usage Metrics Accuracy Testing Results - Case 2}
+        \includegraphics[width=0.25\linewidth]{Images/AccuracyTesting_Experiment21.png}
+        \caption{Usage Metrics Accuracy Testing Results - Case 3}
+        \label{fig:Usage Metrics Accuracy Testing Results - Case 3}
     \end{figure}
-
+    
     \begin{enumerate}
         \item Screen Time Method 1
         \begin{itemize}
-            \item Including launcher time (that is, including time spent on intentor/JODO app) : 8 m 49 s
-            \item Excluding launcher time : 2 m 9 s
+            \item Including launcher time (that is, including time spent on intentor/JODO app) : 51 min 17 s
+            \item Excluding launcher time : 37 m 5 s
         \end{itemize}
-        \item Screen Time Method 2 : 9 m 23 s
+        \item Screen Time Method 2 : 56 m 48 s
         \item Screen Time Method 3
         \begin{enumerate}
-            \item Including launcher time : 3 h 12 m 19 s
-            \item Excluding launcher time : 1 h 59 m 44 s
+            \item Including launcher time : 2 h 2 m 29 s
+            \item Excluding launcher time : 1 h 31 m 1 s
         \end{enumerate}
-        \item Unlock Count : 2
+        \item Unlock Count : 7
     \end{enumerate}
 
     \item Observations
     \begin{enumerate}
-        \item 
+       \item Comparison of actual and measured values 
+       
+       \begin{table}[h]
+            \centering
+            \small
+            \begin{tabular}{|p{4cm}|cc|p{2cm}|cc|}
+            \hline
+            \multirow{2}{*}{\textbf{Metric (Actual)}} 
+            & \multicolumn{2}{c|}{\textbf{Method 1}} 
+            & \multirow{2}{*}{\makecell{\textbf{Method 2} \\ (56 m 48 s)}} 
+            & \multicolumn{2}{c|}{\textbf{Method 3}} \\
+
+            \cline{2-3} \cline{5-6}
+
+            & \makecell{Incl. launcher \\ (51 min 17 s)}
+            & \makecell{Excl. launcher \\ (37 m 5 s)}
+            & 
+            & \makecell{Incl. launcher \\ (2 h 2 m 29 s)}
+            & \makecell{Excl. launcher \\ (1 h 31 m 1 s)} \\
+            \hline
+
+
+            Total screen time
+            
+            (51 min 56.1 s)
+            & $-39.1$ s
+            & --
+            & $+4$ min $51.9$ s
+            & $+1$ h $10$ min $32.9$ s
+            & $+39$ min $04.9$ s \\
+            \hline
+
+            Time spent on other applications (35 min 44.7 s)
+            & --
+            & $+1$ min $20.3$ s
+            & --
+            & --
+            & -- \\
+            \hline
+
+            \end{tabular}
+            \caption{Difference between measured and actual usage metrics (Case 3)}
+            \label{tab:actual-measured-case3}
+        \end{table}
+
+        \item From Method 1, the time spent on JODO application is 14 min 12 s (which is, including launcher time - excluding launcher time).
+        The actual time spent on JODO app which is 12 min 59.4 s. There is difference of 72.6 s - underestimation.
+
+        \item From Method 1, the time spent on other applications is 37 m 5 s. The actual time spent on other applications is 35 min 44.7 s. 
+        The difference is 80.3 s - overestimation.
+
+        \item When compared the actual total screen time measured with different methods, Method 1 had least difference of 39.1 s underestimation,
+        though it might be because of adjustment happened because of the overestimation of time spent on other apps and underestimation of time spent on JODO app, as discussed in the above points.
+
+        When compared with method 2, there was a difference of 4 min 51.9 s overestimate. And compared with Method 3, it was way off, just like in results of 2nd experiment also.
+       
+        \item The method 2 -- that is, calculating screen time using the \texttt{SCREEN\_INTERACTIVE} and \texttt{SCREEN\_NON\_INTERACTIVE} events --
+        takes into the account the time when the screen can recieve any input \cite{Android_UsageEvents}, 
+        and by that defination, since the keyguard and lock screen of jodo app are also taking input, they might have also been added to the screen time measured.
+
+        Therefore, adding time the actual time on JODO lock screen and time on keyguard to the actual screen time = 3 min 46.7 s + 1 min 08.2 s + 51 min + 56.1 s = 56 min 51.0 s. 
+
+        And the measured screen time by method 2 is 56 min 48 s. Hence, the difference is of 3 sec overestimation, which is even more accurate than that measured by the method 1.
+
+        \item Unlock count matches.
     \end{enumerate}
 \end{enumerate}
 
-\subsubsection{SAS-SV and MPAI}
+\subsubsection{Case 4}
+\begin{enumerate}
+    \item Duration : 40 minutes
+    \item Phone configuration : Screen timeout set to 15 seconds.
+    \item Controlled events list : 
+    
+     \begin{longtable}{c p{8cm} p{3cm}}
+        \caption{Interaction events captured during experiment - Case 4}
+        \label{tab:Interaction events captured during experiment - Case 4} \\
 
-\subsubsection{Mindfulness Based Therapy}
+        \toprule
+        \textbf{Event No.} & \textbf{Event Description} & \textbf{Time elapsed (hh:mm:ss.ms)} \\
+        \midrule
+        \endfirsthead
+
+        \toprule
+        \textbf{Event No.} & \textbf{Event Description} & \textbf{Time elapsed (hh:mm:ss.ms)} \\
+        \midrule
+        \endhead
+
+        \midrule
+        \multicolumn{3}{r}{\textit{Continued on next page}}
+        \\
+        \endfoot
+
+        \bottomrule
+        \endlastfoot
+
+        Event 1  & \textbf{Unlock 1} : Unlocked phone using fingerprint & 00:00:45.0 \\
+        Event 2  & \textbf{Unlock 2} : Unlocked phone using fingerprint & 00:01:27.1 \\
+        Event 3  & \textbf{Unlock 3} : Unlocked phone using fingerprint & 00:01:52.4 \\
+        Event 4  & \textbf{Unlock 4} : Unlocked phone using fingerprint & 00:02:11.7 \\
+        Event 5  & \textbf{Unlock 5} : Unlocked phone using fingerprint & 00:03:04.7 \\
+        Event 6  & Only keyguard shown - phone not unlocked & 00:03:51.0 \\
+        Event 7  & Only keyguard shown - phone not unlocked & 00:04:36.5 \\
+        Event 8  & Only keyguard shown - phone not unlocked & 00:06:53.7 \\
+        Event 9  & Only keyguard shown - phone not unlocked & 00:08:14.4 \\
+        Event 10 & Only keyguard shown - phone not unlocked & 00:09:24.4 \\
+        Event 11 & \textbf{Unlock 6} : Unlocked phone using password & 00:10:20.9 \\
+        Event 12 & \textbf{Unlock 7} : Unlocked phone using password & 00:10:39.1 \\
+        Event 13 & \textbf{Unlock 8} : Unlocked phone using password & 00:10:55.2 \\
+        Event 14 & \textbf{Unlock 9} : Unlocked phone using password & 00:11:12.3 \\
+        Event 15 & \textbf{Unlock 10} : Unlocked phone using password & 00:11:26.8 \\
+        Event 16 & \textbf{Unlock 11} : Unlocked phone using fingerprint & 00:12:41.0 \\
+        Event 17 & \textbf{Unlock 12} : Unlocked phone using fingerprint & 00:13:11.0 \\
+        Event 18 & \textbf{Unlock 13} : Unlocked phone using fingerprint & 00:13:40.4 \\
+        Event 19 & Phone was already unlocked & 00:14:00.7 \\
+        Event 20 & \textbf{Unlock 14} : Unlocked phone using fingerprint & 00:14:43.7 \\
+        Event 21 & \textbf{Unlock 15} : Unlocked phone using fingerprint & 00:16:57.8 \\
+        Event 22 & Only keyguard shown - phone not unlocked & 00:17:14.6 \\
+        Event 23 & Only keyguard shown - phone not unlocked & 00:17:48.3 \\
+        Event 24 & Only keyguard shown - phone not unlocked & 00:18:28.7 \\
+        Event 25 & Only keyguard shown - phone not unlocked & 00:19:52.2 \\
+        Event 26 & \textbf{Unlock 16} : Unlocked phone using password & 00:19:52.2 \\
+        Event 27 & \textbf{Unlock 17} : Unlocked phone using password & 00:20:05.5 \\
+        Event 28 & \textbf{Unlock 18} : Unlocked phone using password & 00:20:17.8 \\
+        Event 29 & \textbf{Unlock 19} : Unlocked phone using password & 00:20:30.1 \\
+        Event 30 & \textbf{Unlock 20} : Unlocked phone using password & 00:21:02.7 \\
+        Event 31 & \textbf{Unlock 21} : Unlocked phone using fingerprint & 00:22:30.9 \\
+        Event 32 & \textbf{Unlock 22} : Unlocked phone using fingerprint & 00:23:08.9 \\
+        Event 33 & \textbf{Unlock 23} : Unlocked phone using fingerprint & 00:23:37.3 \\
+        Event 34 & \textbf{Unlock 24} : Unlocked phone using fingerprint & 00:24:02.6 \\
+        Event 35 & \textbf{Unlock 25} : Unlocked phone using fingerprint & 00:24:26.4 \\
+        Event 36 & Only keyguard shown - phone not unlocked & 00:24:57.9 \\
+        Event 37 & Only keyguard shown - phone not unlocked & 00:25:35.6 \\
+        Event 38 & Only keyguard shown - phone not unlocked & 00:26:25.6 \\
+        Event 39 & Only keyguard shown - phone not unlocked & 00:28:43.5 \\
+        Event 40 & Only keyguard shown - phone not unlocked & 00:29.37.9 \\
+        Event 41 & \textbf{Unlock 26} : Unlocked phone using password & 00:30:06.0 \\
+        Event 42 & \textbf{Unlock 27} : Unlocked phone using password & 00:30:29.8 \\
+        Event 43 & \textbf{Unlock 28} : Unlocked phone using password & 00:30:50.2 \\
+        Event 44 & \textbf{Unlock 29} : Unlocked phone using password & 00:31:09.1 \\
+        Event 45 & \textbf{Unlock 30} : Unlocked phone using password & 00:31:26.7 \\
+        Event 46 & \textbf{Unlock 31} : Unlocked phone using fingerprint & 00:32:52.1 \\
+        Event 47 & \textbf{Unlock 32} : Unlocked phone using fingerprint & 00:34:09.8 \\
+        Event 48 & \textbf{Unlock 33} : Unlocked phone using fingerprint & 00:35:22.7 \\
+        Event 49 & \textbf{Unlock 34} : Unlocked phone using fingerprint & 00:36:26.0 \\
+        Event 50 & \textbf{Unlock 35} : Unlocked phone using fingerprint & 00:40:03.2 \\
+
+
+
+    \end{longtable}
+
+    \item Controlled events summary :
+    \begin{enumerate}
+        \item Number of unlocks using fingerprint : 20
+        \item Number of unlocks using password : 15
+        \item Number of events where keyguard was opened, but phone was not unlocked : 15
+        \item \textbf{Total number of unlocks : 35.}
+    \end{enumerate}
+    
+    \item Results:
+    
+    Refer image : \ref{fig:Usage Metrics Accuracy Testing Results - Case 4}
+    \item The total unlocks recorded is 34.
+    
+    \begin{figure}[t]
+        \centering
+        \begin{subfigure}{0.25\textwidth}
+            \centering
+            \includegraphics[width=\linewidth]{Images/AccuracyTesting_Experiment27a.png}
+            \caption{Results}
+            \label{fig:Case 4 a}
+        \end{subfigure}
+        \begin{subfigure}{0.25\textwidth}
+            \centering
+            \includegraphics[width=\linewidth]{Images/AccuracyTesting_Experiment27b.png}
+            \caption{results - continued}
+            \label{fig:Case 4 b}
+        \end{subfigure}
+        \caption{Usage Metrics Accuracy Testing Results - Case 4}
+        \label{fig:Usage Metrics Accuracy Testing Results - Case 4}
+    \end{figure}
+
+    \item Observations: 
+    \begin{enumerate}
+        \item The timestamps of the experiment recorded didn't match with the external timer - assuming its because the timestamp recorded in the experiment is that of when the keyguard corresponding to the unlock is displayed and not that of the acutal unlock.
+        \item Events where the keyguard is shown, but the phone is not unlocked are successfully ignored.
+        \item Both unlocks - that is, using password and fingerprints are captured.
+        \item The recorded number of unlocks (34) is 1 less than the actual unlock count (35), because the last unlock is not recorded.
+    \end{enumerate}
+
+\subsection{Implementaiton to log unlock count}
+\begin{enumerate}
+    \item In the earlier implementation, when the unlock event, that is, the \texttt{KEYGUARD\_SHOWN} came across in the event logs, the unlock count was incremented.
+    \item Now modified to maintain list of unlock events. 
+    \item At the end of experiment, the list is parsed and the unlock event along with timestamp is displayed on the UI \ref{fig:Usage Metrics Accuracy Testing Results - Case 4} 
+    and also this is added into the app logs for persitency.
+\end{enumerate}
+    
+\end{enumerate}
+
+
+
+
+
+\newpage
+\section{WEEK 5 : 19th January 2026 - }
+
+Time spent = 5 h 
+
+\subsection{SAS-SV and MPAI}
+\subsubsection{SAS-SV} 
+Reference : 
+\begin{enumerate}
+    \item SAS (Smartphone Addiction Scale)
+    \begin{itemize}
+        \item Consists of 6 factors and 33 items with 6 point Likert scale (1: "strongly disagree and 6: "strongly agree").
+        \item The 6 factors are : daily-life distubrance, positive anticipation, withdrawal, cyberspace-oriented relationship, overuse and tolernace. 
+        \item It is one of the widely used scale for self-reporting of problematic smartphone use.
+    \end{itemize}
+    \item There is a study \cite{SAS_SV} conducted in South Korea on age group of 14-15 for SAS-SV (the shortend version). 
+    \item SAS-SV significantly correlated with SAS, SAPS (Smartphone Addiction Proneness Scale) a
+    nd KS-Scale (Korean self-reporting internet addiction scale). 
+    \item SAS-SV (Smartphone Addiction Scale - Shortend Version). The questions are per SAS-SV are:
+    \begin{enumerate}
+        \item Missing planned work due to smartphone use
+        \item Having a hard time concentrating in class, while doing assignments, or while working due to smartphone use
+        \item Feeling pain in the wrists or at the back of the neck while using a smartphone
+        \item Won't be able to stand not having a smartphone
+        \item Feeling impatient and fretful when I am not holding my smartphone
+        \item Having my smartphone in my mind even when I am not using it
+        \item I will never give up using my smartphone even when my daily life is already greatly affected by it.
+        \item Constantly checking my smartphone so as not to miss conversations between other people on Twitter or Facebook
+        \item Using my smartphone longer than I had intented
+        \item The people around me tell me that I use my smartphone too much
+    \end{enumerate}
+    \item The cutoff suggested by this study is 31 for boys and 33 for girls. That is, if the score is above this, it is considered to be problematic smartphone use.
+    \item There is another study \cite{SAS_SV_India} conducted in India on 434 participants (Mage = 25.4; SDage = 2.6; 58.8\% females), 
+    which validated the use the SAS-SV to study the problematic smartphone usage on young adults of India.
+
+    This study also uses the 6 point Likert scale.
+
+    \item Also, this study does some wording changes to the SAS-SV proposed by South Korean paper.
+    \begin{enumerate}
+        \item I miss planned work due to smartphone use
+        \item I have difficulties concentrating in class, while doing assignmnets, or while working due to smartphone use.
+        \item I experience discomfort in my wrists, thumbs, eyes, or at the back of the neck due to smartphone use.
+        \item I will not to able to tolerate not having a smartphone
+        \item I fell impatient or irritable when I am not holding my smartphone.
+        \item I keep thinking of my smartphone even when I am not using it
+        \item I may not be able to give up my smartphone even though my daily life is affected by it.
+        \item I constantly check my smartphone so as not to miss any conversations on social media (WhatsApp, Instagram, Facebook, Reddit, Twitter, etc)
+        \item I use my smartphone longer than I intended or planned
+        \item My family or friends have told me that I use my smartphone too much. 
+    \end{enumerate}
+    \item Though this paper doesn't give any new cutoff for problematic smartphone usage.
+    
+\end{enumerate}
+
+\subsubsection{MPAI}
+
+\subsection{Mindfulness Based Therapy}
+
+\subsection{Testing if Alarm is triggering on time}
+\begin{enumerate}
+    \item Current implementation: 
+    \begin{itemize}
+        \item We are using Alarm Manager to schedule and receive the alarms.
+        \item From our application, we need to schedule the alarm by mentioning the time and configuring it to run at regular intervals.
+        \item We are using the following methods to schedule the alarm \cite{Schedule_Alarm} \cite{AlarmManager_Medium} (refer listing \ref{label: Methods to schedule Alarm}): 
+
+        \begin{enumerate}
+            \item \texttt{set} : To save up the battery, Android might delay the alarms and trigger them all at once.
+            \item \texttt{setExact} : Doesn't delay to trigger the alarms in batch, but might be delayed if the phone is in Doze mode (that is, idle for a long time) or battery saving mode. 
+            \item \texttt{setExactAndAllowWhileIdle} : Is said to work even if the phone is in doze mode or battery saving mode. Available from Andorid M onwards. 
+        \end{enumerate}
+        \item \texttt{setExact} is used as a fallback to \texttt{setExactAndAllowWhileIdle} if the user doesn't have required android version. And \texttt{set} is used as fallback to \texttt{setExact}
+    
+ \begin{lstlisting}[caption={Methods used to schedule alarm},label={label: Methods to schedule Alarm}]
+    private void setExactAlarm(AlarmManager alarmManager, long triggerAtMillis, PendingIntent pendingIntent) {
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, triggerAtMillis, pendingIntent);
+    } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            alarmManager.setExact(AlarmManager.RTC_WAKEUP, triggerAtMillis, pendingIntent);
+    } else {
+            alarmManager.set(AlarmManager.RTC_WAKEUP, triggerAtMillis, pendingIntent);
+    }
+ }
+ \end{lstlisting}
+
+        \item Once the alarm is scheduled, the request is sent to AlarmManager, which stores all the alarm requests and monitors time.
+        
+        If its time, the alarm is triggered - that is, it informs the respective applciation and that application inturn calls the worker which executes the task as per the alarm request code.
+    \end{itemize}
+
+    \item Logging :
+    \begin{itemize}
+        \item Where, when
+        \item The following are logged:
+        \begin{enumerate}
+            \item Wall time
+            \item Elasped time
+            \item Battery
+            \item Charging
+            \item Doze Mode
+            \item Power Saver
+            \item Screen ON
+        \end{enumerate}
+    \end{itemize}
+\end{enumerate}
+
+
+ 
+
 
 \newpage
 \printbibliography
