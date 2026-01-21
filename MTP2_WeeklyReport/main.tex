@@ -1363,7 +1363,7 @@ This is a review article which talks about the psychosocial interventions, the t
 \newpage
 \section{WEEK 5 : 19th January 2026 - }
 
-Time spent = 5 h 
+Time spent = 5 h + 8 h + 
 
 \subsection{SAS-SV and MPAI}
 \subsubsection{SAS-SV} 
@@ -1450,20 +1450,20 @@ Reference :
         If its time, the alarm is triggered - that is, it informs the respective applciation and that application inturn calls the worker which executes the task as per the alarm request code.
     \end{itemize}
 
-    \item Logging :
-    \begin{itemize}
-        \item Where, when
-        \item The following are logged:
-        \begin{enumerate}
-            \item Wall time
-            \item Elasped time
-            \item Battery
-            \item Charging
-            \item Doze Mode
-            \item Power Saver
-            \item Screen ON
-        \end{enumerate}
-    \end{itemize}
+    \item Modifications made : 
+    \begin{enumerate}
+        \item Before logging the phone status, wanted to verify if its right. 
+        So created the UI where we can click to get the following information about the phone.
+        \begin{itemize}
+            \item Clock time
+            \item Battery (can be measured using \texttt{BatteryManager} API)
+            \item Charging (can be measured using \texttt{BatteryManager} API)
+            \item Doze Mode (can be measured using \texttt{PowerManager} API)
+            \item Power Saver (can be measured using \texttt{PowerManager} API)
+            \item Screen ON (can be measured using \texttt{PowerManager} API)
+        \end{itemize}
+    \end{enumerate}
+
 \end{enumerate}
 
 
