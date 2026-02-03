@@ -1361,9 +1361,9 @@ This is a review article which talks about the psychosocial interventions, the t
 
 
 \newpage
-\section{WEEK 5 : 19th January 2026 - }
+\section{WEEK 5 : 19th January 2026 - 21st January 2026}
 
-Time spent = 5 h + 8 h + 
+Time spent = 5 h + 8 h + 8 h = 21 h
 
 \subsection{SAS-SV and MPAI}
 \subsubsection{SAS-SV} 
@@ -1466,8 +1466,145 @@ Reference :
 
 \end{enumerate}
 
+\newpage
+\section{Week 6 : 28th - 30th January 2026}
+Time Spent = 6 h + 6 h + 6 h = 18 h
 
- 
+\subsection{Logging Phone State when Alarm is triggered}
+\subsubsection{Battery Status}
+
+\begin{enumerate}
+    \item Battery Manager class can be used to get the battery status.
+    \item Battery service is an Android system service which updates the \texttt{ACTION\_BATTERY\_CHANGED} intent whenever there is a change in the battery status \cite{Android_BatteryMonitoring}.
+    
+    \begin{itemize}
+        \item Here \texttt{registerReceiver} is used to get the \texttt{ACTION\_BATTERY\_CHANGED} intent.
+        
+  \begin{lstlisting}[caption={Accessing intent to get battery status},label={label: accessing intent to get battery status}]
+    Intent batteryIntent = registerReceiver(null, 
+    new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
+ \end{lstlisting} 
+
+        \item Though usually \texttt{registerReceiver} is used to register a broadcast receiver, it can also be used to get sticky broadcasts. 
+        
+        Sticky broadcast : When there is a change in the monitored variables, the intent is updated and that update in persisted until changed again. 
+        So in between when the variables are accessed, the last updated change appears.
+
+        Here, since \texttt{registerReceiver} is also used to get the sticky broadcast, it acts only like a querying method and not as a continuous monitoring. 
+        \textbf{Hence, battery drain can be saved.} And many constants can be read at no extra cost.
+    \end{itemize}
+
+    \item \texttt{BatteryManager} is the class which contains constants to access the values of the \texttt{ACTION\_BATTERY\_CHANGED} intent \cite{Android_BatteryManager}.
+    
+    \item Some of the constants which can be used to monitor the battery levels and charging status are:
+    
+    \begin{itemize}
+        \item \texttt{ACTION\_CHARGING} and \texttt{ACTION\_DISCHARGING} are events. To get the current state, \texttt{BATTERY\_STATUS\_CHARGING} has to be used.
+        \item Which power source the device is using (\texttt{EXTRA\_PLUGGED})
+        \begin{itemize}
+            \item \texttt{PLUGGED\_AC}
+            \item \texttt{PLUGGED\_USB}
+            \item \texttt{PLUGGED\_WIRELESS}
+        \end{itemize}
+        \item \texttt{EXTRA\_LEVEL} and \texttt{EXTRA\_SCALE} are used to get the battery percentage.
+        
+        \item Battery health : 
+        \begin{itemize}
+            \item \texttt{BATTERY\_HEALTH\_GOOD}
+            \item \texttt{BATTERY\_HEALTH\_OVERHEAT}
+            \item \texttt{BATTERY\_HEALTH\_DEAD}
+            \item \texttt{BATTERY\_HEALTH\_OVER\_VOLTAGE}
+            \item \texttt{BATTERY\_HEALTH\_UNSPECIFIED\_FAILURE}
+        \end{itemize}
+
+        \item \texttt{BATTERY\_CAPACITY\_LEVEL\_CRITICAL}, \texttt{BATTERY\_CAPACITY\_LEVEL\_LOW}, \texttt{BATTERY\_CAPACITY\_LEVEL\_NORMAL}, \texttt{BATTERY\_CAPACITY\_LEVEL\_FULL} and \texttt{BATTERY\_CAPACITY\_LEVEL\_UNKNOWN} \textbf{are only available from Android 16.}
+    \end{itemize}
+
+    \item Difference between battery charging and plugged in:
+    \begin{itemize}
+        \item Plugged in is when the device is connected to a power source (\texttt{EXTRA\_PLUGGED}). Now, the phone's hardware runs on this power source. If there is extra power, that flows into the battery (\texttt{BATTERY\_STATUS\_CHARGING}).
+    \end{itemize}
+
+    \item Calculating battery percentage \cite{Android_BatteryMonitoring}:
+    \begin{itemize}
+        \item \texttt{EXTRA\_LEVEL} gives the current battery level and \texttt{EXTRA\_SCALE} gives the maximum battery level.
+    \end{itemize}
+
+ \begin{lstlisting}[caption={Calculating Battery Percentage},label={label: Calculating Battery Percentage}]
+    int level = batteryIntent.getIntExtra(BatteryManager.EXTRA_LEVEL, -1);
+    int scale = batteryIntent.getIntExtra(BatteryManager.EXTRA_SCALE, -1);
+    int batteryPct = (int) ((level * 100f) / scale);
+ \end{lstlisting}
+
+\end{enumerate}
+
+\subsubsection{Power Status}
+\begin{enumerate}
+    \item PowerManager API can be used to get the state of the phone such as:
+    \begin{itemize}
+        \item Doze mode : \texttt{PowerManager.isDeviceIdleMode()}
+        \item Power Saver mode : \texttt{PowerManager.isPowerSaveMode()}
+        \item Screen ON : \texttt{PowerManager.isInteractive()}
+    \end{itemize}
+    \item Others which can be logged: 
+    \begin{itemize}
+        \item Ignoring battery optimizaton
+        \item Thermal Status
+        \item Low power standby mode
+    \end{itemize}
+\end{enumerate}
+
+\subsubsection{Implementation}
+\begin{enumerate}
+    \item \texttt{PhoneStateSnapshot}
+    \begin{enumerate}
+        \item contains all the variables required for logging such as battery level, battery charging status,
+        is connected to power source, what is the power source, battery health, doze mode status, power saving mode status, is screen interactive etc..
+        \item Also has two functions to convert these raw values into presentable for UI and one for logging (added into \texttt{alarm\_testing\_logs.txt})
+    \end{enumerate}
+    \item \texttt{PhoneStateCollector}
+    \begin{enumerate}
+        \item Define a function which gets all the phone state information using the methods mentioned above.
+    \end{enumerate}
+    \item \texttt{PhoneStateTestActivity}
+    \begin{enumerate}
+        \item Activity to display the phone state information on the UI.
+    \end{enumerate}
+    \item \texttt{AlarmTestingLogger}
+    \item Modifications to \texttt{AlarmReceiver}
+    \begin{enumerate}
+        \item Calling the phone state collector and logging the same.
+  \begin{lstlisting}[caption={Collecting Phone State and logging},label={label: Collecting Phone State and logging}]
+    PhoneStateSnapshot snapshot = PhoneStateCollector.collectPhoneState(context);
+    AlarmTestingLogger.logPhase(
+        requestCode,
+        "ALARM_RECEIVED",
+        snapshot.toLogString()
+        );
+ \end{lstlisting} 
+    \end{enumerate}
+    \item Modifications to workers
+\end{enumerate}
+
+\subsubsection{Experiment}
+\begin{itemize}
+    \item Note down the possible state of the phone at the time of each alarm trigger.
+\end{itemize}
+
+\newpage
+\section{Week 7 : 2nd - 6th February 2026}
+Time Spent = 
+\subsection{Tasks}
+\begin{enumerate}
+    \item SAS-SV reading
+    \item MPAI (Mobile Phone Addiction Index) reading
+    \item MBT (Mindfulness Based Therapy) reading
+    \item Updating original timestamps of counting number of unlocks experiment (case 4)
+    \item Updating definitions of 3 methods to find the screen time
+\end{enumerate}
+
+\subsection{JODO not accesible in power saving mode}
+
 
 
 \newpage
