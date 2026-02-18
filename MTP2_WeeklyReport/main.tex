@@ -15,6 +15,7 @@
 \usepackage{longtable}
 \usepackage{booktabs}
 \usepackage{makecell}
+\usepackage{dirtree}
 \usepackage[
   backend=biber
 ]{biblatex}
@@ -671,6 +672,13 @@ The outcome of the meta-analysis is that all interventions considered perform be
         \end{enumerate}
     \end{itemize}
 
+    \item Scales used: 
+    \begin{enumerate}
+        \item Smartphone Addiction Scale - Short Version (SAS-SV) : 3 studies
+        \item Mobile Phone Addiction Inventory (MPAI) : 14 studies
+        \item Mobile Phone Addiction Tendency Scale (MPATS) : 15 studies
+    \end{enumerate}
+
 
 \end{enumerate}
 \subsubsection{Observations}
@@ -1225,83 +1233,84 @@ This is a review article which talks about the psychosocial interventions, the t
 \end{enumerate}
 
 \subsubsection{Case 4}
+\label{sec: UsageMetricAccuracyTestingCase4}
 \begin{enumerate}
     \item Duration : 40 minutes
     \item Phone configuration : Screen timeout set to 15 seconds.
     \item Controlled events list : 
     
-     \begin{longtable}{c p{8cm} p{3cm}}
+    \begin{longtable}{p{1.6cm} p{6.4cm} p{3.0cm} p{2.6cm} p{2.2cm}}
         \caption{Interaction events captured during experiment - Case 4}
         \label{tab:Interaction events captured during experiment - Case 4} \\
 
         \toprule
-        \textbf{Event No.} & \textbf{Event Description} & \textbf{Time elapsed (hh:mm:ss.ms)} \\
+        \textbf{Event No.} & \textbf{Event Description} & \textbf{Time elapsed (hh:mm:ss.ms)} & \textbf{TimeReported by App} & \textbf{Difference (in seconds)} \\
         \midrule
         \endfirsthead
 
         \toprule
-        \textbf{Event No.} & \textbf{Event Description} & \textbf{Time elapsed (hh:mm:ss.ms)} \\
+        \textbf{Event No.} & \textbf{Event Description} & \textbf{Time elapsed (hh:mm:ss.ms)} & \textbf{TimeReported by App} & \textbf{Difference (in seconds)} \\
         \midrule
         \endhead
 
         \midrule
-        \multicolumn{3}{r}{\textit{Continued on next page}}
+        \multicolumn{5}{r}{\textit{Continued on next page}}
         \\
         \endfoot
 
         \bottomrule
         \endlastfoot
 
-        Event 1  & \textbf{Unlock 1} : Unlocked phone using fingerprint & 00:00:45.0 \\
-        Event 2  & \textbf{Unlock 2} : Unlocked phone using fingerprint & 00:01:27.1 \\
-        Event 3  & \textbf{Unlock 3} : Unlocked phone using fingerprint & 00:01:52.4 \\
-        Event 4  & \textbf{Unlock 4} : Unlocked phone using fingerprint & 00:02:11.7 \\
-        Event 5  & \textbf{Unlock 5} : Unlocked phone using fingerprint & 00:03:04.7 \\
-        Event 6  & Only keyguard shown - phone not unlocked & 00:03:51.0 \\
-        Event 7  & Only keyguard shown - phone not unlocked & 00:04:36.5 \\
-        Event 8  & Only keyguard shown - phone not unlocked & 00:06:53.7 \\
-        Event 9  & Only keyguard shown - phone not unlocked & 00:08:14.4 \\
-        Event 10 & Only keyguard shown - phone not unlocked & 00:09:24.4 \\
-        Event 11 & \textbf{Unlock 6} : Unlocked phone using password & 00:10:20.9 \\
-        Event 12 & \textbf{Unlock 7} : Unlocked phone using password & 00:10:39.1 \\
-        Event 13 & \textbf{Unlock 8} : Unlocked phone using password & 00:10:55.2 \\
-        Event 14 & \textbf{Unlock 9} : Unlocked phone using password & 00:11:12.3 \\
-        Event 15 & \textbf{Unlock 10} : Unlocked phone using password & 00:11:26.8 \\
-        Event 16 & \textbf{Unlock 11} : Unlocked phone using fingerprint & 00:12:41.0 \\
-        Event 17 & \textbf{Unlock 12} : Unlocked phone using fingerprint & 00:13:11.0 \\
-        Event 18 & \textbf{Unlock 13} : Unlocked phone using fingerprint & 00:13:40.4 \\
-        Event 19 & Phone was already unlocked & 00:14:00.7 \\
-        Event 20 & \textbf{Unlock 14} : Unlocked phone using fingerprint & 00:14:43.7 \\
-        Event 21 & \textbf{Unlock 15} : Unlocked phone using fingerprint & 00:16:57.8 \\
-        Event 22 & Only keyguard shown - phone not unlocked & 00:17:14.6 \\
-        Event 23 & Only keyguard shown - phone not unlocked & 00:17:48.3 \\
-        Event 24 & Only keyguard shown - phone not unlocked & 00:18:28.7 \\
-        Event 25 & Only keyguard shown - phone not unlocked & 00:19:52.2 \\
-        Event 26 & \textbf{Unlock 16} : Unlocked phone using password & 00:19:52.2 \\
-        Event 27 & \textbf{Unlock 17} : Unlocked phone using password & 00:20:05.5 \\
-        Event 28 & \textbf{Unlock 18} : Unlocked phone using password & 00:20:17.8 \\
-        Event 29 & \textbf{Unlock 19} : Unlocked phone using password & 00:20:30.1 \\
-        Event 30 & \textbf{Unlock 20} : Unlocked phone using password & 00:21:02.7 \\
-        Event 31 & \textbf{Unlock 21} : Unlocked phone using fingerprint & 00:22:30.9 \\
-        Event 32 & \textbf{Unlock 22} : Unlocked phone using fingerprint & 00:23:08.9 \\
-        Event 33 & \textbf{Unlock 23} : Unlocked phone using fingerprint & 00:23:37.3 \\
-        Event 34 & \textbf{Unlock 24} : Unlocked phone using fingerprint & 00:24:02.6 \\
-        Event 35 & \textbf{Unlock 25} : Unlocked phone using fingerprint & 00:24:26.4 \\
-        Event 36 & Only keyguard shown - phone not unlocked & 00:24:57.9 \\
-        Event 37 & Only keyguard shown - phone not unlocked & 00:25:35.6 \\
-        Event 38 & Only keyguard shown - phone not unlocked & 00:26:25.6 \\
-        Event 39 & Only keyguard shown - phone not unlocked & 00:28:43.5 \\
-        Event 40 & Only keyguard shown - phone not unlocked & 00:29.37.9 \\
-        Event 41 & \textbf{Unlock 26} : Unlocked phone using password & 00:30:06.0 \\
-        Event 42 & \textbf{Unlock 27} : Unlocked phone using password & 00:30:29.8 \\
-        Event 43 & \textbf{Unlock 28} : Unlocked phone using password & 00:30:50.2 \\
-        Event 44 & \textbf{Unlock 29} : Unlocked phone using password & 00:31:09.1 \\
-        Event 45 & \textbf{Unlock 30} : Unlocked phone using password & 00:31:26.7 \\
-        Event 46 & \textbf{Unlock 31} : Unlocked phone using fingerprint & 00:32:52.1 \\
-        Event 47 & \textbf{Unlock 32} : Unlocked phone using fingerprint & 00:34:09.8 \\
-        Event 48 & \textbf{Unlock 33} : Unlocked phone using fingerprint & 00:35:22.7 \\
-        Event 49 & \textbf{Unlock 34} : Unlocked phone using fingerprint & 00:36:26.0 \\
-        Event 50 & \textbf{Unlock 35} : Unlocked phone using fingerprint & 00:40:03.2 \\
+        Event 1  & \textbf{Unlock 1} : Unlocked phone using fingerprint & 00:00:45.0 & 00:00:24.3 & 20.7 \\
+        Event 2  & \textbf{Unlock 2} : Unlocked phone using fingerprint & 00:01:27.1 & 00:01:15.0 & 12.1 \\
+        Event 3  & \textbf{Unlock 3} : Unlocked phone using fingerprint & 00:01:52.4 & 00:01:46.7 & 5.7 \\
+        Event 4  & \textbf{Unlock 4} : Unlocked phone using fingerprint & 00:02:11.7 & 00:02:59.8 & 48.1 \\ 
+        Event 5  & \textbf{Unlock 5} : Unlocked phone using fingerprint & 00:03:04.7 & 00:03:24.6 & 19.9 \\
+        Event 6  & Only keyguard shown - phone not unlocked & 00:03:51.0 & --- & --- \\
+        Event 7  & Only keyguard shown - phone not unlocked & 00:04:36.5 & --- & --- \\
+        Event 8  & Only keyguard shown - phone not unlocked & 00:06:53.7 & --- & --- \\
+        Event 9  & Only keyguard shown - phone not unlocked & 00:08:14.4 & --- & --- \\
+        Event 10 & Only keyguard shown - phone not unlocked & 00:09:24.4 & --- & --- \\
+        Event 11 & \textbf{Unlock 6} : Unlocked phone using password & 00:10:20.9 & 00:10:28.1 & 7.2 \\
+        Event 12 & \textbf{Unlock 7} : Unlocked phone using password & 00:10:39.1 & 00:10:44.0 & 4.9 \\
+        Event 13 & \textbf{Unlock 8} : Unlocked phone using password & 00:10:55.2 & 00:11:01.8 & 6.6 \\
+        Event 14 & \textbf{Unlock 9} : Unlocked phone using password & 00:11:12.3 & 00:11:17.4 & 5.1 \\
+        Event 15 & \textbf{Unlock 10} : Unlocked phone using password & 00:11:26.8 & 00:11:48.1 & 21.3 \\
+        Event 16 & \textbf{Unlock 11} : Unlocked phone using fingerprint & 00:12:41.0 & 00:13:01.5 & 20.5 \\
+        Event 17 & \textbf{Unlock 12} : Unlocked phone using fingerprint & 00:13:11.0 & 00:13:31.5  & 20.5 \\
+        Event 18 & \textbf{Unlock 13} : Unlocked phone using fingerprint & 00:13:40.4 & 00:14:33.0 & 52.6 \\
+        Event 19 & Phone was already unlocked & 00:14:00.7& --- & --- \\
+        Event 20 & \textbf{Unlock 14} : Unlocked phone using fingerprint & 00:14:43.7 & 00:15:05.0 & 21.3 \\
+        Event 21 & \textbf{Unlock 15} : Unlocked phone using fingerprint & 00:16:57.8 & 00:17:12.4 & 14.6 \\
+        Event 22 & Only keyguard shown - phone not unlocked & 00:17:14.6 & --- & --- \\
+        Event 23 & Only keyguard shown - phone not unlocked & 00:17:48.3 & --- & --- \\
+        Event 24 & Only keyguard shown - phone not unlocked & 00:18:28.7 & --- & --- \\
+        Event 25 & Only keyguard shown - phone not unlocked & 00:19:52.2 & --- & --- \\
+        Event 26 & \textbf{Unlock 16} : Unlocked phone using password & 00:19:52.2 & 00:19:56.2 & 4.0 \\
+        Event 27 & \textbf{Unlock 17} : Unlocked phone using password & 00:20:05.5 & 00:20:09.4 & 3.9 \\
+        Event 28 & \textbf{Unlock 18} : Unlocked phone using password & 00:20:17.8 & 00:20:21.2 & 3.4 \\
+        Event 29 & \textbf{Unlock 19} : Unlocked phone using password & 00:20:30.1 & 00:20:53.6 & 23.5 \\
+        Event 30 & \textbf{Unlock 20} : Unlocked phone using password & 00:21:02.7 & 00:21:23.5 & 20.8 \\
+        Event 31 & \textbf{Unlock 21} : Unlocked phone using fingerprint & 00:22:30.9 & 00:22:52.1 & 21.2 \\
+        Event 32 & \textbf{Unlock 22} : Unlocked phone using fingerprint & 00:23:08.9 & 00:23:29.0 & 20.1 \\
+        Event 33 & \textbf{Unlock 23} : Unlocked phone using fingerprint & 00:23:37.3 & 00:23:58.2 & 20.9 \\
+        Event 34 & \textbf{Unlock 24} : Unlocked phone using fingerprint & 00:24:02.6 & 00:24:24.0 & 21.4 \\
+        Event 35 & \textbf{Unlock 25} : Unlocked phone using fingerprint & 00:24:26.4 & 00:24:48.0 & 21.6 \\
+        Event 36 & Only keyguard shown - phone not unlocked & 00:24:57.9 & --- & --- \\
+        Event 37 & Only keyguard shown - phone not unlocked & 00:25:35.6 & --- & --- \\
+        Event 38 & Only keyguard shown - phone not unlocked & 00:26:25.6 & --- & --- \\
+        Event 39 & Only keyguard shown - phone not unlocked & 00:28:43.5 & --- & --- \\
+        Event 40 & Only keyguard shown - phone not unlocked & 00:29:37.9 & --- & --- \\
+        Event 41 & \textbf{Unlock 26} : Unlocked phone using password & 00:30:06.0 & 00:30:22.1 & 16.1 \\
+        Event 42 & \textbf{Unlock 27} : Unlocked phone using password & 00:30:29.8 & 00:30:42.1 & 12.3 \\
+        Event 43 & \textbf{Unlock 28} : Unlocked phone using password & 00:30:50.2 & 00:30:58.3 & 8.1 \\
+        Event 44 & \textbf{Unlock 29} : Unlocked phone using password & 00:31:09.1 & 00:31:18.2 & 9.1 \\
+        Event 45 & \textbf{Unlock 30} : Unlocked phone using password & 00:31:26.7 & 00:31:49.6 & 22.9 \\
+        Event 46 & \textbf{Unlock 31} : Unlocked phone using fingerprint & 00:32:52.1 & 00:33:12.7 & 20.6 \\
+        Event 47 & \textbf{Unlock 32} : Unlocked phone using fingerprint & 00:34:09.8 & 00:34:31.6 & 21.8 \\
+        Event 48 & \textbf{Unlock 33} : Unlocked phone using fingerprint & 00:35:22.7 & 00:35:44.7 & 22.0 \\
+        Event 49 & \textbf{Unlock 34} : Unlocked phone using fingerprint & 00:36:26.0 & 00:36:48.1 & 22.1 \\
+        Event 50 & \textbf{Unlock 35} : Unlocked phone using fingerprint & 00:40:03.2 & Not reported & Not reported \\
 
 
 
@@ -1367,7 +1376,7 @@ Time spent = 5 h + 8 h + 8 h = 21 h
 
 \subsection{SAS-SV and MPAI}
 \subsubsection{SAS-SV} 
-Reference : 
+Reference : \cite{SAS_SV} \cite{SAS_SV_India}
 \begin{enumerate}
     \item SAS (Smartphone Addiction Scale)
     \begin{itemize}
@@ -1412,9 +1421,90 @@ Reference :
     \end{enumerate}
     \item Though this paper doesn't give any new cutoff for problematic smartphone usage.
     
+    \textbf{UPDATE : }
+
+    \item \label{sec: SAS-SV Update} Meta analysis tells us if an intervention is good compared to control group or not. The output of the meta analysis is the SMD (Standard Mean Difference).
+    \item Standard Mean Difference (SMD) for a single intervention is computed as 
+    \[
+        \mathrm{SMD} = \frac{\bar{x}_1 - \bar{x}_2}{s_p}
+    \]
+    where $\bar{x}_1$ is the mean of addiction scores (based on scales SAS-SV, MPAI, MPATS) of the intervention group and $\bar{x}_2$ is the mean addiction score of the control group. 
+    
+    $s_p$ is the pooled standard deviation gives the combined standard deviation of both the groups and is computed as:
+    \[
+        s_p = \sqrt{
+        \frac{(n_1 - 1)s_1^2 + (n_2 - 1)s_2^2}
+        {n_1 + n_2 - 2}
+        }
+    \]
+    where $n_1$ and $n_2$ are the sample sizes of the intervention and control groups, respectively.
+    
+    $s_1$ and $s_2$ are the standard deviations of the addiction scores in each group.
+
+    \item Standard Mean Difference for all the interventions which gives the overall effect of an (/any) intervention over control group is: 
+    \[
+        \mathrm{Overall\ SMD} =
+        \frac{\sum_{i} (w_i \cdot \mathrm{SMD}_i)}
+        {\sum_{i} w_i}
+    \]
+    where $\mathrm{SMD}_i$ is the Standard Mean Difference for the $i^{th}$ intervention and $w_i$ is the weight assigned to that intervention, which is assigned based on the number of participants in the study. That is, if the number of participants in a study is higher, then that intervention will have a higher weight.
+    \item Interpretation of the results :
+    \begin{enumerate}
+        \item First the SMD for each intervention is computed. Based on that, with some assigned weights the overall SMD is computed.
+        \item SMD for each intervention specifies if that intervention has any effect compared to the control group.
+        \item The overall SMD gives if using an intervention at all in the first place is a good idea or not.
+        Since it is -1.38, that is a negative value, interventions have positive effect in improving addiction compared to the control group.
+        \item From the results of individual SMDs, given the sample size and the standard deviation of each group (that is, both intervention group and control group), we can compute the drop (or change) in the addiction scores.
+        
+        But since the aim of the study was to determine if the interventions have a positive effect or not, and if yes, which intervention is the best, I assume, that the drops in the addiction scores are not directly reported in this paper.
+
+        Though I have calculated drop for some intervention methods based on the sample size and standard deviation reported in the paper to get an high level understanding. Refer \ref{}
+        Result of individual interventions : 
+        
+        \begin{table}[h]
+            \centering
+            \begin{tabular}{lccccccc}
+            \toprule
+            \textbf{Intervention Type} &
+            \textbf{$n_1$} &
+            \textbf{$n_2$} &
+
+            \textbf{$s_1$} &
+            \textbf{$s_2$} &
+            \textbf{$s_p$} &
+            \textbf{SMD} &
+            \textbf{Estimated Score Drop} \\
+            \midrule
+            Badminton & & & & & & & \\
+            & & & & & & & \\
+            & & & & & & & \\
+            \bottomrule
+            \end{tabular}
+            \caption{Summary of Intervention and Control Group Statistics}
+            \label{tab:intervention_summary}
+        \end{table}
+
+        \item A direct comparison between SMD of different interventions can't be made since the studies differ in sample size, intervention mode, frequency and even the scale. Hence, network meta analysis is perfomed to compare the performance of interventions against each other. 
+        
+        SUCRA gives the probability of an intervention being the best among all the interventions. The higher the SUCRA value, the better the intervention is. In this, Badminton stood first ()
+
+
+        
+    \end{enumerate}
+
+
+
+    
 \end{enumerate}
 
 \subsubsection{MPAI}
+Reference : 
+\begin{enumerate}
+    \item Chinese version of Mobile Phone Problem Use Scale (MPPUS).
+    \item The original version has 27-items. This version (the MPAI) has 17 items with four subscales : Inability to Control Craving, Anxiety and feeling lost, withdrawal and escape, productivity loss.
+    \item Each item was rated on 5-point Likert Scale. Hence, the total possible score range from 17-85, given 17 questions.
+\end{enumerate}
+
 
 \subsection{Mindfulness Based Therapy}
 
@@ -1539,6 +1629,7 @@ Time Spent = 6 h + 6 h + 6 h = 18 h
 \end{enumerate}
 
 \subsubsection{Power Status}
+\label{sec: Alarm Triggering - Power Status}
 \begin{enumerate}
     \item PowerManager API can be used to get the state of the phone such as:
     \begin{itemize}
@@ -1564,18 +1655,32 @@ Time Spent = 6 h + 6 h + 6 h = 18 h
     \end{enumerate}
     \item \texttt{PhoneStateCollector}
     \begin{enumerate}
-        \item Define a function which gets all the phone state information using the methods mentioned above.
+        \item Defined a function which gets all the phone state information using the methods mentioned above.
     \end{enumerate}
     \item \texttt{PhoneStateTestActivity}
     \begin{enumerate}
         \item Activity to display the phone state information on the UI.
     \end{enumerate}
     \item \texttt{AlarmTestingLogger}
+    \begin{enumerate}
+        \item Logs added to \texttt{alarm\_testing\_logs.txt}.
+        \item Along with the above mentioned battery status and power status attributes - additional information such as \textbf{timestamp}, \textbf{request code} (to determine the scheduled alarm time), \textbf{phase} (that is, to know if this log entry is because of the alarm triggering or worker is executing or through test activity) are recorded.
+        \item Sample of the log format : \ref{fig:Alarm Testing Log Sample}
+        
+        \begin{figure}
+        \centering
+        \includegraphics[width=1\linewidth]{Images/AlarmTestingLogSample.png}
+        \caption{Alarm Testing Log Sample}
+        \label{fig:Alarm Testing Log Sample}
+        \end{figure}
+        
+    \end{enumerate}
     \item Modifications to \texttt{AlarmReceiver}
     \begin{enumerate}
         \item Calling the phone state collector and logging the same.
   \begin{lstlisting}[caption={Collecting Phone State and logging},label={label: Collecting Phone State and logging}]
-    PhoneStateSnapshot snapshot = PhoneStateCollector.collectPhoneState(context);
+    PhoneStateSnapshot snapshot = PhoneState
+Collector.collectPhoneState(context);
     AlarmTestingLogger.logPhase(
         requestCode,
         "ALARM_RECEIVED",
@@ -1583,7 +1688,10 @@ Time Spent = 6 h + 6 h + 6 h = 18 h
         );
  \end{lstlisting} 
     \end{enumerate}
-    \item Modifications to workers
+    \item Modifications to workers - \texttt{Upload\_Session\_Worker}
+    \begin{enumerate}
+        \item Here logs are added both when alarm is recieved and from the worker. Because in case of constraints like poor network, the a
+    \end{enumerate}
 \end{enumerate}
 
 \subsubsection{Experiment}
@@ -1591,21 +1699,325 @@ Time Spent = 6 h + 6 h + 6 h = 18 h
     \item Note down the possible state of the phone at the time of each alarm trigger.
 \end{itemize}
 
+\subsection{Feedback}
+\begin{enumerate}
+    \item Check out how the Alarms work on phone, that is, how the alarms are triggered accurately under all conditions. And try to replicate that inside our application. 
+\end{enumerate}
+
+
+
 \newpage
 \section{Week 7 : 2nd - 6th February 2026}
-Time Spent = 
+Time Spent = 7 h + 7 h + 7 h (Meeting 1) + 6 h + 3h = 30 h
 \subsection{Tasks}
 \begin{enumerate}
-    \item SAS-SV reading
-    \item MPAI (Mobile Phone Addiction Index) reading
-    \item MBT (Mindfulness Based Therapy) reading
-    \item Updating original timestamps of counting number of unlocks experiment (case 4)
+    \item SAS-SV reading \ref{sec: SAS-SV Update}. \hfill \textbf{[DONE]}
+    \item Updating original timestamps of counting number of unlocks experiment (case 4) \ref{sec: UsageMetricAccuracyTestingCase4}. \hfill \textbf{[DONE]}
     \item Updating definitions of 3 methods to find the screen time
 \end{enumerate}
 
-\subsection{JODO not accesible in power saving mode}
+\subsection{JODO not accesible in power saving mode, Error when returning to normal mode from power saving mode.}
+\begin{enumerate}
+    \item That is, when power saving mode is opened, jodo was not visible in the app list (wanted this to test if the device status (as mentioned in \ref{sec: Alarm Triggering - Power Status})) during power saving mode is right.
+    \item Moreover, when switched back from power saving mode to normal mode, \texttt{ACTIVITY\_MANAGER} is throwing the following error: 
+    
+\begin{lstlisting}[caption={ANR Error when returning from power saving mode},label={label: ANR Error when returning from power saving mode}]
+    ANR in in.ac.iitb.cse.jodo
+    PID: 21901
+    Reason: Broadcast of Intent { act=android.intent.action.SCREEN_ON flg=0x50200010 (has extras) }
+    ErrorId: e10abf5d-ee02-4cd1-bb8b-b011501f56a1
+    Frozen: s[false] g[false]
+ \end{lstlisting}
+
+    \item The phone screen went black, but the UI was responsive - that is, was able to open notification bar and open apps via 'recently closed apps' and function normally. But the when returning to the launcher, the screen was again black.
+    \item Link to the logs :
+    \begin{enumerate}
+        \item During the whole process of switching to power saving mode and back : 
+        \item The Error part : 
+    \end{enumerate}
+    \item Tested this (switching to and from power saving mode) on Samsung and Realme. 
+    \begin{enumerate}
+        \item Samsung: The issue was reproducible.
+        \item Realme offers both a power saving mode and a super power saving mode (samsung power saving mode was similar to Realme's super power saving mode in terms of creating minimal environment). The above issue is not seen in both the modes for RealMe.
+    \end{enumerate}
+
+\end{enumerate}
+
+\subsubsection{ANR Error Resolution}
+\begin{enumerate}
+    \item ANR (Application Not Responding) is said to occur when the UI thread is blocked for too long. 
+    \item For now added the compute (to get the phone state) into debug mode. 
+\end{enumerate}
 
 
+\newpage
+\section{WEEK 8 : 9th - 13th February 2026}
+Time Spent = 5 h + 5 h + 7 h (Meeting 1) + 7h + 3 h = 27 h
+\subsection{How Alarms work}
+Reference : 
+\begin{enumerate}
+    \item Alarm Scheduling Methods :
+    \begin{itemize}
+        \item Inexact Alarms
+        \begin{enumerate}
+            \item Doesn't provide guarantee on the alarm trigger time.
+            \item Said to trigger within an hour of the scheduled time but can get further delayed based on battery restrictions.
+            \item Example : \texttt{set()}, \texttt{setInexactRepeating()}, \texttt{setAndAllowWhileIdle()}
+            \item Available from Android 12.
+            \item \texttt{setWindow()} triggers the alarm within given window rather than the exact point. But again, is subjected to battery restrictions.
+        \end{enumerate}
+        \item Exact Alarms
+        \begin{enumerate}
+            \item Invokes alarm at the exact moment.
+            \item \texttt{setExact()} : nearly precise, battery restictions matter.
+            \item \texttt{setExactAndAllowWhileIdle()} : nearly precise even in case of battery restrictions.
+        \end{enumerate}
+    \end{itemize}
+\end{enumerate}
+\subsection{Adding Lock by Double Tap}
+Using Gesture Detector and Double Tap Listener \cite{Android_GestureDetector}
+
+\subsection{Android DeskClock}
+\begin{enumerate}
+    \item Android DeskClock is part of AOSP (Android Open Source Project). Repository : \url{https://android.googlesource.com/platform/packages/apps/DeskClock}
+    \item The target version of this source code is sdk:30.
+    \item List of the main files referred: 
+        \dirtree{%
+        .1 com/android/deskclock/.
+        .2 alarms/.
+        .3 AlarmStateManager.kt.
+        .3 AlarmUpdateHandler.kt.
+        .3 AlarmActivity.kt.
+        .2 provider/.
+        .3 Alarm.kt.
+        .3 AlarmInstance.kt.
+        .3 ClockDatabaseHelper.kt.
+        .3 ClockContract.kt.
+        .2 DeskClockBackupAgent.kt.
+        }
+    \item Setup for Alarm Scheduling:
+    \begin{enumerate}
+        \item Alarm refers to the rule of the alarm - that is, when to trigger, and repeation if any. Alarms are stored in \texttt{ALARM\_TABLE} in the SQLite database.
+        \item Alarm Instance is the specific upcoming event - that is, the scheduled alarm. Alarm Instances are stored in \texttt{INSTANCE\_TABLE}. 
+        \item Both the tables are set up in \texttt{ClockDatabaseHelper} class. 
+        The \texttt{ALARM\_TABLE} is updated only where there is a change made to the alarms by the user. 
+        The \texttt{INSTANCE\_TABLE} has a reference to the \texttt{ALARM\_TABLE}. 
+        When ever a rule from the \texttt{ALARM\_TABLE} is passed to the \texttt{ALARM\_MANAGER} to schedule the immediate next upcoming alarm event, 
+        the \texttt{INSTANCE\_TABLE} is updated with the details of this event along with an \texttt{INSTANCE\_ID}.
+        \item Also "on delete casacde" allows all instances from the \texttt{INSTANCE\_TABLE} to be deleted if the corresponding rule is deleted.
+    \end{enumerate}
+    \item Steps for Alarm Scheduling:
+    \begin{enumerate}
+        \item User saves an alarm -> row added to \texttt{ALARM\_TABLE} via the \texttt{AlarmActivity}.
+        \item \texttt{setupAlarmInstance} method of the \texttt{AlarmUpdateHandler} class is called where:
+        \begin{itemize}
+            \item An instance id is created.
+            \item With this instance id, a row/instance in the \texttt{INSTANCE\_TABLE} is added with \texttt{DEFAULT\_STATE} set to \texttt{SILENT\_STATE} which indiates the alarm is not yet firing but also not dismissed, it indicates the application is waiting for that alarm to be triggered.
+
+            There are many states in which an alarm instance can be such as : \texttt{DISMISSED\_STATE}, \texttt{PREDISMISSED\_STATE}, \texttt{MISSED\_STATE}, \texttt{SNOOZED\_STATE}, \texttt{FIRED\_STATE} etc..(as mentioned in \texttt{AlarmInstance.kt}) but these states are mainly required for allowing user to control the alarm - that is, to off or snooze the alarm.
+
+            But the \texttt{MISSED\_STATE} can be useful, because an alarm is in this state if the alarm was not triggered in the first place - that is, the application didn't receive the alarm. 
+            A check can be performed on this state and further action can be taken such as rescheduling the alarm or logging the event.
+
+            \item Once the instance is created, with reference to the instance id, this instance is registered via \texttt{registerInstance} method.
+        \end{itemize}
+\begin{lstlisting}[caption={DeskClock - Setting up an alarm instance},label={label: DeskClock - Setting up an alarm instance}]
+    private fun setupAlarmInstance(alarm: Alarm): AlarmInstance {
+    var newInstance = alarm.createInstanceAfter(Calendar.getInstance())
+    newInstance = AlarmInstance.addInstance(cr, newInstance)
+    AlarmStateManager.registerInstance(mAppContext, newInstance, true)
+    return newInstance
+    }
+ \end{lstlisting} 
+        \item The procedure for register the alarm instance with the AlarmManagerinvolves:
+        \begin{itemize}
+            \item The instance id is wrapped in a \texttt{PendingIntent} and sent to the OS \texttt{AlarmManager}.
+            \item \texttt{PendingIntent} is a wrapper around an \texttt{Intent} that allows the OS to execute the \texttt{Intent} at a later time. Configuration of \texttt{Intent} and \texttt{PendingIntent}: 
+
+\begin{lstlisting}[caption={DeskClock - PendingIntent which is sent to AlarmManager},label={label: DeskClock - PendingIntent which is sent to AlarmManager}]
+val stateChangeIntent: Intent =
+    createStateChangeIntent(context, ALARM_MANAGER_TAG, instance, newState)
+stateChangeIntent.addFlags(Intent.FLAG_RECEIVER_FOREGROUND)
+val pendingIntent: PendingIntent =
+    PendingIntent.getService(context, instance.hashCode(),
+    stateChangeIntent, PendingIntent.FLAG_UPDATE_CURRENT)
+\end{lstlisting} 
+
+            \begin{itemize}
+                \item Here, \texttt{FLAG\_RECEIVER\_FOREGROUND} is passed along with \texttt{PendingIntent}.
+
+                To manage the broadcast requests, android has two queues : foreground and background queues. 
+                When a broadcast message receiver intent is registered with android, it by default puts the intent into background queue.
+                The background queues are processed only when the foreground queue is empty. That is, the foreground queue is given more priority.
+
+                The \texttt{FLAG\_RECEIVER\_FOREGROUND} forces the intent to be registered in the foreground queue.
+            \end{itemize}
+
+            \item Once the \texttt{PendingIntent} is created, it is sent to the \texttt{AlarmManager} to schedule the alarm via \texttt{setExactAndAllowWhileIdle} and \texttt{setExact} as fallback.
+            
+\begin{lstlisting}[caption={DeskClock - Registering the alarm with AlarmManager},label={label: DeskClock - Registering the alarm with AlarmManager}]
+val am: AlarmManager = context.getSystemService(ALARM_SERVICE) as AlarmManager
+if (Utils.isMOrLater) {
+    // Ensure the alarm fires even if the device is dozing.
+    am.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, timeInMillis, pendingIntent)
+} else {
+    am.setExact(AlarmManager.RTC_WAKEUP, timeInMillis, pendingIntent)
+}
+\end{lstlisting}  
+            \begin{itemize}
+                \item While the \texttt{FLAG\_RECEIVER\_FOREGROUND} ensures the intent message is delivered with a high priority, the \texttt{setExactAndAllowWhileIdle} ensures that the alarm itself is triggered on time.
+            \end{itemize}           
+            
+        \end{itemize}
+    \end{enumerate}
+    \item Steps for Alarm Receiving:
+\begin{lstlisting}[caption={DeskClock - Registering the alarm with AlarmManager},label={label: DeskClock - Registering the alarm with AlarmManager}]
+override fun onReceive(context: Context, intent: Intent) {
+    val result: PendingResult = goAsync()
+    val wl: PowerManager.WakeLock = AlarmAlertWakeLock.createPartialWakeLock(context)
+    wl.acquire()
+    AsyncHandler.post {
+        handleIntent(context, intent)
+        result.finish()
+        wl.release()
+    }
+}
+\end{lstlisting}  
+
+    \begin{enumerate}
+        \item Whenever a broadcast message is received, the entry point is the \texttt{onReceive} method of the receiver class (here \texttt{AlarmStateManager} is registered as the \texttt{BoardcastReceiver} class). 
+        \item The main purpose of the this method would be receive the \texttt{Intent} which was passing via \texttt{PendingIntent} in the scheduling phase. Along with that, here is the reciever is doing the following: 
+        \begin{enumerate}
+            \item Making an asynchronous call (\texttt{goAsync()}) to handle the intent
+            \begin{itemize}
+                \item Since the reciever is working on the main thread/UI thread, going asynchronous performs the intent handling task on the background thread and doesn't freeze the UI.
+            \end{itemize}
+            \item Force waking up the CPU
+            \begin{itemize}
+                \item If the handling intent task is resource intensive, and if the device is in doze mode, the handling intent task might be delayed. 
+                \item To prevent this, a \texttt{WakeLock} is acquired to keep the CPU awake while the task is being processed.
+            \end{itemize}
+        \end{enumerate}
+    \end{enumerate}
+
+    \item Handling special cases:
+    \begin{enumerate}
+        \item Repeating Alarms
+        \begin{itemize}
+            \item When an alarm is triggered and reaches a terminal state (such as \texttt{DISMISSED\_STATE}, \texttt{PREDISMISSED\_STATE} or \texttt{MISSED\_STATE}), it is checked with the \texttt{ALARM\_TABLE} rules if that alarm is a repeating alarm or not. 
+            \item If it is a repeating alarm, the next instance is added to the \texttt{INSTANCE\_TABLE} and registered with the \texttt{AlarmManager} along with deleting the previous instance.
+        \end{itemize}
+        \item Reboot
+        \begin{itemize}
+            \item When the phone is rebooted, all the scheduled alarms are erased from the \texttt{AlarmManager}.
+            \item To handle this, another broadcast receiver is registered which listens to \texttt{ACTION\_BOOT\_COMPLETED} event.
+            \item When ever this event occurs, the app checks the \texttt{Instance\_TABLE} to check for the \texttt{SILENT\_STATE} alarms, that is, of the upcoming events. It also refers to \texttt{ALARM\_TABLE} to check if any new instances have to be created.
+            \item And for all the instances, the pendingIntents are passed to AlarmManager, that is, scheduled as per the steps mentioned above.
+        \end{itemize}
+        \item Change in time zones
+        \begin{itemize}
+            \item For this another broadcast receiver is registered (\texttt{ACTION\_TIME\_ZONE\_CHANGED}) which informs if there is a change is time zone.
+            \item Based on this, the previous intents are cancelled and the new pendingIntents are scheduled.
+        \end{itemize}
+    \end{enumerate}
+\end{enumerate}
+
+\subsubsection{Comparison with JODO}
+
+\begin{longtable}{|p{3cm}|p{5.5cm}|p{5.5cm}|}
+\caption{Comparison between Android DeskClock and JODO} 
+\label{tab:deskclock_comparison} \\
+
+\hline
+\textbf{Aspect} & \textbf{Android DeskClock} & \textbf{JODO} \\
+\hline
+\endfirsthead
+
+\hline
+\textbf{Aspect} & \textbf{Android DeskClock} & \textbf{JODO} \\
+\hline
+\endhead
+
+\hline
+\endfoot
+
+\hline
+\endlastfoot
+
+Alarm Table & 
+Since user can edit the alarm rules, the application uses the \texttt{ALARM\_TABLE} to store the rules. &
+Since there are only 3-4 static rules they are hardcoded as parameters passed to the scheduling method. \\
+\hline
+
+Scheduling trigger & 
+Triggered whenever user creates a new alarm  &
+Triggered whenever the home activity is created or boot complete is received. Triggered each time is home activity is created, duplicate intents can be sent to \texttt{AlarmManager} but duplicates get discarded at \texttt{AlarmManager} \\
+\hline
+
+Record of scheduled alarms & 
+Uses \texttt{INSTANCE\_TABLE} to keep a record of all upcoming alarms and their states. &
+Once alarm intent is passed to \texttt{AlarmManager}, no record of that alarm is maintained. But whenever the alarm is triggered, the receiver method acts according to the request code which identify the type of alarm (based on time). \\
+\hline
+
+Identification of alarms & 
+The \texttt{INSTANCE\_TABLE} helps identify each alarm uniquely because of the instance ids. & 
+Each alarm is not identified uniquely, but an alarm can be identified by request code which is passed in the intent. Each request code is associated with time the upload is scheduled \\
+\hline
+
+Broadcast Queue & 
+The intent is sent to foreground queue since \texttt{FLAG\_RECEIVER\_FOREGROUND} flag is used. & 
+Since the flag is not used, by default, must have been sent to background queue, which has less priority to be processed than foreground queue. \\
+\hline
+
+Alarm State & 
+At a point of time, each alarm instance is given a state such as dismissed, snoozed, fired, missed etc.. This is useful here since there is UI associated with the alarm. & 
+No states of alarms used. \\
+\hline
+
+Missed State & 
+Since for every instance, at each time, a state is associated, we can know when an alarm is missed due to any reason. &
+No way to know if the alarm is missed because states are not maintained and records of instances of alarms are also not maintained. \\
+\hline
+
+Asynchronous handling of intent & 
+The processing of intent also happens asynchronously. &
+The processing of the intent doesn't happen asynchronously, through the handling of the intent once the processing is done, is done asynchronously with the help of \texttt{doWork()} method which runs on the background thread. \\
+\hline
+
+Waking up CPU when Alarm is received & 
+\texttt{WakeLock} is used to wake up CPU if in doze mode when intent is received ensuring the processing of intent is not delayed from the application side.&
+No such method used, which can freeze the UI if the processing takes too long and might delay the processing of intent all together if the phone is in doze mode. \\
+\hline
+
+AlarmManager& 
+\texttt{setExactAndAllowWhileIdle} and \texttt{setExact} APIs are used to register the alarm with \texttt{AlarmManager}&
+Same APIs are used. \\
+\hline
+
+Repeating Alarms& 
+Whenever the current instance of alarm is triggered, it is check if the alarm is repeating and if it is repeating new instance is created.&
+Similar technique is followed but since we know that the alarms are repeating, alarm is scheduled again each time. \\
+\hline
+
+\end{longtable}
+
+
+
+\subsubsection{Improvements for JODO}
+\begin{enumerate}
+    \item Add \texttt{FLAG\_RECEIVER\_FOREGROUND} flag to the pending intent passed to the alarm manager.
+    \item Do the processing of the intent upon recieving the intent also asynchronously.
+    \item Force wakeup cpu when the alarm is received to prevent any delay in processing the intent from the application side.
+    \item Use the concept of instance table, because right now, whenever the home activity is created, the pendingintent is sent, though the duplicates are discarded from the Alarm Manager, unnecessary compute is increased.
+    \item Maintain states of the alarm instances, so that it gives us an idea if the alarm is missed, so that it can be logged or rescheduled incase the buffer time has not exceeded.
+    \item Instance ids can be used to identify each alarm uniquely rather than just identifying the type of alarm based on the request code.
+\end{enumerate}
+
+
+
+
+\newpage
+\section{}
 
 \newpage
 \printbibliography
