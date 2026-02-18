@@ -1774,13 +1774,11 @@ Reference :
         \end{enumerate}
     \end{itemize}
 \end{enumerate}
-\subsection{Adding Lock by Double Tap}
-Using Gesture Detector and Double Tap Listener \cite{Android_GestureDetector}
 
 \subsection{Android DeskClock}
 \begin{enumerate}
     \item Android DeskClock is part of AOSP (Android Open Source Project). Repository : \url{https://android.googlesource.com/platform/packages/apps/DeskClock}
-    \item The target version of this source code is sdk:30.
+    \item target sdk version : 30 (Android 11)
     \item List of the main files referred: 
         \dirtree{%
         .1 com/android/deskclock/.
@@ -1923,6 +1921,9 @@ override fun onReceive(context: Context, intent: Intent) {
 \end{enumerate}
 
 \subsubsection{Comparison with JODO}
+\label{sec: DeskClock_JODO_Comparison}
+
+Refer table \ref{tab:deskclock_comparison}
 
 \begin{longtable}{|p{3cm}|p{5.5cm}|p{5.5cm}|}
 \caption{Comparison between Android DeskClock and JODO} 
@@ -2004,6 +2005,7 @@ Similar technique is followed but since we know that the alarms are repeating, a
 
 
 \subsubsection{Improvements for JODO}
+\label{sec: DeskClock_JODO_Improvements}
 \begin{enumerate}
     \item Add \texttt{FLAG\_RECEIVER\_FOREGROUND} flag to the pending intent passed to the alarm manager.
     \item Do the processing of the intent upon recieving the intent also asynchronously.
@@ -2014,10 +2016,33 @@ Similar technique is followed but since we know that the alarms are repeating, a
 \end{enumerate}
 
 
-
-
 \newpage
-\section{}
+\section{WEEK 9: 16th February 2026 - }
+
+Time Spent = 7 h + 6 h
+
+\subsection{Tasks}
+\begin{enumerate}
+    \item Comparision of DeskClock with JODO \ref{sec: DeskClock_JODO_Comparison} \hfill \textbf{[DONE]}
+    \item Improvements for JODO based on DeskClock \ref{sec: DeskClock_JODO_Improvements} \hfill \textbf{[DONE]}
+\end{enumerate}
+
+\subsection{Adding Lock by Double Tap}
+Using Gesture Detector and Double Tap Listener \cite{Android_GestureDetector}
+\begin{lstlisting}[caption={UI Feature - Double Tap Listener},label={label: Double Tap Listener}]
+    new GestureDetector.SimpleOnGestureListener() {
+        @Override
+        public boolean onDoubleTap(MotionEvent e) {
+            handleLockNow(); // reuse existing logic
+            return true;
+        }
+    }
+\end{lstlisting} 
+\begin{enumerate}
+    \item This allows to lock phone by double tapping anywhere on the lock screen, and not just the 'Lock Now' button.
+    \item Requires the 'Device Lock Admin' permission same as for the lock now button.
+    \item Again requires to enter password to unlock again - can't be unlocked via fingerprint. 
+\end{enumerate} 
 
 \newpage
 \printbibliography
