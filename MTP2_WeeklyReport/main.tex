@@ -2109,8 +2109,35 @@ wakeLock.acquire(2*60*1000L);
 \newpage
 \section{WEEK 11: 16th March 2026 - }
 Time Spent : 6 h + 
-\subsection{Bug}
-\subsection{Other Observations}
+\subsection{Observations}
+\begin{enumerate}
+    \item On launcher screen, the horizontal bar shows average screen time (last 7 days), instead of yesterday's screen time.
+    \begin{enumerate}
+        \item Current Implementation:
+        \begin{itemize}
+            \item LiveData model is used to ensure updates of screen time of the launcher.
+            \item The \texttt{UsageSummaryEntity} stores today and average screen time which is populated from \texttt{NotificationForegroundService} and \texttt{UsageStatsWorker}; and can be accessed using getUsageSummary().
+        \end{itemize}
+        \item Proposed change:
+        \begin{itemize}
+            \item Add another entry to the \texttt{UsageSummaryEntity} to maintain the yesterday's screen time.
+            \item Either use the existing function to get yesterday's screen time or fetch it from local db if stored.
+        \end{itemize}
+    \end{enumerate}
+    \item When server is off, local history is not getting updated. That is, the usage details are not updated in the local database also.
+    \begin{enumerate}
+        \item Current implementation:
+        \begin{itemize}
+            \item 
+        \end{itemize}
+    \end{enumerate}
+    \item When the server is off,
+    \begin{enumerate}
+        \item Leaderboard is showing the data as per the time when server was off, which is fine.
+        \item Ongoing competition is showing nothing.
+        \item There is a mismatch in recent competition data.
+    \end{enumerate}
+\end{enumerate}
 
 \newpage
 \printbibliography
