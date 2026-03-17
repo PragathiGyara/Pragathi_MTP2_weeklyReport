@@ -2017,9 +2017,9 @@ Similar technique is followed but since we know that the alarms are repeating, a
 
 
 \newpage
-\section{WEEK 9: 16th February 2026 - }
+\section{WEEK 9: 16th February 2026 - 20th February 2026}
 
-Time Spent = 7 h + 6 h
+Time Spent = 7 h + 6 h + 6 h + 7 h + 3 h = 29 h
 
 \subsection{Tasks}
 \begin{enumerate}
@@ -2043,6 +2043,74 @@ Using Gesture Detector and Double Tap Listener \cite{Android_GestureDetector}
     \item Requires the 'Device Lock Admin' permission same as for the lock now button.
     \item Again requires to enter password to unlock again - can't be unlocked via fingerprint. 
 \end{enumerate} 
+
+\newpage
+\section{WEEK 10: 4th March 2026 - 6th March 2026}
+Time Spent : 7 h + 7 h + 3h = 17 h
+
+\subsection{Alarm Accuracy Improvements - Implementation}
+\begin{enumerate}
+    \item It is observed (refer fig. ) that the alarm was not triggered/received on time by the JODO app which causes delay in uploading the usage data to the server (since the API call is triggered based on alarm, every day at 5pm, 10 pm and 7am).
+    
+    This delay impacts on the results of the competitiion, leaderboard and rewards. 
+    That is, though the user intends to participant in the competition and has the application running, they might be left out of the results for that day.
+    \item Upon analysing the DeskClock (open source real time alarm based project provided by Android), there are few improvements identified for JODO, as mentioned in section \ref{sec: DeskClock_JODO_Improvements}.
+    \item Below is the implementation details of the changes:
+    \begin{enumerate}
+        \item Adding \texttt{FLAG\_RECEIVER\_FOREGROUND}
+        \begin{itemize}
+            \item To manage the broadcast requests, android has two queues : foreground and background queues. 
+            \item When a broadcast message receiver intent is registered with android, it by default puts the intent into background queue.
+            \item The background queues are processed only when the foreground queue is empty. That is, the foreground queue is given more priority.
+            \item The \texttt{FLAG\_RECEIVER\_FOREGROUND} forces the intent to be registered in the foreground queue.
+            \item The updated \texttt{PendingIntent} passed to the Android AlarmManager is listed below (Refer \ref{label: Updated PendingIntent for AlarmScheduling}) : 
+\begin{lstlisting}[caption={Updated PendingIntent for AlarmScheduling},label={label: Updated PendingIntent for AlarmScheduling}]
+// Ensure alarm broadcast is processed with foreground priority
+intent.addFlags(Intent.FLAG_RECEIVER_FOREGROUND);
+
+PendingIntent pendingIntent = PendingIntent.getBroadcast(
+    context,
+    requestCode,
+    intent,
+    PendingIntent.FLAG_IMMUTABLE | PendingIntent.FLAG_UPDATE_CURRENT
+);
+\end{lstlisting}  
+        \end{itemize}
+        \item Asynchronous processing of an alarm
+        \begin{itemize}
+            \item Upon receiving an alarm, background workers are called to handle the API calls to upload the data to the server. But some of the tasks are still running on the main thread, that is, the UI thread such as logging, setting up constraints (that is, checking is network is present or not), calling the workers and rescheduling alarms.
+            \item Though these are lightweight operations it was sometimes causing ANR (Application Not Responding) error since its running on the UI thread.
+            \item In this step, this processing when alarm is received is also made asynchronous using goAsync() method for BoardcastReceiver. This would also allow to add further processing if required without slowing down the UI when the alarm is received.
+        \end{itemize}
+        \item Force wake up CPU
+        \begin{enumerate}
+            \item Though the alarm is received, it might happen that the worker is not exectued because the CPU goes to sleep.
+            \item Though \texttt{AndroidManager.RTC\_WAKE} wakes the CPU momentarily when the alarm is received, it doesn't ensure that the CPU is up till the background process finishes execution.
+            \item Hence, using \texttt{PowerManager.PARTIAL\_WAKE\_LOCK} as per the DeskClock. The partial wake lock ensures that CPU is active but not necessarily the user interaction.
+            \item This lock is acquired and is released before alarm broadcast reciever thread finishes execution. 
+            \item A timeout of 2 minutes (?) is kept to make sure that the wake lock is not acquired for a longer time since it may cause battery drain.
+            \item The code for acquiring partial wake lock is listed below (refer \ref{label: Acquiring Partial Wake Lock}): 
+\begin{lstlisting}[caption={Acquiring Partial Wake Lock},label={label: Acquiring Partial Wake Lock}]
+PowerManager powerManager = (PowerManager) appContext.getSystemService(Context.POWER_SERVICE);
+final PowerManager.WakeLock wakeLock = powerManager.newWakeLock(
+    PowerManager.PARTIAL_WAKE_LOCK,
+    "JODO::AlarmWakeLock"
+);
+//Acquire with timeout
+wakeLock.acquire(2*60*1000L);
+\end{lstlisting} 
+        \end{enumerate}
+    \end{enumerate}
+    \item Logs are updated to record the timestamps of the alarms.
+    \item Results: 
+\end{enumerate}
+
+
+\newpage
+\section{WEEK 11: 16th March 2026 - }
+Time Spent : 6 h + 
+\subsection{Bug}
+\subsection{Other Observations}
 
 \newpage
 \printbibliography
