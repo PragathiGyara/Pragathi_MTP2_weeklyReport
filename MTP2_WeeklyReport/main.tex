@@ -2158,8 +2158,8 @@ Time Spent =
     \item Participants must have an Android phone.
     \item Participants must be willing to install the application on their phone.
     \item Participants should be willing to change their phone launcher (negotiable).
-    \item Participants must be willing to participate in the daily, weekly and the overall competition.
     \item Participants must be willing to share their screen usage statistics for every day during the duration of the study.
+    \item Participants must be willing to participate in the daily, weekly and the overall competition.
     \item Participants can be students from UG, PG or PhD programs.
     \item Target sample size : 30
     \item Recruitment strategy:
@@ -2173,23 +2173,24 @@ Time Spent =
 
 \textbf{Participant Briefing}
 \begin{enumerate}
-    \item This study aims to understand how effective competition is in motivating people to reduce their phone usage.
-    \item It also looks at whether incentives and real-world rewards (like discounts and coupons) help in reducing screen time.
+    \item This study aims to understand how effective competition is, in motivating people to reduce their phone usage.
+    \item It also looks at whether incentives/real-world rewards (like discounts and coupons) help in reducing screen time.
     \item Participants need to install the application and complete the setup (including login).
     \item After setup, participants can use their phone normally. The app will show reminders and stats like screen time and unlock count on the lock screen, launcher, and notifications.
     \item The study includes a competition. Each day, usage stats are compared across participants. The person with the lowest usage wins. A "day" is defined from 5:00 PM to 5:00 PM the next day. Internet connectivity is required so that data can be uploaded.
     \item There are three types of competitions, which the user would automatically be part of:
     \begin{itemize}
         \item Daily (resets every day at 5:00 PM)
-        \item Weekly
+        \item Weekly (resets every Sunday at 5:00 PM)
         \item Overall (across the study duration)
     \end{itemize}
     \item Winners can get rewards such as discounts and coupons.
     \item Participants are expected to set this app as their default launcher.
-    \item To be eligible for rewards, participants must take part for at least 1 week.
-    \item To be eligible for the overall competition, participants must take part for at least 2 weeks.
+    \item To be eligible for rewards, participants must take part for at least 1 week (but that would effect the purpose of instant rewards)
+    \item To be eligible for the overall competition, participants must take part for at least 2 weeks (so that enough data is collected).
     \item The app has a "Report Issue" option that can be used if needed.
     \item Participants need to fill out a survey at the start and at the end of the study.
+    \item Participants will also be told about how the leaderboard works and criteria to win rewards for each competition.
 \end{enumerate}
 
 
@@ -2197,8 +2198,19 @@ Time Spent =
 \begin{enumerate}
     \item Start of the study survey
     \item End of the study survey
-    \item Daily screen usage statistics (screen time session wise: , total screen time, unlock count)
-    \item logs
+    \item Daily screen usage Statistics:
+    \begin{enumerate}
+        \item Screen time session wise
+        \begin{itemize}
+            \item Session 1: 5 pm to 10 pm (Evening)
+            \item Session 2: 10 pm to 7 am (Night)
+            \item Session 3: 7 am to 5 pm (Day)
+        \end{itemize}
+        \item Total screen time
+        \item Total Unlock count
+        \item Total App Launch Count
+    \end{enumerate}
+    \item Logs of the application
 \end{enumerate}
 
 \subsubsection{Experiment Design}
@@ -2257,9 +2269,14 @@ Time Spent =
 \end{enumerate}
 
 
-\subsubsection{Analysis}
-
 \subsubsection{Survey form}
+\begin{enumerate}
+    \item The objective of the survey
+    \begin{itemize}
+        \item Collect basic information of the participant.
+        \item Get qualitative feedback.
+    \end{itemize}
+\end{enumerate}
 
 
 \subsubsection{Participant Details form}
@@ -2267,18 +2284,31 @@ Time Spent =
 \newpage
 \section{Week 13: 30th March 2026 - 2nd April 2026}
 
-\subsubsection{Proposed Timeline of Work}
-\begin{enumerate}
-    \item 30th March - 5th April : 
-    \item 5th April - 15th April : Recruitment
-    \item 15th April - 20th May : User Study
-\end{enumerate}
-
 \subsection{TO DO}
 \begin{enumerate}
-    \item logs to detect uninstall of the application
-    \item Contact or report issues option.
+    \item Making sure that the application runs properly even if not set as launcher.
+    \item Overall competition logic update
+    \begin{itemize}
+        \item Participants can join and leave anytime.
+        \item 2 week continuous participation mandatory.
+        \item Consider the participant in the overall competition if they have completed any 2 continuous weeks during the study while giving priority to the participant with longer duration.
+    \end{itemize}
+    \item Add "Report Issues" option.
 \end{enumerate}
+
+
+\subsection{Proposed Timeline of Work}
+\begin{enumerate}
+    \item Make final modifications of the the app as mentioned above : 5th April 2026
+    \item Refined user study proposal : 6th April 2026
+    \item Test the application with 3-5 real users and automated users : 6th April 2026 - 8th April 2026
+    \item Get feedback and make necessary changes : 8th - 11th April 2026
+    \item Finalize the application for deployment : 12th April 2026
+    \item Start Recruitment : 6th April 2026 - 13th April 2026
+    \item User Study : 15th April 2026 - 20th May 2026
+\end{enumerate}
+
+
 
 
 \newpage
