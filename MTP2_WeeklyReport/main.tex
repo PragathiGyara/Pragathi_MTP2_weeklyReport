@@ -133,16 +133,16 @@ Time Spent : 9 - 10 hours
 
 \subsection{Observations}
 \begin{enumerate}
-    \item Created a new account. The baseline data of last 7 days didn't upload (it was uploaded only for previous day). Refer Fig. \ref{fig:Baseline data not uploaded correctly}
+    \item Created a new account. The baseline data of last 7 days didn't upload (it was uploaded only for previous day). Refer Fig. \ref{fig:Baseline_data_not_uploaded_correctly}
 
-    \item The next day usage session data is also considered as baseline. Refer Fig. \ref{fig:Baseline data not uploaded correctly}
+    \item The next day usage session data is also considered as baseline. Refer Fig. \ref{fig:Baseline_data_not_uploaded_correctly}
 \end{enumerate}
 
 \begin{figure}
     \centering
     \includegraphics[width=1\linewidth]{Images/BaselineDataIssue.png}
     \caption{Baseline data not uploaded correctly}
-    \label{fig:Baseline data not uploaded correctly}
+    \label{fig:Baseline_data_not_uploaded_correctly}
 \end{figure}
 
 \newpage
@@ -191,16 +191,16 @@ Time Spent : 22-23h
             \textit{Issue:} When the baseline worker ran before 5 pm, it tried to upload data for a day that was still in progress.
             
             \textit{Fix:} The worker was updated to always upload the last fully completed day by shifting the baseline window when needed.
-            
-        \item 7 days data not uploaded. Ref \ref{fig:Incomplete Baseline Upload} \hfill \textbf{[RESOLVED]}
-\begin{figure} 
+
+        \item 7 days data not uploaded. Ref \ref{fig:Incomplete_Baseline_Upload} \hfill \textbf{[RESOLVED]}
+\begin{figure}
             \centering
             \includegraphics[width=1\linewidth]{Images/IncorrectBaselineUpload.png}
             \caption{Incomplete Baseline Upload}
-            \label{fig:Incomplete Baseline Upload}
+            \label{fig:Incomplete_Baseline_Upload}
         \end{figure}
-                
-        \item Error when total session is trying to be uploaded. Ref \ref{fig:Error While Uploading Baseline} \hfill \textbf{[RESOLVED]}
+
+        \item Error when total session is trying to be uploaded. Ref \ref{fig:Error_While_Uploading_Baseline} \hfill \textbf{[RESOLVED]}
 
         \textit{Fix:} Temporarily commented out the 
         \texttt{HealthConnectUtils.readStepsBetweenBlocking} since there was no usage.
@@ -208,16 +208,16 @@ Time Spent : 22-23h
             \centering
             \includegraphics[width=1\linewidth]{Images/ErrorUploadingBaseline.png}
             \caption{Error While Uploading Baseline}
-            \label{fig:Error While Uploading Baseline}
+            \label{fig:Error_While_Uploading_Baseline}
         \end{figure}         
     \end{itemize}
 
-    \item Figure \ref{fig:Corrected Baseline Upload} shows the final baseline upload after fixing the above issues. 
+    \item Figure \ref{fig:Corrected_Baseline_Upload} shows the final baseline upload after fixing the above issues. 
 \begin{figure}
     \centering
     \includegraphics[width=1\linewidth]{Images/CorrectedBaselineUpload.png}
     \caption{Corrected Baseline Upload}
-    \label{fig:Corrected Baseline Upload}
+    \label{fig:Corrected_Baseline_Upload}
 \end{figure}
 \end{enumerate}
 
@@ -249,7 +249,7 @@ Time Spent : 22-23h
     \begin{itemize}
         \item 
     \end{itemize}
-    \item JODO vs Digital Wellbeing. Ref table \ref{tab:Interpretation of screen time - JODO vs Digital Wellbeing}
+    \item JODO vs Digital Wellbeing. Ref table \ref{tab:Interpretation_of_screen_time_-_JODO_vs_Digital_Wellbeing}
 
     \begin{table}
         \centering
@@ -262,7 +262,7 @@ Time screen is ON\\\hline
              Duration of day&  5 pm to 5 pm & 12 am to 12 am\\ \hline
         \end{tabularx}
         \caption{Interpretation of screen time - JODO vs Digital Wellbeing}
-        \label{tab:Interpretation of screen time - JODO vs Digital Wellbeing}
+        \label{tab:Interpretation_of_screen_time_-_JODO_vs_Digital_Wellbeing}
     \end{table}
 
     \item Approach : 
@@ -338,8 +338,8 @@ Time Spent = 6 h + 7 h + 8 h + 2 h + 7 h = 30 h
             \cite{MicrosoftLearn_UsageStats_TimeVisible} 
 
             \textbf{\texttt{getTotalTimeVisible()} is used as fallback if \texttt{getTotalTimeInForeground()} is not available in the android version on the user's phone.}
-            
-            \begin{lstlisting}[caption={Calculating screen time using UsageStats},label={Calculating screen time using UsageStats}]
+
+            \begin{lstlisting}[caption={Calculating screen time using UsageStats},label={Calculating_screen_time_using_UsageStats}]
                 if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.Q) {
                     foregroundTimeMs = stats.getTotalTimeVisible();
                 } else {
@@ -353,13 +353,13 @@ Time Spent = 6 h + 7 h + 8 h + 2 h + 7 h = 30 h
 
         \item Implemented an interface which allows us to start and end experiment. And then show the results of current experiment results on the interface at the end.
 
-        \item Writing on the measured usage metrics onto the log file. Sample result of the entries made into the log file can be in seen in the figure \ref{fig:Usage Metrics Accuracy Testing Logs}
+        \item Writing on the measured usage metrics onto the log file. Sample result of the entries made into the log file can be in seen in the figure \ref{fig:Usage_Metrics_Accuracy_Testing_Logs}
 
         \begin{figure}
             \centering
             \includegraphics[width=1\linewidth]{Images/AccuracyTestingLogs.png}
             \caption{Usage Metrics Accuracy Testing Logs}
-            \label{fig:Usage Metrics Accuracy Testing Logs}
+            \label{fig:Usage_Metrics_Accuracy_Testing_Logs}
         \end{figure}
     \end{itemize}
 
@@ -391,8 +391,8 @@ Time Spent = 6 h + 7 h + 8 h + 2 h + 7 h = 30 h
 \subsubsection{Participants}
 \begin{enumerate}
     \item Number of participants = 47
-    \item Age of 78.7\% (i.e.,37) of the participants was under 21. Refer tab.\ref{tab:Survey - Participants Age Distribution}
-    
+    \item Age of 78.7\% (i.e.,37) of the participants was under 21. Refer tab.\ref{tab:Survey_Participants_Age_Distribution}
+
     \begin{table}
         \centering
         \begin{tabular}{|c|c|c|}\hline
@@ -405,7 +405,7 @@ Time Spent = 6 h + 7 h + 8 h + 2 h + 7 h = 30 h
  Total& 47&100\%\\\hline
         \end{tabular}
         \caption{Survey - Participants Age Distribution}
-\label{tab:Survey - Participants Age Distribution}
+\label{tab:Survey_Participants_Age_Distribution}
     \end{table}
 
     \item 18 female (38.3\%) and 29 male (61.7\%).
@@ -416,8 +416,8 @@ Time Spent = 6 h + 7 h + 8 h + 2 h + 7 h = 30 h
 \begin{enumerate}
     \item Based on ranges (that is, when asked to chose their average daily usage in ranges).
     \begin{itemize}
-        \item     65.9\% of the participants reported their usage to be between 2-6 hours - with 34\% to be between 2-4 hours and 31.9\% to be between 4-6 hours. Refer fig. \ref{fig:Survey - Smartphone Usage Distribution}
-        \item The average usage was 254.7 min/day, i.e., 4.24 hours/day. And the median usage was 5 hours/day. Refer fig. \ref{fig:Survey - Smartphone Usage Summary}
+        \item     65.9\% of the participants reported their usage to be between 2-6 hours - with 34\% to be between 2-4 hours and 31.9\% to be between 4-6 hours. Refer fig. \ref{fig:Survey_Smartphone_Usage_Distribution}
+        \item The average usage was 254.7 min/day, i.e., 4.24 hours/day. And the median usage was 5 hours/day. Refer fig. \ref{fig:Survey_Smartphone_Usage_Summary}
     \end{itemize}
     \item Based on exact figures as entered by the participants (40/47 valid answers)
     \begin{itemize}
@@ -428,24 +428,24 @@ Time Spent = 6 h + 7 h + 8 h + 2 h + 7 h = 30 h
     \centering
     \includegraphics[width=1\linewidth]{Images/SmartphoneUsageDistributio.png}
     \caption{Survey - Smartphone Usage Distribution}
-    \label{fig:Survey - Smartphone Usage Distribution}
+    \label{fig:Survey_Smartphone_Usage_Distribution}
 \end{figure}
 
 \begin{figure}
     \centering
     \includegraphics[width=1\linewidth]{Images/SmartphoneUsageSummary.png}
     \caption{Survey - Smartphone Usage Summary}
-    \label{fig:Survey - Smartphone Usage Summary}
+    \label{fig:Survey_Smartphone_Usage_Summary}
 \end{figure}
 \end{enumerate}
 
 \subsubsection{Participants' Opinions on their Smartphone Usage}
 \begin{enumerate}
-    \item 53.19\% of the participants either agreed or strongly agreed that they spent more than intended time on their phones. 27.7\% of the participants were neutral about it, while only 19.1\% of the users were satisfied by the time they spend on smartphones. Refer fig. \ref{fig:Spend more time than intended}
+    \item 53.19\% of the participants either agreed or strongly agreed that they spent more than intended time on their phones. 27.7\% of the participants were neutral about it, while only 19.1\% of the users were satisfied by the time they spend on smartphones. Refer fig. \ref{fig:Spend_more_time_than_intended}
 
-    \item 44.6\% reported to be comfortable not doing anything for a while (refer fig. \ref{fig:Comfortable doing nothing}) while only 12.7\% didn't agree, while the others reported neutral.
+    \item 44.6\% reported to be comfortable not doing anything for a while (refer fig. \ref{fig:Comfortable_doing_nothing}) while only 12.7\% didn't agree, while the others reported neutral.
 
-    \item 57.44\% reported that their smartphones can be distracting at times. Refer fig. \ref{fig:Find phone distracting}
+    \item 57.44\% reported that their smartphones can be distracting at times. Refer fig. \ref{fig:Find_phone_distracting}
 
 \end{enumerate}
 
@@ -457,7 +457,7 @@ Time Spent = 6 h + 7 h + 8 h + 2 h + 7 h = 30 h
     \centering
     \includegraphics[width=\linewidth]{Images/SurveyUserOpinionGraph1.png}
     \caption{Find phone distracting}
-    \label{fig:Find phone distracting}
+    \label{fig:Find_phone_distracting}
   \end{subfigure}
 
   \vspace{0.6cm}
@@ -466,7 +466,7 @@ Time Spent = 6 h + 7 h + 8 h + 2 h + 7 h = 30 h
     \centering
     \includegraphics[width=\linewidth]{Images/SurveyUserOpinionGraph2.png}
     \caption{Spend more time than intended}
-    \label{fig:Spend more time than intended}
+    \label{fig:Spend_more_time_than_intended}
   \end{subfigure}
 
   \vspace{0.6cm}
@@ -475,11 +475,11 @@ Time Spent = 6 h + 7 h + 8 h + 2 h + 7 h = 30 h
     \centering
     \includegraphics[width=\linewidth]{Images/SurveyUserOpinionGraph4.png}
     \caption{Asked if comfortable doing nothing}
-    \label{fig:Comfortable doing nothing}
+    \label{fig:Comfortable_doing_nothing}
   \end{subfigure}
 
   \caption{Survey - User Opinions}
-  \label{fig:Survey - User Opinions}
+  \label{fig:Survey_User_Opinions}
 \end{figure}
 
 \newpage
@@ -841,13 +841,13 @@ This is a review article which talks about the psychosocial interventions, the t
     \item Phone Configurations : Screen timeout set to 5 min.
     \item Controlled events : 1 unlock + screen set on launcher after unlock.
     \item Results : 
-    
-    Refer image \ref{fig:Usage Metrics Accuracy Testing Results - Case 1}
+
+    Refer image \ref{fig:Usage_Metrics_Accuracy_Testing_Results_Case_1}
     \begin{figure}
         \centering
         \includegraphics[width=0.25\linewidth]{Images/AccuracyTesting_Experiment14.jpeg}
         \caption{Usage Metrics Accuracy Testing Results - Case 1}
-        \label{fig:Usage Metrics Accuracy Testing Results - Case 1}
+        \label{fig:Usage_Metrics_Accuracy_Testing_Results_Case_1}
     \end{figure}
 
     \begin{enumerate}
@@ -903,7 +903,7 @@ This is a review article which talks about the psychosocial interventions, the t
         \bottomrule
         \end{tabular}
         \caption{Interaction events captured during experiment - Case 2}
-        \label{tab:Interaction events captured during experiment - Case 2}
+        \label{tab:Interaction_events_captured_during_experiment_Case_2}
     \end{table}
 
     \item Controlled events summary :
@@ -1003,7 +1003,7 @@ This is a review article which talks about the psychosocial interventions, the t
 
             \end{tabular}
             \caption{Difference between measured and actual usage metrics (Case 2)}
-            \label{tab:actual-measured-case2}
+            \label{tab:actual_measured_case2}
         \end{table}
 
         
@@ -1022,7 +1022,7 @@ This is a review article which talks about the psychosocial interventions, the t
     
     \begin{longtable}{c p{8cm} p{3cm}}
         \caption{Interaction events captured during experiment - Case 3}
-        \label{tab:Interaction events captured during experiment - Case 3} \\
+        \label{tab:Interaction_events_captured_during_experiment_Case_3} \\
 
         \toprule
         \textbf{Event No.} & \textbf{Event Description} & \textbf{Time elapsed (hh:mm:ss.ms)} \\
@@ -1138,13 +1138,13 @@ This is a review article which talks about the psychosocial interventions, the t
 
 
     \item Results :     
-    
-    Refer image \ref{fig:Usage Metrics Accuracy Testing Results - Case 3}
+
+    Refer image \ref{fig:Usage_Metrics_Accuracy_Testing_Results_Case_3}
     \begin{figure}
         \centering
         \includegraphics[width=0.25\linewidth]{Images/AccuracyTesting_Experiment21.png}
         \caption{Usage Metrics Accuracy Testing Results - Case 3}
-        \label{fig:Usage Metrics Accuracy Testing Results - Case 3}
+        \label{fig:Usage_Metrics_Accuracy_Testing_Results_Case_3}
     \end{figure}
     
     \begin{enumerate}
@@ -1206,7 +1206,7 @@ This is a review article which talks about the psychosocial interventions, the t
 
             \end{tabular}
             \caption{Difference between measured and actual usage metrics (Case 3)}
-            \label{tab:actual-measured-case3}
+            \label{tab:actual_measured_case3}
         \end{table}
 
         \item From Method 1, the time spent on JODO application is 14 min 12 s (which is, including launcher time - excluding launcher time).
@@ -1325,26 +1325,26 @@ This is a review article which talks about the psychosocial interventions, the t
     \end{enumerate}
     
     \item Results:
-    
-    Refer image : \ref{fig:Usage Metrics Accuracy Testing Results - Case 4}
+
+    Refer image : \ref{fig:Usage_Metrics_Accuracy_Testing_Results_Case_4}
     \item The total unlocks recorded is 34.
     
-    \begin{figure}[t]
+    \begin{figure}[htbp]
         \centering
         \begin{subfigure}{0.25\textwidth}
             \centering
             \includegraphics[width=\linewidth]{Images/AccuracyTesting_Experiment27a.png}
             \caption{Results}
-            \label{fig:Case 4 a}
+            \label{fig:Case_4_a}
         \end{subfigure}
         \begin{subfigure}{0.25\textwidth}
             \centering
             \includegraphics[width=\linewidth]{Images/AccuracyTesting_Experiment27b.png}
             \caption{results - continued}
-            \label{fig:Case 4 b}
+            \label{fig:Case_4_b}
         \end{subfigure}
         \caption{Usage Metrics Accuracy Testing Results - Case 4}
-        \label{fig:Usage Metrics Accuracy Testing Results - Case 4}
+        \label{fig:Usage_Metrics_Accuracy_Testing_Results_Case_4}
     \end{figure}
 
     \item Observations: 
@@ -1359,7 +1359,7 @@ This is a review article which talks about the psychosocial interventions, the t
 \begin{enumerate}
     \item In the earlier implementation, when the unlock event, that is, the \texttt{KEYGUARD\_SHOWN} came across in the event logs, the unlock count was incremented.
     \item Now modified to maintain list of unlock events. 
-    \item At the end of experiment, the list is parsed and the unlock event along with timestamp is displayed on the UI \ref{fig:Usage Metrics Accuracy Testing Results - Case 4} 
+    \item At the end of experiment, the list is parsed and the unlock event along with timestamp is displayed on the UI \ref{fig:Usage_Metrics_Accuracy_Testing_Results_Case_4} 
     and also this is added into the app logs for persitency.
 \end{enumerate}
     
@@ -1423,7 +1423,7 @@ Reference : \cite{SAS_SV} \cite{SAS_SV_India}
     
     \textbf{UPDATE : }
 
-    \item \label{sec: SAS-SV Update} Meta analysis tells us if an intervention is good compared to control group or not. The output of the meta analysis is the SMD (Standard Mean Difference).
+    \item \label{sec:SAS-SV_Update} Meta analysis tells us if an intervention is good compared to control group or not. The output of the meta analysis is the SMD (Standard Mean Difference).
     \item Standard Mean Difference (SMD) for a single intervention is computed as 
     \[
         \mathrm{SMD} = \frac{\bar{x}_1 - \bar{x}_2}{s_p}
@@ -1458,7 +1458,7 @@ Reference : \cite{SAS_SV} \cite{SAS_SV_India}
         
         But since the aim of the study was to determine if the interventions have a positive effect or not, and if yes, which intervention is the best, I assume, that the drops in the addiction scores are not directly reported in this paper.
 
-        Though I have calculated drop for some intervention methods based on the sample size and standard deviation reported in the paper to get an high level understanding. Refer \ref{}
+        Though I have calculated drop for some intervention methods based on the sample size and standard deviation reported in the paper to get an high level understanding. 
         Result of individual interventions : 
         
         \begin{table}[h]
@@ -1711,7 +1711,7 @@ Collector.collectPhoneState(context);
 Time Spent = 7 h + 7 h + 7 h (Meeting 1) + 6 h + 3h = 30 h
 \subsection{Tasks}
 \begin{enumerate}
-    \item SAS-SV reading \ref{sec: SAS-SV Update}. \hfill \textbf{[DONE]}
+    \item SAS-SV reading \ref{sec:SAS-SV_Update}. \hfill \textbf{[DONE]}
     \item Updating original timestamps of counting number of unlocks experiment (case 4) \ref{sec: UsageMetricAccuracyTestingCase4}. \hfill \textbf{[DONE]}
     \item Updating definitions of 3 methods to find the screen time
 \end{enumerate}
@@ -1853,7 +1853,7 @@ val pendingIntent: PendingIntent =
 
             \item Once the \texttt{PendingIntent} is created, it is sent to the \texttt{AlarmManager} to schedule the alarm via \texttt{setExactAndAllowWhileIdle} and \texttt{setExact} as fallback.
             
-\begin{lstlisting}[caption={DeskClock - Registering the alarm with AlarmManager},label={label: DeskClock - Registering the alarm with AlarmManager}]
+\begin{lstlisting}[caption={DeskClock - Registering the alarm with AlarmManager},label={label: DeskClock - Registering the alarm with AlarmManager_}]
 val am: AlarmManager = context.getSystemService(ALARM_SERVICE) as AlarmManager
 if (Utils.isMOrLater) {
     // Ensure the alarm fires even if the device is dozing.
@@ -2309,6 +2309,236 @@ Time Spent =
 \end{enumerate}
 
 
+\newpage
+\section{18th -22nd May 2026}
+Improvements/changes made to the application: 
+\begin{enumerate}
+    \item Added option to delete app from app drawer
+    
+    Right now, if the user wants to delete the application, they need to go to settings and delete the application. That again is similar to the 'unfollow friction'. To make it easier for the user to delete the application, an option is added to delete the application from the app drawer itself.
+
+    Had to be careful to not to allow accidental deletions of any system level applications. First of all, android doesn't allow to delete system level applications. Second of all, our app drawer doesn't show the system level applications.
+
+    Another benefit of over general launchers is that, the launchers sometimes doesn't allow deletion of applications like youtube or facebook via launcher, which are pre-installed in the phone. Our launcher allows deletion of this without any extra friction.
+    \item Added option to hide app from app drawer. The users might not want to delete the application. But as a quick reflection to their overuse might want to hide the application. 
+    
+    This adds additional friction of not finding the application even if they search for it. To open the application they need to do it via playstore.
+
+    Should add restore hidden apps feature somewhere in the application. 
+    \item Moved app drawer fragement to the left side of the launcher and stats page to the right side.
+    
+    Reason : Observation is that in most of the applications right click is for forward and left click is for backward. And most of the launchers are also present on the left side. So a small tweak to that to add some more friction.
+    \item Components of Stats Fragment
+    \begin{itemize}
+        \item It is present on the right side of the launcher where I am assuming the user would look for launcher.
+        \item The objective of this page is to create awarness in the users - not only about their usage but also about the greater side effects of over usage of smartphones/social media; so that users don't go back to overusage even after the study ends. 
+        \item In the Digital Minimalism Tips card, some of the tips from the digital minimalism book can be inlcuded. Also the features which we have included can be described - such as the hide app feature. This basically acts as a guide for the users to how to reduce their usage.
+        \item There is another section in this page, where we can provide the user the latest news about smartphone addiction which will create the user awareness about the issue. But need to be careful to be not be too preachy about it.
+        \item There is another section in this page, the SAS-SV study which enables the user to take the test during the study - gives us an insight on how the user SAS score is varying during over study. Though, currently there are no expectations that user would take this study voluntarily.
+    \end{itemize}
+\end{enumerate}
+
+
+\newpage
+\section{Week 12: 25th - 29th May 2026}
+
+
+\subsection{User Study Proposal}
+\subsubsection{Objective}
+
+\textbf{}
+
+\subsubsection{Onboarding}
+
+\textbf{Recruitment of Participants}
+
+\textit{Inclusion criteria}
+\begin{enumerate}
+    \item Participants must have an Android phone.
+    \item Participants must be willing to install the application on their phone.
+    \item Participants should be willing to change their phone launcher.
+    \item Participants must be willing to share their screen usage statistics for every day during the duration of the study.
+    \item Participants must be willing to participate in the daily, weekly and the overall competition.
+    \item Participants can be students from UG, PG or PhD programs.
+    \item Target sample size : 15
+    \item Recruitment strategy:
+    \begin{itemize}
+        \item Official class WhatsApp groups
+        \item Hostel WhatsApp groups
+        \item Word-of-mouth outreach
+    \end{itemize}
+\end{enumerate}
+
+\textbf{Participant Briefing}
+\begin{enumerate}
+    \item This study aims to understand how effective competition is, in motivating people to reduce their phone usage.
+    \item It also looks at whether incentives/real-world rewards (like discounts and coupons) help in reducing screen time.
+    \item Participants need to install the application and complete the setup (including login).
+    \item After setup, participants can use their phone normally. The app will show reminders and stats like screen time and unlock count on the lock screen, launcher, and notifications.
+    \item The study includes a competition. Each day, usage stats are compared across participants. The person with the lowest usage wins. A "day" is defined from 5:00 PM to 5:00 PM the next day. Internet connectivity is required so that data can be uploaded.
+    \item There are three types of competitions, which the user would automatically be part of:
+    \begin{itemize}
+        \item Daily (resets every day at 5:00 PM)
+        \item Weekly (resets every Sunday at 5:00 PM)
+        \item Overall (across the study duration)
+    \end{itemize}
+    \item Winners can get rewards such as discounts and coupons.
+    \item Participants are expected to set this app as their default launcher.
+    \item To be eligible for rewards, participants must take part for at least 1 week (but that would effect the purpose of instant rewards)
+    \item To be eligible for the overall competition, participants must take part for at least 2 weeks (so that enough data is collected).
+    \item The app has a "Report Issue" option that can be used if needed.
+    \item Participants need to fill out a survey at the start and at the end of the study.
+    \item Participants will also be told about how the leaderboard works and criteria to win rewards for each competition.
+\end{enumerate}
+
+
+\textbf{Data to be Collected}
+\begin{enumerate}
+    \item Start of the study survey
+    \item End of the study survey
+    \item Daily screen usage Statistics:
+    \begin{enumerate}
+        \item Screen time session wise
+        \begin{itemize}
+            \item Session 1: 5 pm to 10 pm (Evening)
+            \item Session 2: 10 pm to 7 am (Night)
+            \item Session 3: 7 am to 5 pm (Day)
+        \end{itemize}
+        \item Total screen time
+        \item Total Unlock count
+        \item Total App Launch Count
+    \end{enumerate}
+    \item Logs of the application
+\end{enumerate}
+
+\subsubsection{Experiment Design}
+
+\textbf{Study Type}
+\begin{enumerate}
+    \item This is an in-situ study. Participants use their phone as they normally do. There are no forced tasks.
+    \item Participants can join or leave the study at any time. However, a minimum of 2 weeks of participation is required for their data to be considered in the final analysis.
+\end{enumerate}
+
+\textbf{Study Duration}
+\begin{enumerate}
+    \item Total duration: 4 weeks
+    \item Out of this, up to 2 weeks include active usage of the application.
+    \item The 2 weeks of data before the study is considered as baseline data and is collected automatically.
+    \item For each participant:
+    \begin{itemize}
+        \item Week 0 is the week they join
+        \item The before 2 weeks are used to collect baseline data automatically.
+    \end{itemize}
+\end{enumerate}
+
+\textbf{Competition Structure}
+\begin{enumerate}
+    \item All competitions (daily, weekly, overall) follow the same logic.
+    \item At the end of each competition, usage data is collected and a score is assigned to each participant.
+    \item The score is inversely proportional to usage. Lower usage implies higher score.
+    \item Leaderboards are generated based on these scores. The participant with the highest score would be at the top.
+    \item Types of competition:
+    \begin{itemize}
+        \item Daily : runs from 5:00 pm to 5:00 pm the next day
+        \item Weekly : runs from 5:00 pm on Sunday to 5:00 pm the next Sunday
+        \item Overall : runs for the entire duration of the study
+    \end{itemize}
+    \item Participants can join at any time. They do not need to start at the beginning of a competition cycle.
+    \item They can also leave at any time, but a minimum of 2 weeks of participation is required to be considered for the overall competition.
+\end{enumerate}
+
+\textbf{Setup and Onboarding}
+\begin{enumerate}
+    \item Participants need to install the application and log in using a username.
+    \item Participants are required to fill out a form with their username and contact details.
+    \item Contact details are used for:
+    \begin{itemize}
+        \item Notifying winners about rewards
+        \item Verification purposes
+    \end{itemize}
+    \item Participants can also check their reward status through the application.
+\end{enumerate}
+
+
+\subsubsection{Survey form}
+\begin{enumerate}
+    \item The objective of the survey
+    \begin{itemize}
+        \item Collect basic information of the participant.
+        \item Get qualitative feedback.
+    \end{itemize}
+\end{enumerate}
+
+\subsubsection{Sample Questionnaire of start of study survey form}
+
+\textbf{Basic Information}
+\begin{enumerate}
+    \item What is your age?
+    \item What is your gender?
+    \item Program, Department, Discipline
+\end{enumerate}
+
+\textbf{Usage related questions}
+\begin{enumerate}
+    \item Approx daily screen time : less than 2 hours, 2-4hours, 4-6 hours, 6-8 hours, more than 8 hours.
+    \item Which apps do you think consume most of your screen time? Social media, gaming, productivity, other. 
+\end{enumerate}
+
+\textbf{Study related questions}
+\begin{enumerate}
+    \item Have you understood the study procedures and requirements?
+    \item Which feature are you looking forward to using the most? Competition, launcher, usage statistics.
+\end{enumerate}
+
+
+\textbf{SAS-SV}
+
+Shortened Version of SAS. Has 10 items, instead of 33. 
+
+\begin{enumerate}
+        \item Missing planned work due to smartphone use
+        \item Having a hard time concentrating in class, while doing assignments, or while working due to smartphone use
+        \item Feeling pain in the wrists or at the back of the neck while using a smartphone
+        \item Won't be able to stand not having a smartphone
+        \item Feeling impatient and fretful when I am not holding my smartphone
+        \item Having my smartphone in my mind even when I am not using it
+        \item I will never give up using my smartphone even when my daily life is already greatly affected by it.
+        \item Constantly checking my smartphone so as not to miss conversations between other people on Twitter or Facebook
+        \item Using my smartphone longer than I had intented
+        \item The people around me tell me that I use my smartphone too much
+\end{enumerate}
+
+
+\subsubsection{Questions for end of the survey}
+
+
+\subsubsection{Analysis we could make at the end of the study}
+
+\textbf{Quantitative Analysis}
+\begin{enumerate}
+    \item Was there any change in the SAS-SV score?
+    \item Was there any change in the average usage time?
+    \item Was there any change in the average phone unlock count?
+    \item was there any change in the average app launch count?
+    \item Was there any change in usage or launch count of apps which user hide?
+    \item What was the position of the user in the leaderboard at the end of the study?
+    \item 
+\end{enumerate}
+
+\textbf{Qualitative Analysis}
+\begin{enumerate}
+    \item What did the user about their usage? Increase, decrease, no effect
+    \item Which feature did they think helped them most?
+    \item Do they now have an awareness of the seriousness of the issue? 
+    \item What do they think about their usage if they uninstall the application? Increase, remain same, decrease
+\end{enumerate}
+
+
+\subsubsection{Participant Details form}
+
+
+
+\subsection{Plan for the coming month}
 
 
 \newpage
