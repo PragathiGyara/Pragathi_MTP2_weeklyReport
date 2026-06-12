@@ -2541,6 +2541,200 @@ Shortened Version of SAS. Has 10 items, instead of 33.
 \subsection{Plan for the coming month}
 
 
+
+
+\newpage
+\section{1st to 10th June 2026}
+
+
+\subsection{Features added}
+
+\begin{enumerate}
+    \item Moved App drawer to the left side of the launcher
+    
+    Time Spent : 30 min
+
+    Status : Complete
+    \begin{enumerate}
+        \item Observed that most of the applications are designed where users are expected to move right if they want to access a feature and left if they want to exit the feature. \cite{SwipeActionsDesign}
+
+        This can be seen in whatsapp also where the main screen is the chat screen and to access other features you need to go to right. And also on most android launchers which are usually swipe up or navigating towards the right side.
+
+        \item To break the habitual cycle and add a bit more friction, placed on the app drawer on the left side of the launcher.
+        \item Implementation of this feature included moving the fragment handler and its navigation.
+        \item The effectiveness of this change can be evaluated via user feedback during user study.
+    \end{enumerate}
+    \item Hide app feature
+    
+    Time Spent : 45 min
+    
+    Status : Completed
+    \begin{enumerate}
+        \item From the regular android launchers, you can uninstall the applications - but android won't let you uninstall some preinstalled applications - such as instagram and facebook.
+        
+        To hide them, one needs to go to settings and then disable it from there. This adds a lot of friction to hide the application from regular android launcher.
+
+        \item Added the feature where you can simply hide the application from jodo launcher - that is, it is not displayed when the app list is rendered. So the user can hide it without worrying to uninstall the application.
+        \item Allows to hide any application present in the list - pre-installed or not.
+        \item If the user wants to use that application - they either needs to open it via the playstore or restore it from hidden apps list. This adds friction in accessing the application. 
+        \item Implementation included adding a spinner layout and maintaing a shared pref to contain the list of applications the user chose to hide and then skipping them from the rendering list.
+        \item The effectiveness of this feature can be made by comparing the usage stats (usage time and app launch count) of the hidden application before and after hiding the application.
+    \end{enumerate}
+
+    \item Metrics to measure effectiveness of hide app feature
+    
+    Time Spent: 
+
+    Status : TO DO
+    \begin{itemize}
+        \item Usage of time and app launch count of hidden applications before and after hiding them.
+    \end{itemize}
+
+    \item Uninstall the application from app drawer
+    
+    Time Spent: 1 hr
+
+    Status : Completed
+    \begin{itemize}
+        \item To remove the friction of uninstalling application (espeically the preinstalled application), here we allow uninstall of applications from app drawer.
+        \item On top of this, if JODO doesn't an uninstall option - the user must go to playstore to uninstall any application - which inturn increases the unintsall friction.
+        \item Implementation includes showing the spinner with suitable option (that is, uninstall or app info), and displaying the confirmation dialog if uninstall is chosen. And then calling the AppInfoWorker to refresh the app list.
+        \item If the application is genunienly uninstallable (such as settings), we find it out using the app intent which android provides and we don't give up option of uninstall for such application, instead app info option is shown.
+        \item Tested it against various applications.
+    \end{itemize}
+    \item Restore hidden application
+    
+    Time Spent:
+
+    Status : TO DO
+    \item Insights fragment on the right side of the launcher
+
+    Time Spent: 5-6 hr
+
+    Status : In Progress
+    \begin{enumerate}
+        \item Since its intuitive that users navigate to the right to access new feature, an insights fragment can be placed on the right side.
+        \item Components of the insights fragment: 
+        \begin{itemize}
+            \item Tips for reducing smartphone usage based on digital minimalism book and a guide to how to use the features of JODO effectively.
+            \item Awareness of studies and articles on smartphone addiction.
+            \item SAS-SV test
+            \item Restore apps features. 
+        \end{itemize}
+        \item Implementation includes:
+        \begin{itemize}
+            \item Insights fragment layout 
+            \item Fragment navigation handling
+            \item Django model to contain the content of tips and awarness.
+            \item Added api to fetch content from django server.
+            \item Using shared prefs to store the latest content fetched from server.
+            \item Modified the daily sync worker to called this api every hour.
+        \end{itemize}
+        \item Remaining implementation: 
+        \begin{itemize}
+            \item API call is working fine - but the changes are not reflected in UI.
+        \end{itemize}
+        \item The purpose of this fragment is to create awareness in the users and to promote that mindful/optimial usage of smartphone/social media even outside the competition.
+    \end{enumerate}
+
+    \item Lockscreen challenge outcome measure
+    
+    Time spent : 9-10 hr
+
+    Status : Completed
+    \begin{itemize}
+        \item On the lockscreen we already display a simple arithmetic challenge.
+    \end{itemize}
+
+    \item Bug Report Feature
+    
+    Time Spent : 6-7 hr
+
+    Status : Completed
+
+    \begin{itemize}
+        \item Added help and contact option in the menu
+        \item Designed a simple layout for help and contact.
+        \item Added navigation to help and contact from all other activities
+        \item Created bug report layout, feedback layout, and contact info layout.
+        \item Added a model to the django which can store the bug info along with the username of the user who reported it.
+        \item Bug info report:
+        \begin{itemize}
+            \item 
+        \end{itemize}
+    \end{itemize}
+
+\end{enumerate}
+
+\subsection{Bugs resolved}
+\begin{enumerate}
+    \item App drawer showing unlaunchable background applications
+    
+    Status : Completed
+
+    Time Spent: 45 min
+    \begin{itemize}
+        \item Revised the logic to skip launch disabled entries, skipping own launcher, and included the condition that the application should have a visible package label, and also avoiding duplicates.
+        \item The criteria of not rendering the application without a label helped not to display the background android applications which often don't have package label (user readable name) and package icon (by default android icon is appiled). And many/all of the user launchable applciations have package label. 
+    \end{itemize}
+    \item Install and uninstall of packages not updating in app drawer
+    Status : Completed
+
+    Time spent: 45 min 
+    \begin{itemize}
+        \item Earlier approach was to use broadcast receiver to detect detect install and unisntall of the applications.
+        \item The install was detected but the app was not shown in the list.
+        \item But the uninstall was not getting detected - though it was uninstall from the phone, it was still displayed in the list.
+        
+        Solution : Trigger the AppInfoWorker which upon unisntall and install detection.
+    \end{itemize}
+    \item Sorting of the application was happening based on usage time (that is, applications with high usage time was shown on the top). It defeats the purpose of search based app launcher if the frequently used apps are shown on the top.
+    Status : Completed
+    
+    Time Spent : 15 min
+    \begin{itemize}
+        \item Now the sorting is happening based on alphabetical order rather than usage stats.
+        \item Assuming sorting is required to keep the screen predictable and familiar (while keeping in mind to add the friction to navigate to the wanted application) rather than a different application on top each time. 
+    \end{itemize}
+
+    \item Stats is app drawer not updating regularly.
+    Status : TO DO 
+
+    \item Investigating celery worker failure
+    Status : completed
+
+    Time spent : 7 hr
+    \begin{itemize}
+        \item The celery beat was responsible schedule the implementation of points boundary calculation and all.
+        \item It is observed that none of them were getting triggered though the beats were scheduled. It was observed that the worker container exited.
+        \item Upon restarting the worker container but crashed again after couple of hours and failed to automatically restart.
+        \item In the docker, port number of the redis and db was mentioned - which exposed the ports to the internet. And there were multiple anonoyms requests to connect to redis which caused redis to not respond to the request of celery worker. Hence, the worker got terminated due to lack of response.
+        \item Solution: 
+    \end{itemize}
+\end{enumerate}
+
+\subsection{Improvements made}
+\begin{enumerate}
+    \item Having a single leaderboard pipeline instead of multiple celery beats.
+    Time spent : 1 hr 30 min
+
+    Status : completed.
+    \item Adjust the trigger times of the alarms.
+    Time spent : 1 hr
+    
+    Status : completed.
+    \item Using .env file to store the passwords instead of in docker compose
+    Time spent : 1 hr 30 min
+
+    Status : Completed
+    \begin{itemize}
+        \item 
+    \end{itemize}
+\end{enumerate}
+
+
+
+
 \newpage
 \printbibliography
 \end{document}

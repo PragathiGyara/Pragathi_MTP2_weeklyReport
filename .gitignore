@@ -13,6 +13,8 @@
 *.fls
 *.fdb_latexmk
 *-SAVE-ERROR
+*.dvi
+*.lol
 
 # Minted
 _minted-*/
